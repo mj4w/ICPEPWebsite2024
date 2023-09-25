@@ -1,23 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    <!-- For font awesome -->
+    <script src="https://kit.fontawesome.com/1776b28af8.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <link rel="stylesheet" href="homepage.css">
+    <title>Document</title>
 </head>
-
 <body>
-    <h1>Hello World</h1>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam labore voluptas obcaecati, hic deserunt a magni
-        est facilis quos natus eligendi praesentium fugit accusantium nam officiis, sequi mollitia! Provident, quo?</p>
-    <h2>Hello there</h2>
-    <h1>saadawdwasa</h1>
-    <h1>Hiiiiiii</h1>
-    <button id="btn"> Click me </button>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci perferendis, quisquam animi eum ipsum
-        provident nobis, eos nam consequatur quo eveniet ut. Molestiae velit nemo, repellat culpa corrupti asperiores
-        ratione!</p>
-</body>
+    <nav>
+       <img src="./homepage_images/icpep_logo2.png" class="icpep_logo"/> 
+       <p class="nav-title"> ICEPEP.SE BULSU-MC</p> <!-- Ano font size neto and font family?-->
 
+       <p  class="event"> Event</p>
+       <p  class="resource"> Resource</p>
+       <p  class="membership"> Membership</p>
+       <p  class="about-us"> About us</p>
+       <i class="fa-regular fa-user" id="user"></i>    
+    </nav>
+    <div id="user-function">       
+    </div>
+
+    <script> 
+     var userFunc = document.getElementById("user");
+
+     userFunc.addEventListener("click", function() {
+     
+        document.getElementById("user-function").style.display = "block";
+        this.style.display = "none";
+     });
+    </script>
+
+</body>
 </html>
