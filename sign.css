@@ -1,0 +1,58 @@
+h1 {
+    width: 300px;
+    height: 60px;
+    text-align: justify;
+    margin: 50px;
+}
+
+button {
+    width: 400px;
+    height: 70px;
+    background-color: #FFA500;
+    color: black;
+    border-radius: 10px;
+    border-style: none;
+    text-align: center;
+    margin: 10px;
+
+}
+
+#icepep {
+    width: 200px;
+    height: 100px;
+    padding: 10px;
+    margin: 10px;
+}
+
+#bulsu {
+
+    width: 500px;
+    height: 900px;
+    object-position: left;
+
+
+
+
+}
+
+#studentnum {
+    width: 300px;
+    height: 50px;
+    text-align: center;
+    margin-left: 40px;
+    margin-bottom: 15px;
+    display: grid;
+
+
+}
+
+#studentpass {
+    width: 300px;
+    height: 50px;
+    text-align: center;
+    margin-left: 40px;
+    margin-bottom: 15px;
+    display: grid;
+
+
+}
