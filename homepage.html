@@ -18,18 +18,26 @@
        <p  class="membership"> Membership</p>
        <p  class="about-us"> About us</p>
        <i class="fa-regular fa-user" id="user"></i>    
+       <i class="fa-solid fa-user" id="close-user">fdsdf</i>
     </nav>
     <div id="user-function">       
     </div>
 
     <script> 
      var userFunc = document.getElementById("user");
+     
 
      userFunc.addEventListener("click", function() {
      
         document.getElementById("user-function").style.display = "block";
+        document.getElementById("close-user").style.display = "block";
         this.style.display = "none";
+        
+
      });
+    
+
+
     </script>
 
 </body>
