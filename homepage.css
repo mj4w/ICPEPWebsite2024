@@ -1,9 +1,130 @@
 * { 
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-nav {
+html{
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    scroll-behavior: smooth;
+}
+
+:root{
+    --primary-color: #FB7033;
+    --secondary-color: #1F1E1E;
+    --white: #fff;
+}
+
+.container{
+    max-width: 1184px;
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 16px;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    height: auto;
+}
+
+header{
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--secondary-color);
+}
+
+/*-----------------------------------*\
+  #NAVBAR
+\*-----------------------------------*/
+header .container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 18px 0; */
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 0;
+    cursor: pointer;
+}
+
+.logo p{
+    color: var(--white);
+    font-weight: 500;
+}
+
+.navbar ul li{
+    display: inline-block;
+}
+
+.navbar ul li a{
+    display: block;
+    padding: 16px;
+    color: var(--white);
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.navbar ul li a:hover{
+    color: var(--primary-color);
+}
+
+.navbar ul li i{
+    color: var(--primary-color);
+    padding: 16px 0 16px 16px;
+    font-size: 20px;
+}
+
+.navbar ul li i:hover{
+    color: --;
+}
+
+.userlink{
+    position: absolute;
+    top: 100px;
+    right: 128px;
+    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: var(--secondary-color);
+    padding: 16px 30px;
+    border-radius: 16px;
+    transform-origin: top right;
+}
+
+.userlink.active{
+    visibility: hidden;
+    opacity: 0;
+    scale: 0;
+}
+
+.userlink li{
+    padding: 16px 0;
+    color: var(--white);
+}
+
+.userlink li:hover{
+    color: var(--primary-color);
+}
+
+.userlink .logout{
+    border-top: 1px solid var(--white);
+}
+
+
+
+
+/* nav {
     position: absolute;
     top: 0px;
     width: 100%;
@@ -86,4 +207,4 @@ nav {
  top: 15px;
  font-size: 20px;
 z-index: 11;
-}
+} */

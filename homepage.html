@@ -2,16 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- For font awesome -->
-    <script src="https://kit.fontawesome.com/1776b28af8.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- For font awesome -->
+    <script src="https://kit.fontawesome.com/1776b28af8.js" crossorigin="anonymous"></script> 
+   <!-- css lINK -->
     <link rel="stylesheet" href="homepage.css">
-    <title>Document</title>
+    <title>ICPEP-MC</title>
 </head>
 <body>
-    <nav>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="./homepage_images/icpep_logo2.png" width="60px" height="60px">
+                <p>ICPEP.SE BULSU-MC</p>
+            </a>
+            <nav class="navbar" >
+                <ul>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Resources</a></li>
+                    <li><a href="#">Membership</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li class="toggler" user-toggler><i class="fa-regular fa-user" id="user"></i>
+                        <ul class="userlink active" data-user-link>
+                            <li>Juan A. Carlos</li>
+                            <li class="logout">logout</li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+
+
+    <!-- <nav>
        <img src="./homepage_images/icpep_logo2.png" class="icpep_logo"/> 
-       <p class="nav-title"> ICEPEP.SE BULSU-MC</p> <!-- Ano font size neto and font family?-->
+       <p class="nav-title"> ICEPEP.SE BULSU-MC</p> 
 
        <p  class="event"> Event</p>
        <p  class="resource"> Resource</p>
@@ -21,8 +50,14 @@
        <i class="fa-solid fa-user" id="close-user">fdsdf</i>
     </nav>
     <div id="user-function">       
-    </div>
+    </div> -->
 
+
+
+
+
+
+    <!-- ===== JS =====  -->
     <script> 
      var userFunc = document.getElementById("user");
      
@@ -32,12 +67,14 @@
         document.getElementById("user-function").style.display = "block";
         document.getElementById("close-user").style.display = "block";
         this.style.display = "none";
-        
-
      });
     
 
+    // for user toggle
+    const $userlink= document.querySelector("[data-user-link]");
+    const $toggler = document.querySelector("[user-toggler]");
 
+    $toggler.addEventListener("click", () => $userlink.classList.toggle("active"));
     </script>
 
 </body>
