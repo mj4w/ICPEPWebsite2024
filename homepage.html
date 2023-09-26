@@ -24,17 +24,19 @@
                     <li><a href="#">Resources</a></li>
                     <li><a href="#">Membership</a></li>
                     <li><a href="#">About Us</a></li>
-                    <li class="toggler" user-toggler><i class="fa-regular fa-user" id="user"></i>
-                        <ul class="userlink active" data-user-link>
-                            <li>Juan A. Carlos</li>
-                            <li class="logout">logout</li>
-                        </ul>
-                    </li>
                 </ul>
+                <i class="fa-regular fa-user" id="user" onclick="toggleMenu()"></i> 
+
+                <div class="sub-menu" id="subMenu">
+                    <div class="sub-menu-info">
+                        <li>Juan A. Dele Cruz</li>
+                        <li>logout</li>
+                    </div>
+                </div>
             </nav>
         </div>
     </header>
-
+    
 
 
 
@@ -71,10 +73,15 @@
     
 
     // for user toggle
-    const $userlink= document.querySelector("[data-user-link]");
-    const $toggler = document.querySelector("[user-toggler]");
+    // const $userlink= document.querySelector("[data-user-link]");
+    // const $toggler = document.querySelector("[user-toggler]");
 
-    $toggler.addEventListener("click", () => $userlink.classList.toggle("active"));
+    // $toggler.addEventListener("click", () => $userlink.classList.toggle("active"));
+    let subMenu = document.getElementById("subMenu");
+
+    function toggleMenu(){
+        subMenu.classList.toggle("open-menu");
+    }
     </script>
 
 </body>
