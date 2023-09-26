@@ -1,0 +1,111 @@
+h1 {
+    width: 300px;
+    height: 60px;
+    text-align: justify;
+    margin: 40px;
+    font-size: 40px;
+    position: relative;
+    bottom: 130px;
+    left: 250px;
+
+}
+
+button {
+    width: 310px;
+    height: 40px;
+    background-color: #FFA500;
+    color: black;
+    border-radius: 10px;
+    border-style: none;
+    text-align: center;
+    margin: 10px;
+    font-size: px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 500;
+    margin-left: 40px;
+    position: relative;
+    left: 250px;
+    bottom: 180px;
+
+}
+
+#icepep {
+    width: 400px;
+    height: 300px;
+    margin: 10px;
+    margin-top: 10px;
+    margin-right: 15px;
+    position: relative;
+    bottom: 50px;
+    left: 220px;
+
+
+}
+
+#bulsu {
+
+    width: 750px;
+    height: 700px;
+    position: relative;
+    left: 800px;
+    bottom: 850px;
+}
+
+#studentnum {
+    width: 300px;
+    height: 40px;
+    text-align: center;
+    font-size: 15px;
+    margin-left: 40px;
+    margin-bottom: 15px;
+    display: grid;
+    border-radius: 5px;
+    position: relative;
+    left: 250px;
+    bottom: 150px;
+
+
+
+}
+
+#studentpass {
+    width: 300px;
+    height: 40px;
+    text-align: center;
+    font-size: 15px;
+    margin-left: 40px;
+    margin-bottom: 20px;
+    display: grid;
+    border-radius: 5px;
+    position: relative;
+    left: 250px;
+    bottom: 150px;
+
+
+}
+
+#remember_me {
+    height: 36px;
+    width: 120px;
+    margin-left: 50px;
+    margin-top: 20px;
+    position: relative;
+    left: 250px;
+    bottom: 150px;
+}
+
+a {
+    color: red;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #FFA500;
+}
+
+#started {
+    position: relative;
+    left: 330px;
+    bottom: 195px;
+    color: grey;
+}
