@@ -74,7 +74,7 @@ button {
     /* position: relative; */
     left: 250px;
     bottom: 150px;
-
+    font-weight: bold;
 
 
 }
@@ -91,6 +91,8 @@ button {
     /* position: relative; */
     left: 250px;
     bottom: 150px;
+    font-weight: bold;
+
 
 
 }
@@ -110,13 +112,18 @@ a {
     text-decoration: none;
 }
 
-a:hover {
-    color: #FFA500;
-}
-
 #started {
     /* position: relative; */
     left: 330px;
     bottom: 195px;
     color: grey;
+}
+
+#forgot_pass {
+    /* position: relative; */
+    left: 460px;
+    bottom: 312px;
+    color: #1E1E24;
+    font-size: 15px;
+    font-weight: bold;
 }
