@@ -34,13 +34,31 @@ img{
     height: auto;
 }
 
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    height: 48px;
+    padding: 0 24px;
+    border-radius: 8px;
+    max-width: max-content;
+    transition: cubic-bezier(0, 0.7, 0.3, 1) 200ms;
+}
+
+.btn:where(:hover, :focus){
+    background-color: #F45C19;
+}
+
 
 
 /*-----------------------------------*\
   #NAVBAR
 \*-----------------------------------*/
 header{
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
@@ -137,6 +155,59 @@ header .container{
 .sub-menu-info li:last-child{
     border-top: 1px solid var(--white);
 }
+
+/*-----------------------------------*\
+  #HERO
+\*-----------------------------------*/
+.hero{
+    background-image: linear-gradient(rgba(255,112,51,0.3) 100%, rgba(255,112,51,0.3) 100%), url(/homepage_images/home-bg.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.hero .container{
+    min-height: 88.2vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 500px;
+}
+
+
+.hero-content h3{
+    font-size: 21px;
+    font-weight: 100;
+    /* line-height: 24px; */
+    letter-spacing: 10px;
+    color: var(--white);
+    padding-bottom: 8px;
+}
+
+.hero-content h1,
+.hero-content span{
+    font-size: 61px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.hero-content span{
+    color: var(--white);
+}
+
+.hero-content p{
+    width: 60vh;
+    font-weight: 400;
+    color: var(--white);
+    padding-top: 8px;
+    padding-bottom: 24px;
+}
+
+
+
+
+
+
+
 
 
 
