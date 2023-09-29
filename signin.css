@@ -1,10 +1,10 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.hero{
+.hero {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -15,15 +15,13 @@ h1 {
     height: 60px;
     text-align: justify;
     margin: 40px;
-    font-size: 40px;
+    font-size: 50px;
     /* position: relative; */
-    bottom: 130px;
-    left: 250px;
 
 }
 
 button {
-    width: 310px;
+    width: 350px;
     height: 40px;
     background-color: #FFA500;
     color: black;
@@ -35,9 +33,7 @@ button {
     font-family: 'Courier New', Courier, monospace;
     font-weight: 500;
     margin-left: 40px;
-    /* position: relative; */
-    left: 250px;
-    bottom: 180px;
+
 
 }
 
@@ -47,23 +43,23 @@ button {
     margin: 10px;
     margin-top: 10px;
     margin-right: 15px;
-    /* position: relative; */
-    bottom: 50px;
-    left: 220px;
+    position: relative;
+    top: 40px;
+
+
 
 
 }
 
 #bulsu {
-    width: 750px;
-    height: 700px;
-    /* position: relative; */
-    left: 800px;
-    bottom: 850px;
+    width: 850px;
+    height: 787px;
+
+
 }
 
 #studentnum {
-    width: 300px;
+    width: 350px;
     height: 40px;
     text-align: center;
     font-size: 15px;
@@ -71,16 +67,13 @@ button {
     margin-bottom: 15px;
     display: grid;
     border-radius: 5px;
-    /* position: relative; */
-    left: 250px;
-    bottom: 150px;
     font-weight: bold;
 
 
 }
 
 #studentpass {
-    width: 300px;
+    width: 350px;
     height: 40px;
     text-align: center;
     font-size: 15px;
@@ -89,8 +82,7 @@ button {
     display: grid;
     border-radius: 5px;
     /* position: relative; */
-    left: 250px;
-    bottom: 150px;
+
     font-weight: bold;
 
 
@@ -103,8 +95,7 @@ button {
     margin-left: 50px;
     margin-top: 20px;
     /* position: relative; */
-    left: 250px;
-    bottom: 150px;
+
 }
 
 a {
@@ -113,17 +104,27 @@ a {
 }
 
 #started {
-    /* position: relative; */
-    left: 330px;
-    bottom: 195px;
+    position: relative;
+    left: 100px;
     color: grey;
 }
 
-#forgot_pass {
-    /* position: relative; */
-    left: 460px;
-    bottom: 312px;
+#forgot_password {
+
+
     color: #1E1E24;
     font-size: 15px;
     font-weight: bold;
+    position: relative;
+    bottom: 116px;
+    left: 265px;
+
+}
+
+.form-content {
+    position: relative;
+    bottom: 90px;
+    left: 200px;
+
+
 }
