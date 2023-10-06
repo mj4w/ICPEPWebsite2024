@@ -61,6 +61,9 @@ img{
 .section-title{
     font-size: 31px;
     font-weight: bold;
+    text-align: center;
+    padding-top: 32px;
+    margin-bottom: 24px;
     color: var(--primary-color);
 }
 
@@ -243,6 +246,12 @@ header .container{
     padding: 48px 128px 56px 48px;
 }
 
+.about-content .section-title{
+    text-align: left;
+    padding: 0;
+    margin: 0;
+}
+
 .about-content p{
     padding: 32px 0;
     font-size: 18px;
@@ -287,6 +296,7 @@ header .container{
 }
 
 .card{
+    background-color: var(--white);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
@@ -354,8 +364,82 @@ header .container{
 }
 
 
+/*-----------------------------------*\
+  #TOOLS
+\*-----------------------------------*/
+.grid-list{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.tools-links{
+    padding-top: 24px;
+    padding-bottom: 32px;
+}
+
+.tools-links a{
+    text-align: center;
+    color: var(--secondary-color);
+}
+
+.tools-links a img{
+    width: 20vh;
+}
+
+.tools-links a p{
+    padding-top: 8px;
+}
+
+.tools-links:where(:hover, :focus-visible) a p{
+    color: var(--primary-color);
+}
 
 
+/*-----------------------------------*\
+  #FOOTER
+\*-----------------------------------*/
+footer{
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border-top: solid 8px var(--primary-color);
+}
+
+footer .container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px;
+}
+
+.footer-logo{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-logo img{
+    width: 60px;
+}
+
+.footer-logo h1{
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.footer-logo h1 span{
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.footer-copyright{
+    font-size: 13px;
+}
+
+.footer-copyright p span{
+    color: var(--primary-color);
+}
 
 
 
