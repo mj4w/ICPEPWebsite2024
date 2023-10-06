@@ -236,15 +236,15 @@ header .container{
 }
 
 .banner img{
-    width: 50vw;
+    width: 40vw;
     /* aspect-ratio: auto; */
     overflow: hidden;
     filter: drop-shadow(14px 14px var(--primary-color));
 }
 
-.about-content{
+/* .about-content{
     padding: 48px 128px 56px 48px;
-}
+} */
 
 .about-content .section-title{
     text-align: left;
@@ -367,32 +367,21 @@ header .container{
 /*-----------------------------------*\
   #TOOLS
 \*-----------------------------------*/
-.grid-list{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.tools{
+    padding-bottom: 30px;
 }
 
-.tools-links{
-    padding-top: 24px;
-    padding-bottom: 32px;
-}
-
-.tools-links a{
+.tools-slider{
     text-align: center;
-    color: var(--secondary-color);
 }
 
-.tools-links a img{
-    width: 20vh;
+.tools-slider .box a img{
+    width: 10vh;
+    margin-bottom: 20px;
 }
 
-.tools-links a p{
-    padding-top: 8px;
-}
-
-.tools-links:where(:hover, :focus-visible) a p{
-    color: var(--primary-color);
+.swiper-pagination-bullets.swiper-pagination-horizontal{
+    bottom: 0;
 }
 
 

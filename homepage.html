@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- For font awesome -->
     <script src="https://kit.fontawesome.com/1776b28af8.js" crossorigin="anonymous"></script> 
-   <!-- css lINK -->
+    <!-- SWIPER JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="homepage.css">
     <title>ICPEP-MC</title>
 </head>
@@ -53,7 +54,7 @@
 
         <!-- ABOUT SECTION -->
         <section class="about">
-            <div class="row">
+            <div class="container row">
                 <figure class="banner">
                     <img src="./homepage_images/about-us.jpg" alt="about-us" width="650" height="350">
                 </figure>
@@ -122,31 +123,51 @@
         <section class="tools">
             <div class="container">
                 <div class="section-title">Software Tools</div>
-                <div class="grid-list">
-                    <div class="tools-links">
-                        <a href="#">
-                            <img src="./homepage_images/tools-1.png">
-                            <p>Documents</p>
-                        </a>
+
+                <div class="swiper tools-slider">
+                    <div class="swiper-wrapper">
+                        <div class="box swiper-slide">
+                            <a href="#">
+                                <img src="./homepage_images/tools-1.png">
+                            </a>
+                        </div>
+                        <div class="box swiper-slide">
+                            <a href="">
+                                <img src="./homepage_images/tools-2.png">
+                            </a>
+                        </div>
+                        <div class="box swiper-slide">
+                            <a href="">
+                                <img src="./homepage_images/tools-3.png">
+                            </a>
+                        </div>
+                        <div class="box swiper-slide">
+                            <a href="">
+                                <img src="./homepage_images/tools-4.png">
+                            </a>
+                        </div>
+                        <div class="box swiper-slide">
+                            <a href="#">
+                                <img src="./homepage_images/tools-1.png">
+                            </a>
+                        </div>
+                        <div class="box swiper-slide">
+                            <a href="">
+                                <img src="./homepage_images/tools-2.png">
+                            </a>
+                        </div>
+                        <div class="box swiper-slide">
+                            <a href="">
+                                <img src="./homepage_images/tools-3.png">
+                            </a>
+                        </div>
+                        <div class="box swiper-slide">
+                            <a href="">
+                                <img src="./homepage_images/tools-4.png">
+                            </a>
+                        </div>
                     </div>
-                    <div class="tools-links">
-                        <a href="#">
-                            <img src="./homepage_images/tools-2.png">
-                            <p>Media</p>
-                        </a>
-                    </div>
-                    <div class="tools-links">
-                        <a href="#">
-                            <img src="./homepage_images/tools-3.png">
-                            <p>Programming</p>
-                        </a>
-                    </div>
-                    <div class="tools-links">
-                        <a href="#">
-                            <img src="./homepage_images/tools-2.png">
-                            <p>Mediaa</p>
-                        </a>
-                    </div>
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
         </section>
@@ -185,8 +206,8 @@
 
 
 
-
-
+    <!-- SWIPER JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
     <!-- ===== JS =====  -->
     <script> 
@@ -211,6 +232,15 @@
     function toggleMenu(){
         subMenu.classList.toggle("open-menu");
     }
+
+    var swiper = new Swiper(".tools-slider", {
+        slidesPerView: 4,
+        spaceBetween: 30,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+    });
     </script>
 
 </body>
