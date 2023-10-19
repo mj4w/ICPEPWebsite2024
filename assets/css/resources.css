@@ -121,15 +121,95 @@ input[type="radio"]{
     left: 75%;
 }
 
-section .content{
+.card-list .content{
     display: none;
     margin: 32px 0 62px 0;
     position: relative;
+    animation: moving .5s ease;
 }
 
-#documents:checked ~ section .content-1,
-#media:checked ~ section .content-2,
-#programming:checked ~ section .content-3,
-#utilities:checked ~ section .content-4{
+@keyframes moving{
+    from{transform: translateX(50px); opacity: 0;}
+    to{transform: translateX(0px); opacity: 1;}
+}
+
+#documents:checked ~ .card-list .content-1,
+#media:checked ~ .card-list .content-2,
+#programming:checked ~ .card-list .content-3,
+#utilities:checked ~ .card-list .content-4{
     display: block;
+}
+
+
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+}
+
+.card{
+    position: relative;
+    width: 260px;
+    height: 260px;
+    transition: 0.3s ease-out;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+
+.card .img-holder{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.card .img-holder img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    border-radius: 5px 5px 0 0;
+    display: block;
+    transition: 0.5s;
+}
+
+.card .card-content{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 52px;
+    padding: 10px;
+    border-radius: 0 0 5px 5px;
+    background-color: var(--white);
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+}
+
+.card:hover .card-content{
+    width: 100%;
+    height: auto;
+    left: 0;
+    bottom: 0;
+}
+
+.card-content h3{
+    color: var(--primary-color);
+    font-weight: bolder;
+    line-height: 30px;
+}
+
+.card-content p{
+    font-size: 14px;
+    margin-top: 8px;
+    transform:  translateY(2em);
+    opacity: 0;
+}
+
+.card:hover .card-content p{
+    transform: translateY(0);
+    opacity: 1;
 }
