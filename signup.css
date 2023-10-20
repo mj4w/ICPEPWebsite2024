@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+html {
+    font-family: 'Poppins', sans-serif;
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap');
+
+}
+
+
+.form_signup {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+
+}
+
+
+#bulsu {
+    width: 50%;
+    height: 1150px;
+    display: grid;
+
+
+}
+
+#icepep {
+    width: 500x;
+    height: 200px;
+
+
+}
+
+h1 {
+    font-size: 3rem;
+    width: 200px;
+    margin: 1rem;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#first_name {
+    width: 300px;
+    height: 50px;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 5px;
+    margin-top: 10px;
+    text-align: center;
+
+}
+
+#last_name {
+    width: 300px;
+    height: 50px;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 5px;
+    margin-bottom: ;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#Student_number {
+    width: 38.5rem;
+    height: 50px;
+    border-radius: 5px;
+    display: grid;
+    margin: 5px;
+    text-align: center;
+    margin-bottom: 1rem;
+
+}
+
+#email_address {
+    width: 38.5rem;
+    height: 50px;
+    border-radius: 5px;
+    display: grid;
+    margin: 5px;
+    text-align: center;
+    margin-bottom: 1rem;
+
+}
+
+#password {
+    width: 38.5rem;
+    height: 50px;
+    border-radius: 5px;
+    display: grid;
+    text-align: center;
+    margin-left: 5px;
+    margin-bottom: 1rem;
+
+
+}
+
+#re_password {
+    width: 38.5rem;
+    height: 50px;
+    border-radius: 5px;
+    display: grid;
+    margin: 5px;
+    text-align: center;
+    margin-bottom: 2rem;
+
+
+}
+
+button {
+    width: 35rem;
+    height: 3rem;
+    margin-bottom: 1rem;
+    margin-left: 2.5rem;
+    background-color: #FFA500;
+    font-size: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: #FB7033;
+    font-weight: bolder;
+}
+
+#AA {
+    margin-left: 12rem;
+    font-size: 20px;
+}
+
+.forms {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 200px;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
+
+}
