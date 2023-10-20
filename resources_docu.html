@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- For font awesome -->
+    <script src="https://kit.fontawesome.com/1776b28af8.js" crossorigin="anonymous"></script> 
+    <!-- SWIPER JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <!-- CUSTOM JS -->
+    <script src="./assets/js/script.js" defer></script>
+    <!-- CSS LINK -->
+    <link rel="stylesheet" href="./assets/css/resources.css">
+    <link rel="stylesheet" href="./assets/css/custom.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <header>
+        <div class="container">
+            <a href="homepage.html" class="logo">
+                <img src="./homepage_images/icpep_logo2.png" width="60px" height="60px">
+                <p>ICPEP.SE BULSU-MC</p>
+            </a>
+            <nav class="navbar" >
+                <ul>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="resources_docu.html">Resources</a></li>
+                    <li><a href="#">Membership</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+                <i class="fa-regular fa-user" id="user" onclick="toggleMenu()"></i> 
+
+                <div class="sub-menu" id="subMenu">
+                    <div class="sub-menu-info">
+                        <li>Juan A. Dele Cruz</li>
+                        <li>logout</li>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="resources">
+            <div class="container">
+                <h2 class="section-title">Software Tools</h2>
+
+                <div class="wrapper">
+                    <input type="radio" name="slider" id="documents" checked>
+                    <input type="radio" name="slider" id="media">
+                    <input type="radio" name="slider" id="programming">
+                    <input type="radio" name="slider" id="utilities">
+
+                    <nav class="navbar">
+                        <label for="documents" class="documents">Documents</label>
+                        <label for="media" class="media">Media</label>
+                        <label for="programming" class="programming">Programming</label>
+                        <label for="utilities" class="utilities">Utilities</label>
+                        <div class="slider"></div>
+                    </nav>
+
+                    <div class="card-list">
+                        <div class="content content-1">
+                            <div class="list">
+                                <div class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/img_1.webp" alt="microsoft">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Microsoft 365</h3>
+                                        <p>Don't confuse with Visual Studio 2019 above. This is the best code editor for Python, HTML/CSS, and almost every programming language, given you'll do a couple of setups</p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/img_2.webp" alt="microsoft">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>WPS Office</h3>
+                                        <p>Don't confuse with Visual Studio 2019 above.</p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/img_3.jpeg" alt="microsoft">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Grammarly</h3>
+                                        <p>Don't confuse with Visual Studio 2019 above. This is the best code editor for Python, HTML/CSS, and almost every programming language, given you'll do a couple of setups</p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/img_3.webp" alt="microsoft">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Microsoft 365</h3>
+                                        <p>Don't confuse with Visual Studio 2019 above. This is the best code editor for Python, HTML/CSS, and almost every programming language, given you'll do a couple of setups</p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/img_1.webp" alt="microsoft">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Microsoft 365</h3>
+                                        <p>Don't confuse with Visual Studio 2019 above. This is the best code editor for Python, HTML/CSS, and almost every programming language, given you'll do a couple of setups</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="content content-2">
+                            <div class="list">
+                                <div class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/img_1.webp" alt="microsoft">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Microsoft 365</h3>
+                                        <p>Don't confuse with Visual Studio 2019 above. This is the best code editor for Python, HTML/CSS, and almost every programming language, given you'll do a couple of setups</p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/img_2.webp" alt="microsoft">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>WPS Office</h3>
+                                        <p>Don't confuse with Visual Studio 2019 above.</p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/img_3.jpeg" alt="microsoft">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Grammarly</h3>
+                                        <p>Don't confuse with Visual Studio 2019 above. This is the best code editor for Python, HTML/CSS, and almost every programming language, given you'll do a couple of setups</p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/img_3.webp" alt="microsoft">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Microsoft 365</h3>
+                                        <p>Don't confuse with Visual Studio 2019 above. This is the best code editor for Python, HTML/CSS, and almost every programming language, given you'll do a couple of setups</p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/img_1.webp" alt="microsoft">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Microsoft 365</h3>
+                                        <p>Don't confuse with Visual Studio 2019 above. This is the best code editor for Python, HTML/CSS, and almost every programming language, given you'll do a couple of setups</p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/img_1.webp" alt="microsoft">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Microsoft 365</h3>
+                                        <p>Don't confuse with Visual Studio 2019 above. This is the best code editor for Python, HTML/CSS, and almost every programming language, given you'll do a couple of setups</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+    <!-- SWIPER JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+</body>
+</html>
