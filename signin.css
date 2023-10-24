@@ -7,14 +7,26 @@
 .hero {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-content: center;
+    border: 5px solid;
+    height: 1000px;
+    width: 1900px;
+    background-color: white;
+}
 
+body {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin: auto;
+    min-height: 100vb;
+    background-image: url(https://img.freepik.com/free-vector/abstract-orange-background-with-lines-halftone-effect_1017-32107.jpg);
 }
 
 
 button {
-    width: 500px;
-    height: 70px;
+    width: 400px;
+    height: 50px;
     background-color: #FFA500;
     color: black;
     border-radius: 10px;
@@ -29,22 +41,22 @@ button {
 }
 
 #icepep {
-    width: 500x;
-    height: 200px;
-
+    width: 30x;
+    height: 150px;
+    margin-bottom: 100px;
 
 }
 
 #bulsu {
     width: 50%;
-    height: 1150px;
+
 
 
 }
 
 #studentnum {
-    width: 500px;
-    height: 70px;
+    width: 400px;
+    height: 50px;
     text-align: center;
     font-size: 1rem;
     margin-left: 40px;
@@ -56,8 +68,8 @@ button {
 }
 
 #studentpass {
-    width: 500px;
-    height: 70px;
+    width: 400px;
+    height: 50px;
     text-align: center;
     font-size: 1rem;
     margin-left: 40px;
@@ -79,7 +91,7 @@ button {
     width: 120px;
     margin-left: 60px;
     margin-top: 20px;
-    font-size: 20px;
+    font-size: 15px;
     display: inline;
     /* position: relative; */
 
@@ -99,13 +111,17 @@ a {
     font-size: 1.3rem;
 }
 
+a:hover {
+    text-decoration: underline;
+}
+
 #forgot_password {
 
     height: 36px;
     width: 120px;
-    margin-left: 10rem;
+    margin-left: 9rem;
     margin-top: 10px;
-    font-size: 20px;
+    font-size: 15px;
     display: inline;
     color: black;
 
@@ -120,19 +136,16 @@ a {
     align-content: center;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 300px;
-    margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
 }
 
 h1 {
-    font-size: 4rem;
+    font-size: 3rem;
     width: 100px;
     display: block;
-    margin-left: -25rem;
+    margin-left: -300px;
     margin-bottom: 3rem;
-    margin-top: 2rem;
-    font-family: 'Times New Roman', Times, serif;
+
+
 
 }

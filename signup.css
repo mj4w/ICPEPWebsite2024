@@ -16,21 +16,39 @@ html {
     display: flex;
     justify-content: space-between;
     align-content: center;
+    border: 5px solid;
+    height: 1000px;
+    width: 1900px;
+    background-color: white;
+
+}
+
+body {
+    background-image: url(https://img.freepik.com/free-vector/abstract-orange-background-with-lines-halftone-effect_1017-32107.jpg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    min-height: 100vh;
 
 }
 
 
 #bulsu {
     width: 50%;
-    height: 1150px;
+
     display: grid;
 
 
 }
 
 #icepep {
-    width: 500x;
-    height: 200px;
+    width: 400x;
+    height: 150px;
+    justify-content: center;
+    display: flex;
+    margin: auto;
+    margin-bottom: 50px;
 
 
 }
@@ -49,8 +67,8 @@ h1 {
     border-radius: 5px;
     display: inline-block;
     margin: 5px;
-    margin-top: 10px;
-    text-align: center;
+    margin-top: 15px;
+    padding: 10px;
 
 }
 
@@ -61,7 +79,7 @@ h1 {
     display: inline-block;
     margin: 5px;
     margin-bottom: ;
-    text-align: center;
+    padding: 15px;
     margin-bottom: 1rem;
 }
 
@@ -71,7 +89,7 @@ h1 {
     border-radius: 5px;
     display: grid;
     margin: 5px;
-    text-align: center;
+    padding: 15px;
     margin-bottom: 1rem;
 
 }
@@ -82,7 +100,7 @@ h1 {
     border-radius: 5px;
     display: grid;
     margin: 5px;
-    text-align: center;
+    padding: 15px;
     margin-bottom: 1rem;
 
 }
@@ -92,7 +110,7 @@ h1 {
     height: 50px;
     border-radius: 5px;
     display: grid;
-    text-align: center;
+    padding: 15px;
     margin-left: 5px;
     margin-bottom: 1rem;
 
@@ -105,11 +123,12 @@ h1 {
     border-radius: 5px;
     display: grid;
     margin: 5px;
-    text-align: center;
+    padding: 15px;
     margin-bottom: 2rem;
 
 
 }
+
 
 button {
     width: 35rem;
@@ -132,13 +151,10 @@ a {
 }
 
 .forms {
-    display: flex;
+
     justify-content: center;
     align-content: center;
-    margin-bottom: 200px;
-    margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     flex-direction: column;
 
 }
