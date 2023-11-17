@@ -20,10 +20,16 @@
     <!-- NAVBAR -->
     <header>
         <div class="container">
+            <input type="checkbox" id="nav-check">
+            <label for="nav-check" class="nav-toggler">
+                <span></span>
+            </label>
+
             <a href="#" class="logo">
                 <img src="./homepage_images/icpep_logo2.png" width="60px" height="60px">
                 <p>ICPEP.SE BULSU-MC</p>
             </a>
+
             <nav class="navbar" >
                 <ul>
                     <li><a href="#">Events</a></li>
@@ -31,15 +37,17 @@
                     <li><a href="#">Membership</a></li>
                     <li><a href="#">About Us</a></li>
                 </ul>
-                <i class="fa-regular fa-user" id="user" onclick="toggleMenu()"></i> 
+            </nav>   
 
-                <div class="sub-menu" id="subMenu">
-                    <div class="sub-menu-info">
-                        <li>Juan A. Dele Cruz</li>
-                        <li>logout</li>
-                    </div>
+            <i class="fa-regular fa-user" id="user" onclick="toggleMenu()"></i> 
+
+            <div class="sub-menu" id="subMenu">
+                <div class="sub-menu-info">
+                    <li>Juan A. Dele Cruz</li>
+                    <li>logout</li>
                 </div>
-            </nav>
+            </div>
+            
         </div>
     </header>
     
@@ -83,37 +91,47 @@
                 <div class="event-list">
                     <div class="card">
                         <div class="card-image">
-                            <img src="./homepage_images/event-1.jpg" alt="event-1" height="200">
+                            <img src="./homepage_images/event-5.jpg" alt="event-1">
                         </div>
                         <div class="card-content">
-                            <h3>CpE Freshmen Orientation</h3>
+                            <h3>Sambalaran Camp project VII</h3>
                             <div class="card-details">
-                                <p><i class="fa-solid fa-calendar-days"></i> Thursday, August 17 at 8:00AM</p>
+                                <p><i class="fa-solid fa-calendar-days"></i> Thursday, October 26 at 9:00AM</p>
+                                <p><i class="fa-solid fa-location-dot"></i> BulSU - MC (Cpe Laboratory Room)</p>
+                            </div>
+                            <div class="card-team">
+                                <p><i class="fa-solid fa-chalkboard-user"></i> CPE Faculty</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="./homepage_images/event-4.jpg" alt="event-1">
+                        </div>
+                        <div class="card-content">
+                            <h3>Programming Worksop</h3>
+                            <div class="card-details">
+                                <p><i class="fa-solid fa-calendar-days"></i> Thursday, October 26 at 1:00PM</p>
                                 <p><i class="fa-solid fa-location-dot"></i> BulSU - MC (Audio Visual Room)</p>
+                            </div>
+                            <div class="card-team">
+                                <p><i class="fa-solid fa-code"></i> Programming Team</p>
                             </div>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-image">
-                            <img src="./homepage_images/about-us.jpg" alt="event-1">
+                            <img src="./homepage_images/event-2.jpg" alt="event-1" height="100">
                         </div>
                         <div class="card-content">
-                            <h3>General Assembly 2023</h3>
-                            <div class="card-details">
-                                <p><i class="fa-solid fa-calendar-days"></i> Thursday, August 17 at 8:00AM</p>
-                                <p><i class="fa-solid fa-location-dot"></i> BulSU - MC (Audio Visual Room)</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="./homepage_images/event-3.jpg" alt="event-1" height="100">
-                        </div>
-                        <div class="card-content">
-                            <h3>3rd Annual Engineering Week</h3>
+                            <h3>Banner Competition</h3>
                             <div class="card-details">
                                 <p><i class="fa-solid fa-calendar-days"></i> Thursday, August 17 at 8:00AM</p>
                                 <p><i class="fa-solid fa-location-dot"></i> BulSU - Meneses Campus</p>
+                            </div>
+                            <div class="card-team">
+                                <p><i class="fa-solid fa-photo-film"></i> Multimedia Team</p>
                             </div>
                         </div>
                     </div>
@@ -148,22 +166,22 @@
                         </div>
                         <div class="box swiper-slide">
                             <a href="">
-                                <img src="./homepage_images/tools-4.png">
+                                <img src="./homepage_images/tool-6.png">
                             </a>
                         </div>
                         <div class="box swiper-slide">
                             <a href="#">
-                                <img src="./homepage_images/tools-1.png">
+                                <img src="./homepage_images/tools-7.png">
                             </a>
                         </div>
                         <div class="box swiper-slide">
                             <a href="">
-                                <img src="./homepage_images/tools-2.png">
+                                <img src="./homepage_images/tools-8.png">
                             </a>
                         </div>
                         <div class="box swiper-slide">
                             <a href="">
-                                <img src="./homepage_images/tools-3.png">
+                                <img src="./homepage_images/tools-9.png">
                             </a>
                         </div>
                         <div class="box swiper-slide">
@@ -192,24 +210,6 @@
             </div>
         </div>
     </footer>
-
-
-
-    <!-- <nav>
-       <img src="./homepage_images/icpep_logo2.png" class="icpep_logo"/> 
-       <p class="nav-title"> ICEPEP.SE BULSU-MC</p> 
-
-       <p  class="event"> Event</p>
-       <p  class="resource"> Resource</p>
-       <p  class="membership"> Membership</p>
-       <p  class="about-us"> About us</p>
-       <i class="fa-regular fa-user" id="user"></i>    
-       <i class="fa-solid fa-user" id="close-user">fdsdf</i>
-    </nav>
-    <div id="user-function">       
-    </div> -->
-
-
 
     <!-- SWIPER JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>

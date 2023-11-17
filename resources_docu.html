@@ -19,30 +19,42 @@
     <!-- NAVBAR -->
     <header>
         <div class="container">
-            <a href="homepage.html" class="logo">
+            <input type="checkbox" id="nav-check">
+            <label for="nav-check" class="nav-toggler">
+                <span></span>
+            </label>
+
+            <a href="./homepage.html" class="logo">
                 <img src="./homepage_images/icpep_logo2.png" width="60px" height="60px">
                 <p>ICPEP.SE BULSU-MC</p>
             </a>
+
             <nav class="navbar" >
                 <ul>
                     <li><a href="#">Events</a></li>
-                    <li><a href="resources_docu.html">Resources</a></li>
+                    <li><a href="#">Resources</a></li>
                     <li><a href="#">Membership</a></li>
                     <li><a href="#">About Us</a></li>
                 </ul>
-                <i class="fa-regular fa-user" id="user" onclick="toggleMenu()"></i> 
+            </nav>   
 
-                <div class="sub-menu" id="subMenu">
-                    <div class="sub-menu-info">
-                        <li>Juan A. Dele Cruz</li>
-                        <li>logout</li>
-                    </div>
+            <i class="fa-regular fa-user" id="user" onclick="toggleMenu()"></i> 
+
+            <div class="sub-menu" id="subMenu">
+                <div class="sub-menu-info">
+                    <li>Juan A. Dele Cruz</li>
+                    <li>logout</li>
                 </div>
-            </nav>
+            </div>
+            
         </div>
     </header>
 
     <main>
+        <!-- <section class="hero-wrapper">
+            <h1>Software Tools</h1>
+        </section> -->
+
         <section class="resources">
             <div class="container">
                 <h2 class="section-title">Software Tools</h2>
@@ -53,7 +65,7 @@
                     <input type="radio" name="slider" id="programming">
                     <input type="radio" name="slider" id="utilities">
 
-                    <nav class="navbar">
+                    <nav class="secondary-navbar">
                         <label for="documents" class="documents">Documents</label>
                         <label for="media" class="media">Media</label>
                         <label for="programming" class="programming">Programming</label>
@@ -170,11 +182,185 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="content content-3">
+                            <div class="list">
+                                <a href="https://code.visualstudio.com/" target="_blank" class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/programming_img_1.webp" alt="microsoft">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Visual Studio Code</h3>
+                                        <p>The is the best code editor for Python, HTML/CSS, and almost every programming language.</p>
+                                    </div>
+                                </a>
+                                <a href="https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&channel=Release&version=VS2022&source=VSLandingPage&cid=2030&passive=false" target="_blank" class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/programming_img_2.webp" alt="microsoft">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Visual Studio</h3>
+                                        <p>Home of Visual Basic, C# and other Desktop focused programming languages</p>
+                                    </div>
+                                </a>
+                                <a href="https://git-scm.com/download/win" target="_blank" class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/programming_img_3.webp" alt="microsoft">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Git Bash</h3>
+                                        <p>insert description</p>
+                                    </div>
+                                </a>
+                                <a href="https://desktop.github.com/" target="_blank" class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/programming_img_4.webp" alt="microsoft">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Github Desktop</h3>
+                                        <p>Your Github desktop companion</p>
+                                    </div>
+                                </a>
+                                <a href="https://developerinsider.co/downloading/?download=https://github.com/vineetchoudhary/turbocpp/releases/download/v3.2/Turbo.C.3.2.zip?raw=true&after=https://developerinsider.co/c-and-cpp-insider/" target="_blank" class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/img_1.webp" alt="microsoft">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Turbo C++</h3>
+                                        <p>The oldie IDE</p>
+                                    </div>
+                                </a>
+                                <a href="https://sourceforge.net/projects/orwelldevcpp/files/latest/download" target="_blank" class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/programming_img_6.webp" alt="microsoft">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Dev C++</h3>
+                                        <p>C/C++ IDE that comes with a Compiler</p>
+                                    </div>
+                                </a>
+                                <a href="https://www.python.org/ftp/python/3.9.7/python-3.9.7-amd64.exe" target="_blank" class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/programming_img_7.webp" alt="microsoft">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Python Interpreter</h3>
+                                        <p>A python interpreter you need to download</p>
+                                    </div>
+                                </a>
+                                <a href="https://netbeans.apache.org/download/nb19/" target="_blank" class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/programming_img_8.webp" alt="microsoft">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Netbeans</h3>
+                                        <p>insert description</p>
+                                    </div>
+                                </a>
+                                <a href="https://www.eclipse.org/downloads/download.php?file=/oomph/epp/2021-06/R/eclipse-inst-jre-win64.exe" target="_blank" class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/programming_img_9.webp" alt="microsoft">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Eclipse</h3>
+                                        <p>Best editor for java</p>
+                                    </div>
+                                </a>
+                                <a href="https://easyeda.com/editor" target="_blank" class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/programming_img_10.webp" alt="microsoft">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>EasyEDA</h3>
+                                        <p>An online circuit maker with huge library of real components plus PBC designer</p>
+                                    </div>
+                                </a>
+                                <a href="https://www.tinkercad.com/" target="_blank" class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/programming_img_11.webp" alt="microsoft">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>TinerCAD</h3>
+                                        <p>An online circuit maker with huge library of real components plus PBC designer</p>
+                                    </div>
+                                </a>
+                                <a href="https://www.falstad.com/circuit/circuitjs.html" target="_blank" class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/img_1.webp" alt="microsoft">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>CircuitJS</h3>
+                                        <p>An online circuit maker with huge library of real components plus PBC designer</p>
+                                    </div>
+                                </a>
+                                <a href="https://www.arduino.cc/en/donate/" target="_blank" class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/programming_img_13.jpg">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Arduino IDE</h3>
+                                        <p>Code Editor and Compiler for Arduino</p>
+                                    </div>
+                                </a>
+                                <a href="https://raw.githubusercontent.com/Logisim-Ita/Logisim/master/Compiled/Logisim-ITA.exe#" target="_blank" class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/img_1.webp">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Logism ITA</h3>
+                                        <p>Insert description</p>
+                                    </div>
+                                </a>
+                                <a href="https://www.edaplayground.com/" target="_blank" class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/programming_img_15.jpg">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>EDA Playground</h3>
+                                        <p>Online Verilog IDE and Compiler</p>
+                                    </div>
+                                </a>
+                                <a href="https://developer.android.com/studio" target="_blank" class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/programming_img_16.jpg">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Android Studio</h3>
+                                        <p>insert description</p>
+                                    </div>
+                                </a>
+                                <a href="https://flutter.dev/docs/get-started/install" target="_blank" class="card">
+                                    <div class="img-holder">
+                                        <img src="./assets/images/resources_page/programming_img_17.jpg">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Flutter</h3>
+                                        <p>An Extension to Android Studio that let's you code beautiful Android Apps</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="./homepage_images/icpep_logo2.png">
+                <h1>Institute of Computer Engineers  of the Philippines
+                    <span><br>Student Edition - Bulacan State University Meneses Campus</span>
+                </h1>
+                <!-- <p>Student Edition - Bulacan State University Meneses Campus</p> -->
+            </div>
+            <div class="footer-copyright">
+                <p>Copyright © 2023 All rights reserved | <span>Programming Team 2023-2024</span></p>
+            </div>
+        </div>
+    </footer>
 
 
 

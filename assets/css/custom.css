@@ -9,6 +9,20 @@ html{
     scroll-behavior: smooth;
 }
 
+html::-webkit-scrollbar{
+    width: 10px;
+}
+
+html::-webkit-scrollbar-track{
+    background: transparent;
+}
+
+html::-webkit-scrollbar-thumb{
+    background-color: #1F1E1E;
+    border-radius: 4px;
+}
+
+
 .container{
     max-width: 1184px;
     width: 100%;
@@ -45,6 +59,7 @@ header .container{
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
     /* padding: 18px 0; */
 }
 
@@ -66,6 +81,7 @@ header .container{
     justify-content: space-between;
     align-items: center;
     position: relative;
+    margin-left: auto;
 }
 
 .navbar ul li{
@@ -84,7 +100,7 @@ header .container{
     color: #FB7033;
 }
 
-.navbar i{
+#user{
     color: #FB7033;
     padding: 16px 0 16px 16px;
     font-size: 20px;
@@ -93,7 +109,7 @@ header .container{
 
 .sub-menu{
     position: absolute;
-    top: 90px;
+    top: 100px;
     right: 0;
     visibility: hidden;
     opacity: 0;
@@ -130,6 +146,47 @@ header .container{
     border-top: 1px solid #fff;
 }
 
+.nav-toggler{
+    width: 44px;
+    height: 34px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.nav-toggler span{
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: #FB7033;
+    position: relative;
+}
+
+.nav-toggler span::before,
+.nav-toggler span::after{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #FB7033;
+    left: 0;
+}
+
+.nav-toggler span::before{
+    top: -6px;
+}
+
+.nav-toggler span::after{
+    top: 6px;
+}
+
+#nav-check{
+    display: none;
+    position: absolute;
+    visibility: hidden;
+}
+
 /*-----------------------------------*\
   #FOOTER
 \*-----------------------------------*/
@@ -143,7 +200,7 @@ footer .container{
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 24px;
+    gap: 16px;
     padding: 32px;
 }
 
@@ -173,4 +230,77 @@ footer .container{
 
 .footer-copyright p span{
     color: #FB7033;
+}
+
+/*-----------------------------------*\
+  #MEDIA QUARIES
+\*-----------------------------------*/
+@media(max-width: 768px){
+    .container{
+        max-width: 720px;
+        padding-inline: 16px;
+    }
+
+    /* === NAVBAR === */
+    header .container{
+        flex-direction: row-reverse;
+    }
+    .nav-toggler{
+        display: flex;
+    }
+
+    .navbar{
+        position: relative;
+    }
+
+    .navbar{
+        display: block;
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        left: 0;
+        background-color: #1F1E1E;
+        border-top: 1px solid #fff;
+        margin: 0;
+        padding: 16px;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    #user{
+        padding: 0;
+    }
+
+    .navbar ul li{
+        display: block;
+        text-align: center;
+    }
+
+    #nav-check:checked ~ .navbar{ 
+        opacity: 1;
+        visibility: visible;
+    }
+
+    #nav-check:checked ~ .nav-toggler span{
+        background-color: transparent;
+    }
+    
+    #nav-check:checked ~ .nav-toggler span::before{
+        top: 0;
+        transform: rotate(-45deg);
+    }
+
+    #nav-check:checked ~ .nav-toggler span::after{
+        top: 0;
+        transform: rotate(45deg);
+    }
+
+     /* === FOOTER === */
+     .footer-logo h1{
+        font-size: 18px;
+    }
+
+    .footer-logo h1 span{
+        font-size: 14px;
+    }
 }
