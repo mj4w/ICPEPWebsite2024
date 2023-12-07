@@ -68,110 +68,6 @@ img{
 }
 
 
-
-
-/*-----------------------------------*\
-  #NAVBAR
-\*-----------------------------------*/
-header{
-    position: sticky;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: var(--secondary-color);
-    z-index: 4;
-}
-
-header .container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    /* padding: 18px 0; */
-}
-
-.logo{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 16px 0;
-    cursor: pointer;
-}
-
-.logo p{
-    color: var(--white);
-    font-weight: 500;
-}
-
-.navbar{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-}
-
-.navbar ul li{
-    display: inline-block;
-}
-
-.navbar ul li a{
-    display: block;
-    padding: 16px;
-    color: var(--white);
-    font-size: 16px;
-    text-decoration: none;
-}
-
-.navbar ul li a:hover{
-    color: var(--primary-color);
-}
-
-.navbar i{
-    color: var(--primary-color);
-    padding: 16px 0 16px 16px;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-.sub-menu{
-    position: absolute;
-    top: 90px;
-    right: 0;
-    visibility: hidden;
-    opacity: 0;
-    scale: 0.4;
-    overflow: hidden;
-    /* transition: max-height 0.5s; */
-}
-
-.sub-menu.open-menu{
-    visibility: visible;
-    opacity: 1;
-    scale: 1;
-}
-
-.sub-menu-info{
-    background-color: var(--secondary-color);
-    color: var(--white);
-    padding: 16px 24px;
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.sub-menu-info li{
-    padding: 16px 0;
-}
-
-.sub-menu-info li:hover{
-    color: var(--primary-color);
-}
-
-.sub-menu-info li:last-child{
-    border-top: 1px solid var(--white);
-}
-
 /*-----------------------------------*\
   #HERO
 \*-----------------------------------*/
@@ -472,5 +368,45 @@ footer .container{
     /* === EVENT === */
     .event-list{
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+@media(max-width: 360px){
+    .container{
+        max-width: 340px;
+    }
+
+    /* === HEADER === */
+    .hero .container{
+        min-height: 85.5vh;
+    }
+
+    .hero-content h1,
+    .hero-content span{
+        font-size: 41px;
+    }
+
+    .hero-content h3{
+        font-size: 16px;
+        font-weight: 100;
+        /* line-height: 24px; */
+        letter-spacing: 10px;
+        color: var(--white);
+        padding-bottom: 8px;
+    }
+    
+    .hero-content h1,
+    .hero-content span{
+        font-size: 61px;
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+    
+    .hero-content span{
+        color: var(--white);
+    }
+    
+    .hero-content p{
+        width: auto;
     }
 }

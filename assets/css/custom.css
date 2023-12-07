@@ -304,3 +304,47 @@ footer .container{
         font-size: 14px;
     }
 }
+
+@media(max-width: 360px){
+    .container{
+        max-width: 340px;
+    }
+
+    /* === NAVBAR === */
+    #user{
+        display: none;
+    }
+
+    /* === FOOTER === */
+    footer{
+        text-align: center;
+    }
+
+    footer .container{
+        padding-block: 32px;
+        padding-inline: 16px;
+    }
+
+    .footer-logo{
+        flex-direction: column;
+    }
+
+    .footer-logo h1{
+        font-size: 18px;
+    }
+}
+
+@media(max-width: 2000px){
+    .container{
+        max-width: 1350px;
+    }
+    .sub-menu{
+        right: 190px;
+    }
+}
+
+@media(max-width: 1440px){
+    .sub-menu{
+        right: 0px;
+    }
+}

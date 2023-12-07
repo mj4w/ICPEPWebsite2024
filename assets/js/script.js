@@ -14,7 +14,17 @@ function toggleMenu(){
 }
 
 var swiper = new Swiper(".tools-slider", {
-    slidesPerView: 4,
+    breakpoints: {
+        0: {
+            slidesPerView: 2,
+        },
+        768: {
+            slidesPerView: 3,
+        },
+        991: {
+            slidesPerView: 4,
+        },
+    },
     spaceBetween: 30,
     pagination: {
         el: ".swiper-pagination",
