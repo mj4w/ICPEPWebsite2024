@@ -13,6 +13,8 @@ function toggleMenu(){
     subMenu.classList.toggle("open-menu");
 }
 
+
+// swiper js
 var swiper = new Swiper(".tools-slider", {
     breakpoints: {
         0: {
@@ -31,3 +33,19 @@ var swiper = new Swiper(".tools-slider", {
         clickable: true,
     },
 });
+
+// view-more
+let loadMoreBtn = document.querySelector('#view-more');
+let currentItem = 3;
+
+loadMoreBtn.onclick = () =>{
+    let boxes = [...document.querySelectorAll('.events .container .event-list .card')];
+    for (var i = currentItem; i < currentItem + 3; i++){
+        boxes[i].style.display = 'inline-block';
+    }
+    currentItem += 3;
+
+    if(currentItem >= boxes.length){
+        loadMoreBtn.style.display = 'none';
+    }
+}
