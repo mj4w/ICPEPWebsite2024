@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./homepage_images/favicon-svg-logo.svg" type="image/svg+xml">
+    <!-- For font awesome -->
+    <script src="https://kit.fontawesome.com/1776b28af8.js" crossorigin="anonymous"></script> 
+    <!-- SWIPER JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <!-- CUSTOM JS -->
+    <script src="./assets/js/script.js" defer></script>
+    <!-- CSS LINK -->
+    <link rel="stylesheet" href="./assets/css/homepage.css">
+    <link rel="stylesheet" href="./assets/css/custom.css">
+    
+    <title>Home | ICPEP.SE BulSU-MC</title>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="container">
+            <input type="checkbox" id="nav-check">
+            <label for="nav-check" class="nav-toggler">
+                <span></span>
+            </label>
+
+            <a href="homepage.html" class="logo">
+                <img src="./homepage_images/icpep_logo2.png" width="60px" height="60px">
+                <p>ICPEP.SE BULSU-MC</p>
+            </a>
+
+            <nav class="navbar" >
+                <ul>
+                    <li><a href="event.html">Events</a></li>
+                    <li><a href="resources_docu.html">Resources</a></li>
+                    <li><a href="#">Membership</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+
+                <i class="fa-regular fa-user" id="user" onclick="toggleMenu()"></i> 
+            
+                <div class="sub-menu" id="subMenu">
+                    <div class="sub-menu-info">
+                        <li>Juan A. Dele Cruz</li>
+                        <li>juan.delacruz@bulsu.edu.ph</li>
+                        <li><i class="fa-solid fa-right-from-bracket"></i> Logout</li>
+                    </div>
+                </div>
+            </nav>          
+        </div>
+    </header>
+    
+    <main>
+        <!-- EVENT DETAILED -->
+        <section class="event-detailed container">
+            <a href="homepage.html" class="back-btn"><i class="fa-solid fa-chevron-left"></i> Back</a>
+            <div class="event-detailed-list">
+                <div class="event-detailed-banner">
+                    <img src="./homepage_images/event-6.jpg">
+                </div>
+                <div class="event-detailed-info">
+                    <h1>CPE - Funshoot Photography 2023</h1>
+                    <div class="date">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <p>Date and Time</p>
+                        <p>November 13 to November 16 - Submission</p>
+                        <p>Friday, November 17 - Voting Via Facebook Hearts</p>
+                    </div>
+                    <div class="location">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>Location</p>
+                        <p>Online via Facebook</p>
+                    </div>
+                    <div class="host">
+                        <i class="fa-solid fa-camera"></i>
+                        <p>Hosted by</p>
+                        <p>Documentation Team</p>
+                    </div>
+                </div>
+            </div>
+            <div class="event-detailed-desc">
+                <h3>Description</h3>
+                <div class="desc">
+                    <p>Capture the kaleidoscope of enduring camaraderie amidst the challenges of the computer engineering voyage! In the intricate tapestry of life, cherish the bonds that transcend bloodlines.</p>
+                    <br>
+                    <p>Join us in freezing moments that celebrate the resilience of friendships amid the labyrinth of obstacles in computer engineering. Let these snapshots be a testament to the unwavering support we find in each other, navigating the turbulent seas of academia. Unveil the artistry of solidarity in the face of competition, where the crucible of challenges forges friendships of unparalleled strength.</p>
+                    <br>
+                    <p>Seize the opportunity and register your entry now on this link: <a href="https://forms.gle/mJS5or92gS7H2FbQ6" target="_blank">https://forms.gle/mJS5or92gS7H2FbQ6</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="./homepage_images/icpep_logo2.png">
+                <h1>Institute of Computer Engineers  of the Philippines
+                    <span><br>Student Edition - Bulacan State University Meneses Campus</span>
+                </h1>
+                <!-- <p>Student Edition - Bulacan State University Meneses Campus</p> -->
+            </div>
+            <div class="footer-copyright">
+                <p>Copyright © 2023 All rights reserved | <span>Programming Team 2023-2024</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SWIPER JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+</body>
+</html>
