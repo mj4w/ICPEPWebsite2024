@@ -9,6 +9,10 @@ html{
     scroll-behavior: smooth;
 }
 
+body{
+    min-height: 100vh;
+}
+
 html::-webkit-scrollbar{
     width: 10px;
 }
@@ -99,6 +103,10 @@ header .container{
     color: #fff;
     font-size: 16px;
     text-decoration: none;
+}
+
+.navbar ul li a:hover{
+    color: #FB7033;
 }
 
 .sub-menu{
@@ -326,6 +334,8 @@ header .container{
   #FOOTER
 \*-----------------------------------*/
 footer{
+    position: sticky;
+    top: 100%;
     background-color: #1F1E1E;
     color: #fff;
     border-top: solid 8px #FB7033;
@@ -414,8 +424,8 @@ footer .container{
 
     .sub-menu{
         position: relative;
+        display: inline-block;
         top: 0;
-        right: 10%;
         width: 100%;
         text-align: center;
         visibility: visible;
