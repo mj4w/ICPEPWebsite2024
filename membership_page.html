@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./homepage_images/favicon-svg-logo.svg" type="image/svg+xml">
@@ -15,12 +14,13 @@
     <!-- CSS LINK -->
     <link rel="stylesheet" href="./assets/css/homepage.css">
     <link rel="stylesheet" href="./assets/css/custom.css">
-    <link rel="stylesheet" href="event.css">
+    <link rel="stylesheet" href="membership.css">
 
-    <title>Events | ICPEP.SE BulSU-MC</title>
+    <title>Membership| ICPEP.SE BulSU-MC</title>
 </head>
 
 <body>
+
     <header>
         <div class="container">
             <input type="checkbox" id="nav-check">
@@ -54,21 +54,26 @@
         </div>
     </header>
 
-    <h1>ANNOUCEMENT</h1>
-    <hr id="ANNOUCEMENT">
-    <h2>Up Comming Events </h2>
-    <div class="Event">
+    <h1>Membership Form</h1>
+    <div class="form_content">
 
-        <ul>
-            <li>
-                August 10 <p>Start of the year end </p>
-            </li>
-            <li>
-                August 20 <p>Start of the Semester </p>
-            <li>
-                August 30 <p>Start of the Semester</p>
-        </ul>
+        <form action="#">
+
+            <input type="name" placeholder="First Name" required id="Firstname">
+            <input type="name" placeholder="Last Name" required id="Lastname">
+            <input type="email" placeholder="Email Address" required id="emailadd">
+            <input type="text" placeholder="Student Number" required id="SN">
+            <select name=" payment" id="payment">
+                <option value="Mode of payment">Mode of Payment</option>
+                <option value="gcash">Gcash</option>
+                <option value="Paypal">Paypal</option>
+                <option value="Maya">Maya</option>
+            </select>
+
+            <button id="membershipbutton">submit</button>
+        </form>
     </div>
+
 
 
     <footer>

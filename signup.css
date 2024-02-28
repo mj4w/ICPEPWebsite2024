@@ -28,7 +28,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto;
+    margin: 0;
     min-height: 100vh;
 
 }
@@ -36,7 +36,6 @@ body {
 
 #bulsu {
     width: 50%;
-
     display: grid;
 
 
@@ -151,10 +150,141 @@ a {
 }
 
 .forms {
-
+    display: flex;
     justify-content: center;
     align-content: center;
     margin: auto;
     flex-direction: column;
+
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        background-image: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+
+    }
+
+    #bulsu {
+        width: 0;
+        display: none;
+    }
+
+    .form_signup {
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        border: none;
+        height: 400px;
+        width: 500px;
+        background-color: white;
+
+    }
+
+    #icepep {
+        width: 200px;
+        height: 80px;
+        justify-content: center;
+        display: flex;
+        /* margin-bottom: 50px; */
+        margin-top: -100px;
+
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        width: 200px;
+        /* margin: 1rem; */
+        text-align: center;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    #first_name {
+        width: 100px;
+        height: 25px;
+        border-radius: 5px;
+        display: inline-block;
+        /* margin: 5px; */
+        margin-top: 15px;
+        padding: 10px;
+
+    }
+
+    #last_name {
+        width: 100px;
+        height: 25px;
+        border-radius: 5px;
+        display: inline-block;
+        /* margin: 5px; */
+        margin-bottom: ;
+        padding: 15px;
+        margin-bottom: 1rem;
+    }
+
+    #Student_number {
+        width: 20rem;
+        height: 25px;
+        border-radius: 5px;
+        display: grid;
+        /* margin: 5px; */
+        padding: 15px;
+        margin-bottom: 1rem;
+
+    }
+
+    #email_address {
+        width: 20rem;
+        height: 25px;
+        border-radius: 5px;
+        display: grid;
+        /* margin: 5px; */
+        padding: 15px;
+        margin-bottom: 1rem;
+
+    }
+
+    #password {
+        width: 20rem;
+        height: 25px;
+        border-radius: 5px;
+        display: grid;
+        padding: 15px;
+        /* margin-left: 5px; */
+        margin-bottom: 1rem;
+
+
+    }
+
+    #re_password {
+        width: 20rem;
+        height: 25px;
+        border-radius: 5px;
+        display: grid;
+        /* margin: 5px; */
+        padding: 15px;
+        margin-bottom: 2rem;
+
+
+    }
+
+
+    button {
+        width: 20rem;
+        height: 25px;
+        margin-bottom: 1rem;
+        margin-left: 0rem;
+        background-color: #FFA500;
+        font-size: 1rem;
+    }
+
+
+
+    #AA {
+        /* margin-left: 5rem; */
+        font-size: 10px;
+    }
 
 }

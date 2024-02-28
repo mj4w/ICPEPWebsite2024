@@ -39,7 +39,7 @@ h2 {
     padding-top: 30px;
     padding-left: 50px;
     flex-basis: auto;
-    display: inline-block;
+    display: grid;
 
 
 }
@@ -56,11 +56,3 @@ h2 {
 
 
 }
-
-/* 
-span {
-    position: relative;
-    top: 100px;
-    right: 17rem;
-
-} */

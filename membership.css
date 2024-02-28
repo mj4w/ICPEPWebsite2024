@@ -1,0 +1,244 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-image: url(signup_image/bulsu_campuslogo.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+}
+
+#Firstname {
+    width: 500px;
+    height: 70px;
+    display: inline-block;
+    padding: 10px;
+    margin-left: 10px;
+    text-align: center;
+    border: 2px solid white;
+    background-color: rgba(0, 0, 0, .5);
+    color: white;
+    margin-bottom: 20px;
+    font-size: 15px;
+
+}
+
+#Lastname {
+    width: 500px;
+    height: 70px;
+    display: inline-block;
+    padding: 10px;
+    margin-left: 10px;
+    text-align: center;
+    border: 2px solid white;
+    background-color: rgba(0, 0, 0, .5);
+    color: white;
+    font-size: 15px;
+    margin-bottom: 30px;
+
+}
+
+#emailadd {
+    width: 1020px;
+    height: 70px;
+    display: grid;
+    padding: 10px;
+    margin-left: 10px;
+    text-align: center;
+    border: 2px solid white;
+    background-color: rgba(0, 0, 0, .5);
+    color: white;
+    margin-bottom: 30px;
+    font-size: 15px;
+}
+
+#SN {
+    width: 1020px;
+    height: 70px;
+    display: grid;
+    padding: 10px;
+    margin-left: 10px;
+    text-align: center;
+    border: 2px solid white;
+    background-color: rgba(0, 0, 0, .5);
+    color: white;
+    font-weight: bolder;
+    margin-bottom: 30px;
+    font-size: 15px;
+
+}
+
+#payment {
+    width: 1020px;
+    height: 70px;
+    display: grid;
+    padding: 10px;
+    margin-left: 10px;
+    text-align: center;
+    border: 2px solid white;
+    background-color: rgba(0, 0, 0, .5);
+    color: white;
+    margin-bottom: 70px;
+    font-size: 15px;
+
+}
+
+#membershipbutton {
+    width: 500px;
+    height: 70px;
+    margin-left: 25%;
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+h1 {
+    font-size: 70px;
+    position: absolute;
+    color: white;
+    left: 37%;
+    margin-top: 110px;
+
+
+}
+
+.form_content {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    background-color: rgba(0, 0, 0, .5);
+    height: 900px;
+    width: 1500px;
+    margin-bottom: 50px;
+    border: 2px solid white;
+    margin-top: 70px;
+
+
+
+}
+
+form {
+    justify-content: center;
+    margin: auto;
+}
+
+@media screen and (max-width:780px) {
+
+
+
+    h1 {
+        font-size: 10px;
+        position: absolute;
+        color: white;
+        left: 40%;
+        margin-top: 50px;
+
+
+    }
+
+    .form_content {
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        background-color: rgba(0, 0, 0, .5);
+        height: 400px;
+        width: 350px;
+        margin-bottom: 20px;
+        border: 2px solid white;
+        margin-top: 20px;
+
+
+
+    }
+
+    #Firstname {
+        width: 150px;
+        height: 29px;
+        display: inline-block;
+        padding: 10px;
+        margin-left: 10px;
+        text-align: center;
+        border: 2px solid white;
+        background-color: rgba(0, 0, 0, .5);
+        color: white;
+        margin-bottom: 0px;
+        font-size: 7px;
+        margin-top: 60px;
+
+
+    }
+
+    #Lastname {
+        width: 135px;
+        height: 29px;
+        display: inline-block;
+        padding: 10px;
+        margin-left: 10px;
+        text-align: center;
+        border: 2px solid white;
+        background-color: rgba(0, 0, 0, .5);
+        color: white;
+        font-size: 7px;
+        margin-bottom: 30px;
+
+    }
+
+    #emailadd {
+        width: 300px;
+        height: 30px;
+        display: grid;
+        padding: 10px;
+        margin-left: 10px;
+        text-align: center;
+        border: 2px solid white;
+        background-color: rgba(0, 0, 0, .5);
+        color: white;
+        margin-bottom: 30px;
+        font-weight: bolder;
+        font-size: 5px;
+    }
+
+    #SN {
+        width: 300px;
+        height: 30px;
+        display: grid;
+        padding: 10px;
+        margin-left: 10px;
+        text-align: center;
+        border: 2px solid white;
+        background-color: rgba(0, 0, 0, .5);
+        color: white;
+        font-weight: bolder;
+        margin-bottom: 30px;
+        font-size: 5px;
+
+    }
+
+    #payment {
+        width: 300px;
+        height: 30px;
+        display: grid;
+        padding: 10px;
+        margin-left: 10px;
+        text-align: center;
+        border: 2px solid white;
+        background-color: rgba(0, 0, 0, .5);
+        color: white;
+        margin-bottom: 40px;
+        font-size: 5px;
+        font-family: 'Courier New', Courier, monospace;
+
+    }
+
+    #membershipbutton {
+        width: 100px;
+        height: 25px;
+        margin-left: 35%;
+        border-radius: 20px;
+        font-size: 10px;
+
+    }
+}
