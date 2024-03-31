@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./homepage_images/favicon-svg-logo.svg" type="image/svg+xml">
+    <!-- For font awesome -->
+    <script src="https://kit.fontawesome.com/1776b28af8.js" crossorigin="anonymous"></script> 
+    <!-- SWIPER JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <!-- CUSTOM JS -->
+    <script src="./assets/js/script.js" defer></script>
+    <!-- CSS LINK -->
+    <link rel="stylesheet" href="./edit_profile.css">
+    <link rel="stylesheet" href="./assets/css/custom.css">
+    <link rel="stylesheet" href="">
+    
+    <title>Home | ICPEP.SE BulSU-MC</title>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="container">
+            <input type="checkbox" id="nav-check">
+            <label for="nav-check" class="nav-toggler">
+                <span></span>
+            </label>
+
+            <a href="#" class="logo">
+                <img src="./homepage_images/icpep_logo2.png" width="60px" height="60px">
+                <p>ICPEP.SE BULSU-MC</p>
+            </a>
+
+            <nav class="navbar" >
+                <ul>
+                    <li><a href="event.html">Events</a></li>
+                    <li><a href="resources_docu.html">Resources</a></li>
+                    <li><a href="#">Membership</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+
+                <i class="fa-regular fa-user" id="user" onclick="toggleMenu()"></i> 
+            
+                <div class="sub-menu" id="subMenu">
+                    <div class="sub-menu-info">
+                        <li>Juan A. Dele Cruz</li>
+                        <li>juan.delacruz@bulsu.edu.ph</li>
+                        <li><i class="fa-solid fa-right-from-bracket"></i> Logout</li>
+                    </div>
+                </div>
+            </nav>          
+        </div>
+    </header>
+    
+   
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <!-- <h1 class="prof"> User Profile</h1> -->
+            <div class="profile-header">
+                <div class="profile-img">
+                    <img src="./assets/images/header-bg.jpg" width="200" alt="Profile Image">
+                </div>
+                <div class="profile-nav-info">
+                    <h3 class="user-name">Evan Justine Clavecilla</h3>
+                    <div class="address">
+                        <p id="state" class="state">Bulacan State University Meneses Campus</p>
+                    </div>
+                    <span id="country" class="country">2020400299</span>
+                </div>
+            </div>
+            <div class="main-bd">
+                <div class="left-side">
+                    <div class="profile-side">
+                        <p class="mobile-no"><i class="fa fa-phone"></i> +639497696845</p>
+                        <p class="user-mail"><i class="fa fa-envelope"></i> evanjustine.clavecilla.g@bulsu.edu.ph</p>
+                        <div class="user-bio">
+                            <h3>Bio</h3>
+                            <p class="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint consectetur provident magni consequuntur, voluptatibus exercitationem at quis similique. Optio, amet!</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="right-side">
+                    <div class="side-profile">
+                        <form id="survey-form">
+                            <label for="name-label"> Last Name <input type="text" id="Last_name" placeholder="Last Name" name="your-name" required></label>
+                            <label for="name-label"> First Name <input type="text" id="First_name" placeholder="First Name" name="your-name" required></label>
+                            <label for="studentNumber-label"> Student Number <input type="number" id="Student_Number" placeholder="Student Number" name="your-name" required></label>
+                            <label for="email-label">Email Address:<input type="email" id="email-label" name="your-email" placeholder="Email Address" required> </label>
+                            <label for="number-label">Contact Number <input type="number" id="number" placeholder="+63" name= "your-number" required></label>
+                        </form>
+                        <form action="./user_profile.html">
+                            <button class="savebtn" id="Create-post"><i class="fa fa-edit"></i> Save</button>
+                        </form>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SWIPER JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+</body>
+</html>
