@@ -362,6 +362,7 @@ footer .container{
 .footer-logo h1{
     font-weight: 600;
     font-size: 20px;
+    margin: 0;
 }
 
 .footer-logo h1 span{
