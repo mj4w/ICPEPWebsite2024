@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+
+html {
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    scroll-behavior: smooth;
+}
+
+.carousel {
+    position: relative;
+}
+
+.carousel__item {
+    height: 1800px;
+    background: white;
+    padding: 1em;
+    font-family: "Quicksand", sans-serif;
+    font-weight: bold;
+    font-size: 2em;
+    color: #ffffff;
+    display: none;
+}
+
+.carousel__item--selected {
+    display: block;
+}
+
+.carousel__nav {
+    width: 100%;
+    padding: 20px 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+}
+
+.carousel__button {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    background: rgba(12, 12, 12, 0.2);
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.carousel__button--selected {
+    background: rgba(12, 12, 12, 0.5);
+}
+
+
+
+#intro {
+    /* background-color: rgba(251, 110, 50, .5); */
+    background-color: #fdbb2d;
+    width: 100%;
+    height: 900px;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 40px;
+    font-size: 25px;
+    color: black;
+
+
+
+}
+
+#background {
+    width: 800px;
+    height: 50%;
+    position: relative;
+    top: 20%;
+    margin-left: 100px;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-size: 30px;
+    font-weight: 100;
+}
+
+
+
+#groupphoto {
+    width: 700px;
+    height: 500px;
+    border-radius: 15px;
+    float: inline-end;
+    position: relative;
+    bottom: 47%;
+    margin-right: 100px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+}
+
+#cluster {
+    color: black;
+    padding-bottom: 20px;
+    padding-top: 5px;
+    font-size: 70px;
+    position: relative;
+    top: 150px;
+    margin-left: 100px;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+
+#pres {
+    width: 400px;
+    height: 450px;
+    font-size: 15px;
+    color: black;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+
+
+
+
+}
+
+
+
+
+#exephoto {
+    width: 300px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    padding-top: 10px;
+    border-radius: 10%;
+
+
+}
+
+
+#name {
+    font-size: 23px;
+    font-weight: bold;
+    color: black;
+    margin-top: 10px;
+}
+
+
+
+#possition {
+    font-size: 12px;
+    font-weight: 300;
+    padding-top: 5px;
+    margin-bottom: 5px;
+    color: black;
+}
+
+#excutives {
+
+    display: grid;
+    grid-template-columns: repeat(4, 330px);
+    top: 4000px;
+    gap: 50px;
+    row-gap: 50px;
+    place-content: center;
+    position: relative;
+    /* top: 320px; */
+
+
+}
