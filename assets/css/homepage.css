@@ -73,7 +73,7 @@ img{
   #HERO
 \*-----------------------------------*/
 .hero{
-    background-image: linear-gradient(rgba(255,112,51,0.3) 100%, rgba(255,112,51,0.3) 100%), url(/ICPEPWebsite2024/homepage_images/home-bg.jpg);
+    background-image: linear-gradient(rgba(255,112,51,0.3) 100%, rgba(255,112,51,0.3) 100%), url(/homepage_images/home-bg.jpg);
     background-size: cover;
     background-position: center;
 }

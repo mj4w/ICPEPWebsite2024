@@ -204,19 +204,21 @@ body {
     padding: 25px 25px;
     border-radius: 20px;
     width: 100px;
+    height: auto;
     margin: 40px 0;
 }
 
 .officer-box .officer-banner {
-    /* height: 600px; */
+    /* height: 200px; */
     overflow: hidden;
     position: relative;
-    background-position: top;
+    /* background-color: #F45C19; */
 }
 
 .officer-box .officer-banner img {
-    width: 70%;
+    width: 100%;
     height: 100%;
+    /* aspect-ratio: 4 / 3; */
     object-fit: cover;
     border-radius: 20px;
 }

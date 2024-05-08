@@ -57,7 +57,7 @@ var swiper = new Swiper(".officer-slider", {
           spaceBetween: 40,
         },
         1024: {
-          slidesPerView: 3,
+          slidesPerView: 4,
           spaceBetween: 50,
         },
       },
