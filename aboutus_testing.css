@@ -38,7 +38,7 @@ body {
     font-size: 70px;
     color: #F45C19;
     margin-top: 0;
-
+    padding-bottom: 15px;
 }
 
 
@@ -65,10 +65,11 @@ body {
 
 }
 
-#title {
+#info #title {
     font-size: 50px;
     color: #F45C19;
     font-weight: bold;
+    text-align: center;
 }
 
 #info {
@@ -81,7 +82,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     padding: 50px;
     gap: 70px;
-    width: 80%;
+    /* width: 80%; */
     justify-content: center;
     align-items: center;
 }
@@ -176,7 +177,7 @@ body {
 
 .vmg-box p {
     font-size: 20px;
-    text-align: justify;
+    /* text-align: justify; */
     padding-top: 20px;
 }
 
@@ -253,4 +254,53 @@ body {
 
 .swiper-pagination-bullets.swiper-pagination-horizontal {
     bottom: 0;
+}
+
+
+
+/*-----------------------------------*\
+  #MEDIA QUARIES
+\*-----------------------------------*/
+@media(max-width: 768px){
+    #intro{
+        height: 250px;
+    }
+
+    #cluster{
+        font-size: 30px;
+    }
+
+    #background{
+        font-size: 16px;
+    }
+
+    #info #title{
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .section-title{
+        font-size: 27px;
+    }
+
+    .vmg-box h3{
+        font-size: 27px;
+    }
+
+    .vmg-box p{
+        font-size: 16px;
+    }
+}
+
+
+
+@media(max-width: 360px){
+    .vmg .row{
+        grid-template-columns: 1fr;
+        padding: 0;
+    }
+
+    .vmg-box{
+        padding: 20px;
+    }
 }
