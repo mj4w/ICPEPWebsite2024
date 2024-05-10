@@ -28,11 +28,35 @@ body {
     align-items: center;
     text-align: center;
     justify-content: center;
-    flex-wrap: wrap;
-    flex-shrink: 1;
+    background-image: url("assets/images/Untitled\ design.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: contain;
+    background-size: cover;
 
 
 }
+
+.brief_infoholder {
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.abc {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    padding-top: 20px;
+    outline: 1px solid black;
+    width: 80%;
+    height: 500px;
+
+
+
+}
+
 
 #cluster {
     font-size: 70px;
@@ -42,57 +66,8 @@ body {
 }
 
 
-/* 
-#READMORE {
-    margin-top: 20px;
-    margin-left: 50px;
-    background-color: #F45C19;
-    color: white;
-    padding: 10px 20px;
-    border: 10px;
-}
 
-#groupphoto {
-    width: 700px;
-    height: 500px;
-    margin-left: 50px;
-    border-radius: 55% 42% 39% 43% / 64% 48% 100% 100%
-} */
 
-#hero_container {
-    display: flex;
-    justify-content: center;
-
-}
-
-#info #title {
-    font-size: 50px;
-    color: #F45C19;
-    font-weight: bold;
-    text-align: center;
-}
-
-#info {
-    text-align: justify;
-
-}
-
-#abc {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    padding: 50px;
-    gap: 70px;
-    /* width: 80%; */
-    justify-content: center;
-    align-items: center;
-}
-
-#workshops {
-    height: 300px;
-    box-shadow: 24px 21px 0px -1px rgba(250, 147, 0, 1);
-    -webkit-box-shadow: 24px 21px 0px -1px rgba(250, 147, 0, 1);
-    -moz-box-shadow: 24px 21px 0px -1px rgba(250, 147, 0, 1);
-}
 
 #background {
     width: 70vw;
@@ -261,46 +236,77 @@ body {
 /*-----------------------------------*\
   #MEDIA QUARIES
 \*-----------------------------------*/
-@media(max-width: 768px){
-    #intro{
+@media(max-width: 768px) {
+    #intro {
         height: 250px;
     }
 
-    #cluster{
+    #cluster {
         font-size: 30px;
     }
 
-    #background{
+    #background {
         font-size: 16px;
     }
 
-    #info #title{
+    #info #title {
         font-size: 30px;
         text-align: center;
     }
 
-    .section-title{
+    .section-title {
         font-size: 27px;
     }
 
-    .vmg-box h3{
+    .vmg-box h3 {
         font-size: 27px;
     }
 
-    .vmg-box p{
+    .vmg-box p {
         font-size: 16px;
     }
+
+    #title {
+        font-size: 40px;
+        text-align: center;
+
+    }
+
+    #abc_container p {
+        font-size: 15px;
+        text-align: justify;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+
 }
 
 
 
-@media(max-width: 360px){
-    .vmg .row{
+@media(max-width: 360px) {
+    .vmg .row {
         grid-template-columns: 1fr;
         padding: 0;
     }
 
-    .vmg-box{
+    .vmg-box {
         padding: 20px;
     }
+
+    #title {
+        font-size: 20px;
+        text-align: center;
+
+    }
+
+    #abc_container p {
+        font-size: 10px;
+        text-align: justify;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+
+
 }
