@@ -23,12 +23,12 @@ body {
 
 #intro {
     background-color: rgba(250, 180, 4, 0.169);
-    height: 700px;
+    height: 650px;
     display: flex;
     align-items: center;
     text-align: center;
     justify-content: center;
-    background-image: url("assets/images/Untitled\ design.png");
+    background-image: url("assets/images/394242446_658856209711347_7635940360922364961_n\ \(1\).jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: contain;
@@ -60,7 +60,7 @@ body {
 
 #cluster {
     font-size: 70px;
-    color: #F45C19;
+    color: white;
     margin-top: 0;
     padding-bottom: 15px;
 }
@@ -76,6 +76,7 @@ body {
     margin-bottom: 10px;
     margin-left: 20px;
     margin-right: 20px;
+    color: white;
 }
 
 
