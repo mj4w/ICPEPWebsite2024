@@ -3,6 +3,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .models import *
 from django.contrib import messages
 from django.core.exceptions import ValidationError
+from datetime import timedelta
+from django.utils import timezone
 
 class RegisterForm(UserCreationForm):
     email = forms.CharField(
@@ -25,10 +27,11 @@ class RegisterForm(UserCreationForm):
     #     label='Year & Section',
     #     widget=forms.TextInput(attrs={'class':'input'})
     # )
+    
 
     class Meta: 
         model = User
-        fields = ('email', 'username', 'password1', 'password2', 'orgbox','year_section')
+        fields = ('email', 'username', 'password1', 'password2', 'orgbox','year_section', 'date_expired')
 
     def clean_username(self):
         username = self.cleaned_data.get('username')
@@ -45,6 +48,15 @@ class RegisterForm(UserCreationForm):
             if User.objects.filter(email=email).exists():
                 raise forms.ValidationError("This email is already registered.")
         return email
+    
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.date_joined = user.date_joined or timezone.now()
+        user.date_expired = user.date_joined + timedelta(days=365)
+        if commit:
+            user.save()
+        return user
+        
         
 class LoginForm(AuthenticationForm):
     username = forms.CharField(

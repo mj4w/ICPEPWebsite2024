@@ -66,18 +66,25 @@ def login_user(request):
             if form_login.is_valid():
                 user = authenticate(request, username=form_login.cleaned_data['username'], password=form_login.cleaned_data['password'])
                 if user is not None:
+                    if user.date_expired and user.date_expired <= timezone.now():
+                        messages.error(request, 'Your account has expired.')
+                        return redirect('subscription') 
                     login(request, user)
-                   
+                    
                     if user.username == "admin":
                         messages.success(request,'Welcome sa DARK WEB!')
                         return redirect('admin-user')
                     else:
-                        messages.success(request,'Successfully Login!')
-                        return redirect('home')
+                        next_url = request.GET.get('next', reverse('home')) 
+                        messages.success(request, 'Successfully logged in!')
+                        return redirect(next_url)
                 
             else:
-                # Form is not valid
                 messages.error(request, 'Login Error: Please enter valid credentials.')
+        else:
+            if 'next' in request.GET and 'admin' in request.GET['next'] and not request.user.is_superuser:
+                messages.error(request, 'You are not authorized to access the admin login page.')
+                return redirect(reverse('home'))
     except SuspiciousOperation as e:
         messages.error(request, f'CSRF Verification Failed: {str(e)}')
         return redirect('home')
@@ -92,7 +99,7 @@ def register_user(request):
                 user = form_register.save(commit=False)
                 user.is_active = False  # Set user registration as pending
                 user.save()
-                login(request, user)
+                # login(request, user)
                 student_num = user.username
                 subject = 'Pending Registration: {}'.format(student_num)
                 message = render_to_string('email_template/email_template_register.html', {
@@ -118,7 +125,7 @@ def register_user(request):
 def logout_user(request):
     logout(request)
     messages.success(request,'Thankyou For Visiting!')
-    return redirect('home')
+    return redirect(request.META.get('next', 'home'))
 
 
 # coming soon
@@ -370,7 +377,20 @@ def delete_highlight(request, highlight_id):
     return JsonResponse({'message': 'Highlight deleted successfully'}, status=204)
 
 def events(request):
-    return render(request,'events.html')
+    highlights = HighlightsEvent.objects.filter(date_from__gte=timezone.now()).order_by('-date_from')
+    return render(request, 'events.html', {'highlights': highlights})
 
 def about_us(request):
     return render(request,'about_us.html')
+
+def subscription(request):
+    return render(request,'subscription.html')
+def add_sub(request, user_id):
+    add = get_object_or_404(User, id=user_id)
+    current_expiration = add.date_expired
+    if not current_expiration or current_expiration < timezone.now():
+        current_expiration = timezone.now()
+    new_expiration = current_expiration + timedelta(days=365)
+    add.date_expired = new_expiration
+    add.save()
+    return JsonResponse({'message': '+1 Year subscription'})

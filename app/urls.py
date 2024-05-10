@@ -32,7 +32,10 @@ urlpatterns = [
     
     path('events/', views.events, name='events'),
     
-    path('about-us', views.about_us, name='about-us'),
+    path('about-us/', views.about_us, name='about-us'),
+    
+    path('subscription/', views.subscription, name='subscription'),
+    path('add-sub/<int:user_id>/',views.add_sub, name='add-sub'),
 ] 
 
 if settings.DEBUG:

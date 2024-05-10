@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}Events | ICPEP.SE BulSU-MC{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/event.css' %}">  
+{% endblock  %}
+
+{% block content %}
+<section class="events-page">
+    <div class="container">
+        {% if request.user.is_authenticated %}
+        <h2 class="section-title">Subscription Info</h2>
+        {% else %}
+        <h2 class="section-title">Subscribe Now!</h2>
+        {% endif %}
+        <div class="events-card">
+            {% if request.user.is_authenticated%}
+            <div class="event-left">
+         
+                <div class="date">{{ request.user.date_expired|date:"Y" }}</div>
+                <div class="month">{{ request.user.date_expired|date:"M" }}</div>
+           
+            </div>
+            {% endif %}
+            <div class="event-right">
+                {%if request.user.is_authenticated %}
+                <h3 class="event-title">Renew for 1 year? Advance Payment?</h3>
+                {% else %}
+                <h3 class="event-title">Getting Lost? Subscribe Now!</h3>
+                {% endif %}
+                <a href="https://www.facebook.com/ICPEP.SEBulSUMC"><p class="event-desc">Click here!</p></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

@@ -10,42 +10,19 @@
 <section class="events-page">
     <div class="container">
         <h2 class="section-title">Upcoming and Ongoing Events</h2>
-
+        {% for highlight in highlights %}
         <div class="events-card">
             <div class="event-left">
-                <div class="date">8</div>
-                <div class="month">May</div>
+                <div class="date">{{ highlight.date_to|date:"d" }}</div>
+                <div class="month">{{ highlight.date_to|date:"M" }}</div>
             </div>
             <div class="event-right">
-                <h3 class="event-title">CPE - Funshoot Photography 2023</h3>
-                <p class="event-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam, eveniet.</p>
-                <p class="event-location"><i class="fa-solid fa-location-dot"></i> Online via Facebook</p>
+                <h3 class="event-title">{{highlight.title}}</h3>
+                <p class="event-desc">{{highlight.desc}}</p>
+                <p class="event-location"><i class="fa-solid fa-location-dot"></i>{{ highlight.location }}</p>
             </div>
         </div>
-
-        <div class="events-card">
-            <div class="event-left">
-                <div class="date">8</div>
-                <div class="month">May</div>
-            </div>
-            <div class="event-right">
-                <h3 class="event-title">CPE - Funshoot Photography 2023</h3>
-                <p class="event-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam, eveniet.</p>
-                <p class="event-location"><i class="fa-solid fa-location-dot"></i> Online via Facebook</p>
-            </div>
-        </div>
-
-        <div class="events-card">
-            <div class="event-left">
-                <div class="date">8</div>
-                <div class="month">May</div>
-            </div>
-            <div class="event-right">
-                <h3 class="event-title">CPE - Funshoot Photography 2023</h3>
-                <p class="event-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam, eveniet.</p>
-                <p class="event-location"><i class="fa-solid fa-location-dot"></i> Online via Facebook</p>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </section>
 

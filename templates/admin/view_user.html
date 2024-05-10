@@ -100,7 +100,7 @@
         </button></div>
         <div class="admin-cell sales">Approval<button class="sort-button">
         </button></div>
-        <div class="admin-cell price">Date Joined<button class="sort-button">
+        <div class="admin-cell price">Subscription Expired<button class="sort-button">
         </button></div>
         <div class="admin-cell price">Delete<button class="sort-button">
         </button></div>
@@ -140,7 +140,8 @@
             <button class="approve-btn" data-user-id="{{ user.id }}"><i class="fa fa-check" aria-hidden="true"></i></button>
             <button class="reject-btn" data-user-id="{{ user.id }}"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
         </div>
-        <div class="admin-cell price"><span class="cell-label">Date Joined:</span>{{user.date_joined}}</div>
+        <div class="admin-cell price"><span class="cell-label">Subscription Expired:</span>{{ user.date_expired|date:" F j, Y" }}
+            <span><button class="add-sub" data-user-id="{{ user.id }}"><i class="fa-solid fa-plus"></i></button></span></div>
         <div class="admin-cell price">
         <span class="cell-label">Delete:</span>
         <button class="delete-btn" data-user-id="{{ user.id }}">Delete</button>
@@ -228,6 +229,32 @@
             console.error('Error:', error);
         });
     }
+    function addSub(userId){
+        fetch(`/add-sub/${userId}/`, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                action: 'add'
+            })
+        })
+        .then(response => {
+            alertify.set('notifier', 'position', 'top-right');
+            if (response.ok) {
+                console.log('+1 Year subscription');
+                alertify.success(`+1 Year subscription, refresh the page to see the changes`);
+                updateStatus(userId, false);
+            } else {
+                console.error('Failed to add user');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
 </script>
 {% endblock content %}
 

@@ -19,6 +19,13 @@ document.querySelectorAll('.delete-btn').forEach(button => {
     });
 });
 
+document.querySelectorAll('.add-sub').forEach(button => {
+    button.addEventListener('click', function() {
+        const userId = this.getAttribute('data-user-id');
+        addSub(userId);
+    });
+});
+
 function updateStatus(userId, isActive) {
     console.log('Updating status for user:', userId, 'isActive:', isActive);
     const statusElement = document.querySelector(`#user-status-${userId}`);

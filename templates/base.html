@@ -41,7 +41,7 @@
                 <ul>
                     <li><a href="{% url 'events' %}">Events</a></li>
                     <li><a href="{% url 'resources' %}">Resources</a></li>
-                    <!-- <li><a href="{% url 'coming-soon' %}">Membership</a></li> -->
+                    <li><a href="{% url 'subscription' %}">Subscription</a></li>
                     <li><a href="{% url 'about-us' %}">About Us</a></li>
                 {% if request.user.is_authenticated %}
                 <i class="fa-regular fa-user" id="user" onclick="toggleMenu()"></i> 

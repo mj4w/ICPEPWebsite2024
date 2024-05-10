@@ -9,6 +9,7 @@ class User(AbstractUser):
     is_staff = models.BooleanField(default=False)
     image = models.ImageField(upload_to='profile-images/', null=True, blank=True)
     date_joined = models.DateTimeField(auto_now_add=True)
+    date_expired = models.DateTimeField(blank=True, null=True)
     YEAR_SECTION_CHOICES = [
         ('1st Year', '1st Year'),
         ('2nd Year', '2nd Year'),
