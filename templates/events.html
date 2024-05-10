@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}Events | ICPEP.SE BulSU-MC{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/event.css' %}">  
+{% endblock  %}
+
+{% block content %}
+<section class="events-page">
+    <div class="container">
+        <h2 class="section-title">Upcoming and Ongoing Events</h2>
+
+        <div class="events-card">
+            <div class="event-left">
+                <div class="date">8</div>
+                <div class="month">May</div>
+            </div>
+            <div class="event-right">
+                <h3 class="event-title">CPE - Funshoot Photography 2023</h3>
+                <p class="event-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam, eveniet.</p>
+                <p class="event-location"><i class="fa-solid fa-location-dot"></i> Online via Facebook</p>
+            </div>
+        </div>
+
+        <div class="events-card">
+            <div class="event-left">
+                <div class="date">8</div>
+                <div class="month">May</div>
+            </div>
+            <div class="event-right">
+                <h3 class="event-title">CPE - Funshoot Photography 2023</h3>
+                <p class="event-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam, eveniet.</p>
+                <p class="event-location"><i class="fa-solid fa-location-dot"></i> Online via Facebook</p>
+            </div>
+        </div>
+
+        <div class="events-card">
+            <div class="event-left">
+                <div class="date">8</div>
+                <div class="month">May</div>
+            </div>
+            <div class="event-right">
+                <h3 class="event-title">CPE - Funshoot Photography 2023</h3>
+                <p class="event-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam, eveniet.</p>
+                <p class="event-location"><i class="fa-solid fa-location-dot"></i> Online via Facebook</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}

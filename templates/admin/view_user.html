@@ -1,0 +1,233 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+{% load static %}
+<div class="account-info">
+    <div class="account-info-picture">
+        {% if user.image and user.image.url %}
+            <img src="{{ request.user.image.url }}" alt="product">
+        {% else %}
+            <img src="https://www.downeastyachting.com/wp/wp-content/uploads/downeastyachting.com/2005/09/default-profile-480x480.png" alt="product">
+        {% endif %}
+    </div>
+    <div class="account-info-name">{{request.user}}</div>
+    <button class="account-info-more">
+        <a href="{% url 'log-out' %}" style="color: #fff; text-decoration:none;">Log Out</a>
+    </button>
+    </div>
+    </div>
+    <div class="app-content">
+    <div class="app-content-header">
+    <h1 class="app-content-headerText">Users</h1>
+    <!-- <button class="mode-switch" title="Switch Theme">
+        <svg class="moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="24" height="24" viewBox="0 0 24 24">
+        <defs></defs>
+        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+        </svg>
+    </button> -->
+    <button class="app-content-headerButton" id ="addUserButton">Add User</button>
+    <div id="addUserModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="userForm" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required><br>
+            
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required><br>
+            
+            <label for="username">Student Number:</label>
+            <input type="text" id="username" name="username" required><br>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br>
+            
+            <label for="orgBox">Already Member?</label>
+            <input type="checkbox" id="orgBox" name="orgBox"><br>
+            
+            <label for="isStaff">Is Staff:</label>
+            <input type="checkbox" id="isStaff" name="isStaff"><br>
+            
+            <label for="isActive">Is Active:</label>
+            <input type="checkbox" id="isActive" name="isActive"><br>
+            
+            <label for="userImage">User Image:</label>
+            <input type="file" id="userImage" name="userImage"><br>
+            
+            <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    </div>
+    <div class="app-content-actions">
+    <input class="search-bar" id="search-bar" placeholder="Search..." type="text">
+    <div class="app-content-actions-wrapper">
+        <div class="filter-button-wrapper action-button filter jsFilter">
+        </div>
+        <button class="action-button list active" title="List View">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list">
+            <line x1="8" y1="6" x2="21" y2="6" />
+            <line x1="8" y1="12" x2="21" y2="12" />
+            <line x1="8" y1="18" x2="21" y2="18" />
+            <line x1="3" y1="6" x2="3.01" y2="6" />
+            <line x1="3" y1="12" x2="3.01" y2="12" />
+            <line x1="3" y1="18" x2="3.01" y2="18" />
+        </svg>
+        </button>
+        <button class="action-button grid" title="Grid View">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid">
+            <rect x="3" y="3" width="7" height="7" />
+            <rect x="14" y="3" width="7" height="7" />
+            <rect x="14" y="14" width="7" height="7" />
+            <rect x="3" y="14" width="7" height="7" />
+        </svg>
+        </button>
+    </div>
+    </div>
+    <div class="products-area-wrapper tableView">
+    <div class="products-header">
+        <div class="admin-cell image">
+        StudentID
+        <button class="sort-button">
+        </button>
+        </div>
+        <div class="admin-cell category">Email<button class="sort-button">
+        </button></div>
+        <div class="admin-cell status-cell">Status<button class="sort-button">
+        </button></div>
+        <div class="admin-cell sales">Approval<button class="sort-button">
+        </button></div>
+        <div class="admin-cell price">Date Joined<button class="sort-button">
+        </button></div>
+        <div class="admin-cell price">Delete<button class="sort-button">
+        </button></div>
+    </div>
+    {% for user in users %}
+    <div class="products-row user-row">
+        <button class="cell-more-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">
+            <circle cx="12" cy="12" r="1" />
+            <circle cx="12" cy="5" r="1" />
+            <circle cx="12" cy="19" r="1" />
+        </svg>
+        </button>
+        <div class="admin-cell image">
+        {% if user.image and user.image.url %}
+            <img src="{{ user.image.url }}" alt="product">
+        {% else %}
+            <img src="https://www.downeastyachting.com/wp/wp-content/uploads/downeastyachting.com/2005/09/default-profile-480x480.png" alt="product">
+        {% endif %}
+        <span>{{user.username}}</span>
+        </div>
+        <div class="admin-cell category"><span class="cell-label">Email:</span>{{user.email}}</div>
+        <div class="admin-cell status-cell">
+        <span class="cell-label">Status:</span>
+        <div class="admin-cell status-cell">
+            <span class="cell-label">Status:</span>
+            {% if user.is_active == True %}
+            <span id="user-status-{{user.id}}" class="status active">Active</span>
+            {% else %}
+            <span id="user-status-{{user.id}}" class="status">Not Active</span>
+            {% endif %}
+
+        </div>             
+        </div>
+        <div class="admin-cell sales"><span class="cell-label">Approval:</span>
+        
+            <button class="approve-btn" data-user-id="{{ user.id }}"><i class="fa fa-check" aria-hidden="true"></i></button>
+            <button class="reject-btn" data-user-id="{{ user.id }}"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
+        </div>
+        <div class="admin-cell price"><span class="cell-label">Date Joined:</span>{{user.date_joined}}</div>
+        <div class="admin-cell price">
+        <span class="cell-label">Delete:</span>
+        <button class="delete-btn" data-user-id="{{ user.id }}">Delete</button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<script src="{% static 'js/admin/user.js' %}"></script>
+<script>
+    // delete user
+    function deleteUser(userId){
+        fetch(`/delete-user/${userId}/`,{
+            method: 'DELETE',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                userId: userId
+            })
+        })
+        .then(response => {
+            alertify.set('notifier', 'position', 'top-right');
+            if (response.ok){
+                console.log('User Deleted Successfully');
+                alertify.success(`User Deleted Successfully`);
+            } else {
+                console.error('Failed Delete Successfully');
+                alertify.error(`Failed to Delete`);
+            }
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    }
+
+    function approveUser(userId) {
+        fetch(`/approve-user/${userId}/`, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                action: 'approve'
+            })
+        })
+        .then(response => {
+            alertify.set('notifier', 'position', 'top-right');
+            if (response.ok) {
+                console.log('User approved successfully');
+                alertify.success(`User approved successfully`);
+                updateStatus(userId, true);
+            } else {
+                console.error('Failed to approve user');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+    function rejectUser(userId) {
+        fetch(`/reject-user/${userId}/`, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                action: 'reject'
+            })
+        })
+        .then(response => {
+            alertify.set('notifier', 'position', 'top-right');
+            if (response.ok) {
+                console.log('User rejected successfully');
+                alertify.success(`User rejected successfully`);
+                updateStatus(userId, false);
+            } else {
+                console.error('Failed to reject user');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+</script>
+{% endblock content %}
+

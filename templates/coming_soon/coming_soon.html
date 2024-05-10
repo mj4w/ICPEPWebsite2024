@@ -1,0 +1,29 @@
+
+{% load static %}
+{% load tz %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/coming_soon.css' %}">  
+{% endblock  %}
+
+{% block content %}  
+<div class="mobile-container">
+    <header>
+      <section class="hero-banner">
+        <div class="logo-wrapper">
+          <img src="{% static 'img/icpep_logo.png' %}" alt="" />
+        </div>
+        <div class="hero-image"></div>
+      </section>
+    </header>
+    <main>
+      <article class="text-info">
+        <h2>We're</h2>
+        <h2>Coming<br>Soon</h2>
+        <p>Hello friends! We are currently building ICPEP Website and other feature of it.</p>
+      </article>
+    </main>
+  </div>
+  <div class="hero-image-desktop">
+    <img src="{% static 'img/home-bg.jpg' %}" alt="Femail athlete squinting towards the camera.">
+  </div>
+{% endblock content %}

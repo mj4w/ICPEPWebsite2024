@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+
+{% endblock %}
+
+
+{% block content %}
+
+        <!-- HERO SECTION -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h3>{{banner.sub_text}}</h3>
+            <h1>{{banner.primary_text}}</h1>
+            <span>{{banner.primary_sub}}</span>
+            <p>{{banner.description}}</p>
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'coming-soon' %}" class="btn">Featured</a>
+            {% else %}
+            <a href="{% url 'register-user' %}" class="btn">Register</a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="about">
+    <div class="container row">
+        <figure class="banner">
+            {% if aboutpic %}
+                <img src="{{ aboutpic.image.url }}" alt="about-us" width="650" height="350">
+            {% else %}
+                <p>No Image</p>
+            {% endif %}
+        </figure>
+        <div class="about-content">
+            {% if aboutpic %}
+                <h3 class="section-title">{{ aboutpic.image_title }}</h3>
+                <p>{{ aboutpic.description }}</p>
+                <!-- <div class="read-more">
+                    <a href="#">Read more<i class="fa-solid fa-chevron-right"></i></a>
+                </div>   -->
+            {% else %}
+                <p>No Content</p>
+            {% endif %}  
+        </div>
+    </div>
+</section>
+
+<!-- EVENTS -->
+<section class="events">
+    <div class="container">
+        <h2 class="section-title">Highlights & Events</h2>
+            <div class="event-list">
+                {% for highlight in highlights %}
+                <div class="card">
+                    <div class="card-image">
+                        {% if highlight.image %}
+                        <a href="{% url 'highlights' highlight.id %}"><img src="{{ highlight.image.url }}" alt="event-1"></a>
+                        {% else %}
+                        <a href="{% url 'highlights' highlight.id %}"><img src="https://cdn.shopify.com/s/files/1/2161/7289/files/schedule-icon_7de0cc2f-cfd0-41b1-9f5d-ff991aa2dbc0_large.png?v=1579893171" alt="event-1"></a>
+                        {% endif %}
+                    </div>
+                    <div class="card-content">
+                        <a href="{% url 'highlights' highlight.id %}" class="hover-card"> <h3>{{ highlight.title }}</h3></a>
+                        <div class="card-details">
+                            <p><i class="fa-solid fa-calendar-days"></i> {{ highlight.date_to|date:"l, F j" }} at {{ highlight.time|time:"P" }}</p>
+                            <p><i class="fa-solid fa-location-dot"></i>{{ highlight.location }}</p>
+                        </div>
+                        <div class="card-team">
+                            <p><i class="fa-solid fa-chalkboard-user"></i>{{ highlight.details }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+     
+        <div class="view-more">
+            <a href="" class="btn">View More</a>
+        </div>
+    </div>
+</section>
+
+<!-- TOOLS -->
+<section class="tools">
+    <div class="container">
+        {% if request.user.is_authenticated %}
+        <div class="section-title">Software Tools</div>
+        {% else %}
+        <div class="section-title">Software Tools (Register for more!)</div>
+        {% endif %}
+        <div class="swiper tools-slider">
+            <div class="swiper-wrapper">
+                {% for softwaretool in softwaretools %}
+                <div class="box swiper-slide">
+                    <a href="{{ softwaretool.url }}" target="_blank" >
+                        {% if softwaretool.image %}
+                            <img src="{{ softwaretool.image.url }}" alt="" />
+                        {% else %}
+                            <p>No image</p>
+                        {% endif %}
+                    </a>
+                </div>
+                {% endfor %}    
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

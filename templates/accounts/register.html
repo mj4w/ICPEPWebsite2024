@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+{% endblock %}
+{% block title %}Register | ICPEP.SE BulSU-MC{% endblock %}
+
+{% block content %}
+<!-- <img class="wave" src="{% static 'img/header-bg.jpg' %}"> -->
+<div class="container-login">
+    <div class="img">
+        <img src="{% static 'img/bulsu_campuslogo.jpg' %}" alt="" />
+    </div>
+    <div class="login-content">
+        <form method="POST">
+            {% csrf_token %}
+            <img src="{% static 'img/icpep_logo.png' %}">
+            <h2 class="title">Membership</h2>
+               <div class="input-div one">
+                  <div class="i">
+                          <i class="fas fa-user"></i>
+                  </div>
+                  <div class="div">
+                          <h5>Student Number</h5>
+                          {{form_register.username}}
+                  </div>
+               </div>
+               <div class="input-div one">
+                    <div class="i">
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="div">
+                            <h5>BulSu Email</h5>
+                            {{form_register.email}}
+                    </div>
+                </div>
+               <div class="input-div pass">
+                  <div class="i"> 
+                       <i class="fas fa-lock"></i>
+                  </div>
+                  <div class="div">
+                       <h5>Password</h5>
+                       {{form_register.password1}}
+                  </div>
+                </div>
+                <div class="input-div pass">
+                    <div class="i"> 
+                         <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="div">
+                         <h5>Re-type Password</h5>
+                         {{form_register.password2}}
+                    </div>
+                </div>
+                <div class="input-div one">
+                    {{form_register.orgbox}}
+                    <div class="div">
+                        <h5>Already Member?</h5>
+                    </div>
+                </div>
+            <a href="{% url 'login-user' %}" class="login-button">Already Have An Account?</a>
+            <input type="submit" class="btn" value="Sign-up">
+        </form>
+    </div>
+</div>
+<script type="text/javascript" src="{% static 'js/login.js' %}"></script>
+<!-- JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+<script>
+    {% for message in messages %}
+        alertify.set('notifier', 'position', 'top-right');
+        {% if message.tags == 'error' %}
+            alertify.error('{{ message }}');
+        {% else %}
+            alertify.success('{{ message }}');
+        {% endif %}
+    {% endfor %}
+</script> 
+{% endblock content %}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'img/homepage_images/icpep_logo2.png' %}" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <!-- For font awesome -->
+    <script src="https://kit.fontawesome.com/1776b28af8.js" crossorigin="anonymous"></script> 
+    <!-- SWIPER JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- CUSTOM JS -->
+    <script src="{% static 'js/script.js' %}" defer></script>
+    {% block extra_css %}{% endblock %}
+    <!-- CSS LINK -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    
+    <title>{% block title %}Home | ICPEP.SE BulSU-MC{% endblock %}</title>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="container">
+            <input type="checkbox" id="nav-check">
+            <label for="nav-check" class="nav-toggler">
+                <span></span>
+            </label>
+
+            <a href="{% url 'home' %}" class="logo">
+            <img src="{% static 'img/homepage_images/icpep_logo2.png' %}" width="60px" height="60px" alt="no img"/>
+            <p>ICPEP.SE BULSU-MC</p>
+            </a>
+
+            <nav class="navbar" >
+                <ul>
+                    <li><a href="{% url 'events' %}">Events</a></li>
+                    <li><a href="{% url 'resources' %}">Resources</a></li>
+                    <!-- <li><a href="{% url 'coming-soon' %}">Membership</a></li> -->
+                    <li><a href="{% url 'about-us' %}">About Us</a></li>
+                {% if request.user.is_authenticated %}
+                <i class="fa-regular fa-user" id="user" onclick="toggleMenu()"></i> 
+
+                <div class="sub-menu" id="subMenu">
+                    <div class="sub-menu-info">
+                        <li>{{request.user.username}}</li>
+                        <hr/>
+                        {% if request.user.email %}
+                        <li>{{request.user.email}}</li>
+                        {% else %}
+                        <li>No email found</li>
+                        {% endif %}
+                        <hr/>
+    
+                       
+                    </div>
+                </div>
+                <li><a href="{% url 'log-out' %}" style="color:#fff">
+                    <i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+        
+                {% endif %}
+                </ul>
+            </nav>          
+        </div>
+    </header>
+
+    <main class="main">
+        {% block content %}
+
+        {% endblock content %}
+    </main>
+
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="{% static 'img/homepage_images/icpep_logo2.png' %}">
+                <h1>Institute of Computer Engineers  of the Philippines
+                    <span><br>Student Edition - Bulacan State University Meneses Campus</span>
+                </h1>
+                <!-- <p>Student Edition - Bulacan State University Meneses Campus</p> -->
+            </div>
+            <div class="footer-copyright">
+                <p><i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:icpep.se.menesescampus@gmail.com" style="color:#fff;">icpep.se.menesescampus@gmail.com</a> | <span style="color: #fff;"><i class="fa fa-phone" aria-hidden="true"></i>  09511685582</span></p>
+            </div>
+            <div class="footer-copyright">
+                <p>Copyright © 2023 All rights reserved | <span>Programming Team 2023-2024</span></p>
+            </div>
+        </div>
+    </footer>
+
+<!-- SWIPER JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.card:gt(2)').hide(); 
+
+        $('.view-more a').on('click', function(e) {
+            e.preventDefault();
+
+            $('.card:hidden').slice(0, 3).slideDown(); 
+        });
+    });
+</script>
+<!-- JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+<script>
+    {% for message in messages %}
+        alertify.set('notifier', 'position', 'top-right');
+        {% if message.tags == 'error' %}
+            alertify.error('{{ message }}');
+        {% else %}
+            alertify.success('{{ message }}');
+        {% endif %}
+    {% endfor %}
+</script> 
+</body>
+</html>

@@ -1,0 +1,313 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+
+html {
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    scroll-behavior: smooth;
+}
+
+
+
+
+
+body {
+    height: fit-content;
+
+}
+
+
+#intro {
+    background-color: rgba(250, 180, 4, 0.169);
+    height: 650px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background-image: url("../img//about_us/bg-about-us.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: contain;
+    background-size: cover;
+
+
+}
+
+.brief_infoholder {
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.abc {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    padding-top: 20px;
+    outline: 1px solid black;
+    width: 80%;
+    height: 500px;
+
+
+
+}
+
+
+#cluster {
+    font-size: 70px;
+    color: white;
+    margin-top: 0;
+    padding-bottom: 15px;
+}
+
+
+
+
+
+#background {
+    width: 70vw;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    color: white;
+}
+
+
+#MGV {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 20PX;
+    font-size: 3em;
+    padding-top: 40px;
+    font-weight: bold;
+
+}
+
+
+#logos {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    align-items: center;
+    margin: auto;
+
+
+}
+
+
+#MVQ {
+
+    font-size: 20px;
+    margin-left: 50px;
+    margin-right: 40px;
+    margin-top: 20px;
+    text-align: justify;
+
+}
+
+
+
+/*-----------------------------------*\
+  #VMG
+\*-----------------------------------*/
+.vmg {
+    background-color: rgba(244, 92, 25, .1);
+    padding-bottom: 60px;
+    /* height: 50vh; */
+}
+
+.vmg .section-title {
+    text-transform: uppercase;
+}
+
+.vmg .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.vmg-box {
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 50px;
+    text-align: center;
+}
+
+.vmg-box h3 {
+    font-size: 30px;
+    font-weight: bold;
+    color: #F45C19;
+    padding-top: 16px;
+}
+
+.vmg-box p {
+    font-size: 20px;
+    /* text-align: justify; */
+    padding-top: 20px;
+}
+
+
+
+/*-----------------------------------*\
+  #OFFICER
+\*-----------------------------------*/
+.officer {
+    padding-bottom: 40px;
+}
+
+.officer .container p {
+    text-align: center;
+}
+
+.officer-slider {
+    text-align: center;
+    padding: 0 5px;
+    /* cursor: pointer; */
+}
+
+.officer-box {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 25px 25px;
+    border-radius: 20px;
+    width: 100px;
+    height: auto;
+    margin: 40px 0;
+}
+
+.officer-box .officer-banner {
+    /* height: 200px; */
+    overflow: hidden;
+    position: relative;
+    /* background-color: #F45C19; */
+}
+
+.officer-box .officer-banner img {
+    width: 100%;
+    height: 100%;
+    /* aspect-ratio: 4 / 3; */
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.officer-box .officer-content h3 {
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.officer-box .officer-content span {
+    display: block;
+    font-size: 15px;
+    padding-bottom: 10px;
+}
+
+.officer-box .officer-content p {
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+#social {
+    text-align: center;
+    color: black;
+    margin: 10px;
+    font-size: 25px;
+}
+
+.officer-box .officer-content .socials a {
+    margin: 10px;
+}
+
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+    bottom: 0;
+}
+
+
+
+/*-----------------------------------*\
+  #MEDIA QUARIES
+\*-----------------------------------*/
+@media(max-width: 768px) {
+    #intro {
+        height: 250px;
+    }
+
+    #cluster {
+        font-size: 30px;
+    }
+
+    #background {
+        font-size: 16px;
+    }
+
+    #info #title {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .section-title {
+        font-size: 27px;
+    }
+
+    .vmg-box h3 {
+        font-size: 27px;
+    }
+
+    .vmg-box p {
+        font-size: 16px;
+    }
+
+    #title {
+        font-size: 40px;
+        text-align: center;
+
+    }
+
+    #abc_container p {
+        font-size: 15px;
+        text-align: justify;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+
+}
+
+
+
+@media(max-width: 360px) {
+    .vmg .row {
+        grid-template-columns: 1fr;
+        padding: 0;
+    }
+
+    .vmg-box {
+        padding: 20px;
+    }
+
+    #title {
+        font-size: 20px;
+        text-align: center;
+
+    }
+
+    #abc_container p {
+        font-size: 10px;
+        text-align: justify;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+
+
+}

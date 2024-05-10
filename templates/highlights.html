@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load tz %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}">  
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">  
+{% endblock  %}
+
+{% block title %}Event Details | ICPEP.SE BulSU-MC{% endblock %}
+
+{% block content %}    
+    <!-- EVENT DETAILED -->
+    <section class="event-detailed container">
+        <a href="{% url 'home' %}" class="back-btn"><i class="fa-solid fa-chevron-left"></i> Back</a>
+        <div class="event-detailed-list">
+            <div class="event-detailed-banner">
+                {% if highlights.image %}
+                    <img src="{{highlights.image.url}}" alt="{{highlights.title}}"/>
+                {% else %}
+                    <img src="https://cdn.shopify.com/s/files/1/2161/7289/files/schedule-icon_7de0cc2f-cfd0-41b1-9f5d-ff991aa2dbc0_large.png?v=1579893171" alt="" />
+                {% endif %}
+            </div>
+            <div class="event-detailed-info">
+                {% if ping == 1 %}
+                <h1>{{highlights.title}} <span style="color: green;">(ONGOING)</span></h1>
+                {% else %}
+                <h1>{{highlights.title}} <span style="color: red;">(CLOSED)</span></h1>
+                {% endif %}
+                <div class="date">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <p>Date and Time</p>
+                    <p>{{highlights.date_to|date:"l, F, j"}} to {{highlights.date_from}} - Submission</p>
+                </div>
+                <div class="location">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <p>Location</p>
+                    <p>{{highlights.location}}</p>
+                </div>
+                <div class="host">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <p>Hosted by</p>
+                    {% if highlights.details %}
+                    <p>{{highlights.details}}</p>
+                    {% else %}
+                    <p>N/A</p>
+                    {% endif %}
+                </div>
+                <div>
+                    {% if highlights.learn_more %}
+                    <a href="{{ highlights.learn_more }}" class="btn" target="_blank">Learn More</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="event-detailed-desc">
+            <h3>Description</h3>
+            <div class="desc">
+                <p>{{highlights.desc}}</p>
+                <br>
+                {% if ping == 1 %}
+                <p>{{ highlights.link_desc }} <a href="{{ highlights.url }}" target="_blank">{{ highlights.url }}</a></p>
+                {% else %}
+                <p>{{ highlights.link_desc }} <a href="#ISAIDLINKEDCLOSED!!" target="">LINK CLOSED</a></p>
+                {% endif %}
+
+            
+            </div>
+        </div> 
+    </section>
+{% endblock content %}
+ 

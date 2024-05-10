@@ -1,0 +1,151 @@
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    scroll-behavior: smooth;
+}
+
+
+:root{
+    --primary-color: #FB7033;
+    --secondary-color: #1F1E1E;
+    --white: #fff;
+}
+
+.container{
+    max-width: 1184px;
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 16px;
+}
+
+a{
+    text-decoration: none;
+}
+
+li{
+    list-style: none;
+}
+
+.btn{
+    display: inline-block;
+    padding: 14px 44px;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    transition: cubic-bezier(0, 0.7, 0.3, 1) 200ms;
+}
+
+.btn:where(:hover, :focus){
+    background-color: #F45C19;
+}
+
+.section-title{
+    font-size: 31px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 32px;
+    margin-bottom: 24px;
+    color: var(--primary-color);
+}
+
+.event-list{
+    display: flex;
+    /* justify-content: center;
+    align-items: center;
+    min-height: 100vh; */
+}
+
+
+.events-card{
+    display: flex;
+    border-radius: 8px;
+    margin: 32px auto;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    width: 70%;
+}
+
+.event-left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-width: 82px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 8px 48px;
+    border-radius: 8px 0 0 8px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.event-left .date{
+    padding: 0;
+    font-size: 56px;
+}
+
+.event-left .month{
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.event-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 24px;
+}
+
+.event-right .event-title{
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--secondary-color);
+    line-height: 32px;
+    padding: 14px 16px 8px 16px;
+    cursor: pointer;
+}
+
+.event-right .event-title:hover{
+    color: var(--primary-color);
+}
+
+.event-right .event-desc{
+    padding: 8px 16px 8px 16px;
+}
+
+.event-right .event-location{
+    padding: 8px 16px 8px 16px;
+}
+
+/*-----------------------------------*\
+  #MEDIA QUARIES
+\*-----------------------------------*/
+@media(max-width: 768px){
+    .events-card{
+        flex-direction: column;
+    }
+
+    .event-left,
+    .event-right{
+        padding: 0;
+    }
+
+    .event-left{
+        border-radius: 8px 8px 0 0;
+        display: inline-block;
+    }
+
+    .event-left .date,
+    .event-left .month{
+        display: inline-block;
+        font-size: 24px;
+    }
+
+    .event-left .date{
+        padding: 10px 0;
+    }
+}

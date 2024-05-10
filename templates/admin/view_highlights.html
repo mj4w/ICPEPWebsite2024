@@ -1,0 +1,287 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+{% load static %}
+<div class="account-info">
+    <div class="account-info-picture">
+        {% if user.image and user.image.url %}
+            <img src="{{ request.user.image.url }}" alt="product">
+        {% else %}
+            <img src="https://www.downeastyachting.com/wp/wp-content/uploads/downeastyachting.com/2005/09/default-profile-480x480.png" alt="product">
+        {% endif %}
+    </div>
+    <div class="account-info-name">{{request.user}}</div>
+    <button class="account-info-more">
+        <a href="{% url 'log-out' %}" style="color: #fff; text-decoration:none;">Log Out</a>
+    </button>
+    </div>
+</div>
+<div class="app-content">
+    <div class="app-content-header">
+    <h1 class="app-content-headerText">Highlights & Events</h1>
+    <!-- <button class="mode-switch" title="Switch Theme">
+        <svg class="moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="24" height="24" viewBox="0 0 24 24">
+        <defs></defs>
+        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+        </svg>
+    </button> -->
+    <button class="app-content-headerButton" id ="addUserButton">Add Events</button>
+    <div id="addUserModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="highlightsForm" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="url">Form Link:</label>
+            <input type="text" id="url" name="url" required><br>
+            
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image"><br>
+            
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title"><br>
+            
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time"><br>
+            
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" name="startDate" required><br>
+            
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate" name="endDate" required><br>
+            
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required><br>
+            
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea><br>
+            
+            <label for="linkDescription">Link Description:</label>
+            <input type="text" id="linkDescription" name="linkDescription"><br>
+            
+            <label for="hostedBy">Hosted By:</label>
+            <input type="text" id="hostedBy" name="hostedBy" required><br>
+            
+            <label for="learnMore">Learn More:</label>
+            <input type="text" id="learnMore" name="learnMore"><br>
+            
+            <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    </div>
+    <div class="app-content-actions">
+    <input class="search-bar" placeholder="Search..." type="text">
+    <div class="app-content-actions-wrapper">
+        <p style="color:#fff;">
+            NOTE!! Experiencing slow loading due to high user volume when sending email.</p>
+        <div class="filter-button-wrapper action-button filter jsFilter">
+        </div>
+        <button class="action-button list active" title="List View">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list">
+            <line x1="8" y1="6" x2="21" y2="6" />
+            <line x1="8" y1="12" x2="21" y2="12" />
+            <line x1="8" y1="18" x2="21" y2="18" />
+            <line x1="3" y1="6" x2="3.01" y2="6" />
+            <line x1="3" y1="12" x2="3.01" y2="12" />
+            <line x1="3" y1="18" x2="3.01" y2="18" />
+        </svg>
+        </button>
+        <button class="action-button grid" title="Grid View">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid">
+            <rect x="3" y="3" width="7" height="7" />
+            <rect x="14" y="3" width="7" height="7" />
+            <rect x="14" y="14" width="7" height="7" />
+            <rect x="3" y="14" width="7" height="7" />
+        </svg>
+        </button>
+    </div>
+    </div>
+    <div class="products-area-wrapper tableView">
+    <div class="products-header">
+        <div class="admin-cell image">
+        Title
+        <button class="sort-button">
+        </button>
+        </div>
+        <div class="admin-cell category">Start Date<button class="sort-button">
+        </button></div>
+        <div class="admin-cell status-cell">End Date<button class="sort-button">
+        </button></div>
+        <div class="admin-cell sales">Location<button class="sort-button">
+        </button></div>
+        <div class="admin-cell price">Hosted By:<button class="sort-button">
+        </button></div>
+        <div class="admin-cell price">Delete<button class="sort-button">
+        </button></div>
+        <div class="admin-cell price">Send Email<button class="sort-button">
+        </button></div>
+    </div>
+    {% for highlight in highlights %}
+    <div class="products-row highlight-row">
+        <button class="cell-more-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">
+            <circle cx="12" cy="12" r="1" />
+            <circle cx="12" cy="5" r="1" />
+            <circle cx="12" cy="19" r="1" />
+        </svg>
+        </button>
+        <div class="admin-cell image">
+        {% if highlight.image and highlight.image.url %}
+            <img src="{{ highlight.image.url }}" alt="product">
+        {% else %}
+            <img src="https://cdn.shopify.com/s/files/1/2161/7289/files/schedule-icon_7de0cc2f-cfd0-41b1-9f5d-ff991aa2dbc0_large.png?v=1579893171" alt="product">
+        {% endif %}
+        <span>{{highlight.title}}</span>
+        </div>
+        <div class="admin-cell category"><span class="cell-label">Start Date:</span>{{highlight.date_to}}</div>
+        <div class="admin-cell status-cell">
+        <span class="cell-label">End Date:</span>
+        <div class="admin-cell status-cell">
+            <span class="cell-label">End Date:</span>
+            <span id="" class="">{{highlight.date_from}}</span>
+
+        </div>             
+        </div>
+        <div class="admin-cell sales"><span class="cell-label">Location:</span>
+            {{highlight.location}}
+        </div>
+        <div class="admin-cell price"><span class="cell-label">Hosted By:</span>{{highlight.details}}</div>
+        <div class="admin-cell price">
+        <span class="cell-label">Delete:</span>
+        <button class="view-btn" data-user-id="{{ highlight.id }}">View</button>
+
+        <button class="update-btn" id="open-update" data-user-id="{{ highlight.id }}">Update</button>
+        <button class="delete-btn" data-user-id="{{ highlight.id }}">Delete</button>
+        </div>
+        <div class="admin-cell price">
+            <span class="cell-label">Send Email:</span>
+            <button class="email-btn" data-email-id="{{ highlight.id }}">Send</button>
+        </div>
+    </div>
+    <!-- Modal View -->
+    <div id="highlightModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="highlightData">
+            </div>
+        </div>
+    </div>
+
+    <div id="update-modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Update User</p>
+          <form id="update-form">
+          </form>
+        </div>
+      </div>
+    {% endfor %}
+</div> 
+<script src="{% static 'js/admin/highlights.js' %}"></script>
+<script>
+    // delete user
+    function deleteHighlight(highlightID){
+        fetch(`/delete-highlight/${highlightID}/`,{
+            method: 'DELETE',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                highlightID: highlightID
+            })
+        })
+        .then(response => {
+            alertify.set('notifier', 'position', 'top-right');
+            if (response.ok){
+                console.log('Highlight Deleted Successfully');
+                alertify.success(`Highlight Deleted Successfully`);
+            } else {
+                console.error('Failed Delete Successfully');
+                alertify.success(`Highlight Failed to Delete`);
+            }
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    }
+</script>
+<script>
+    document.querySelectorAll('.email-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const emailId = this.getAttribute('data-email-id');
+            sendEmail(emailId);
+        });
+    });
+
+    function sendEmail(emailId) {
+        const formData = new FormData();
+        formData.append('email_id', emailId);
+
+        fetch(`/send-email/${emailId}/`, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/json'
+            },
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            alertify.set('notifier', 'position', 'top-right');
+            if (data.success) {
+                alertify.success('Email sent successfully');
+            } else {
+                alertify.error('Failed to send email: ' + data.message);
+            }
+        })
+        .catch(error => {
+            alertify.set('notifier', 'position', 'top-right');
+            console.error('Error:', error);
+            alertify.error('An error occurred while sending the email');
+        });
+    }
+</script>
+<script>
+    document.querySelectorAll('.view-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const highlightId = this.getAttribute('data-user-id');
+            fetch(`/view-highlight/${highlightId}/`)
+                .then(response => response.json())
+                .then(data => {
+                    const modalContent = document.getElementById('highlightData');
+                    modalContent.innerHTML = `
+                        <h2>Title: ${data.title}</h2>
+                        <p>Description: ${data.desc}</p>
+                        <p>Time: ${data.time}</p>
+                        <p>URL FORM: ${data.url}</p>
+                        <p>Image: ${data.image}</p>
+                        <p>Date To: ${data.date_to}</p>
+                        <p>Date From: ${data.date_from}</p>
+                        <p>Location: ${data.location}</p>
+                        <p>Link Description: ${data.link_desc}</p>
+                        <p>Hosted By: ${data.details}</p>
+                        <p>FB LINK : ${data.learn_more}</p>
+                    `;
+                    document.getElementById('highlightModal').style.display = 'block';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    });
+
+    document.querySelector('#highlightModal .close').addEventListener('click', function() {
+        document.getElementById('highlightModal').style.display = 'none';
+    });
+</script>
+<script>
+    document.querySelectorAll('.edit-highlight').forEach(button => {
+        button.addEventListener('click', function() {
+            const editHighlight = this.getAttribute('data-edit-highlight');
+
+        })
+    })
+</script>
+
+
+{% endblock content %}

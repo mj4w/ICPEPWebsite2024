@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="{% static 'css/admin/style.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+            <div class="app-icon">
+                <!--ICON PAGE-->
+                <img src="{% static 'img/homepage_images/icpep_logo2.png' %}" width="50" height="50"  alt="logo"/>
+            </div>
+            </div>
+            <ul class="sidebar-list">
+            {% url 'admin-user' as admin_user_url %}
+            {% url 'admin-highlights' as admin_highlights_url %}
+            {% url 'admin-dashboard' as admin_dashboard %}
+            <li class="sidebar-list-item {% if request.path == admin_dashboard %}active{% endif %}">
+                <a href="{{admin_dashboard}}">
+                <span><i class="fa fa-home" aria-hidden="true"></i> Home</span>
+                </a>
+            </li>
+            <li class="sidebar-list-item {% if request.path == admin_user_url %}active{% endif %}">
+                <a href="{{ admin_user_url }}">
+                    <span><i class="fa fa-user" aria-hidden="true"></i> Users</span>
+                </a>
+            </li>
+            <li class="sidebar-list-item {% if request.path == admin_highlights_url %}active{% endif %}">
+                <a href="{{ admin_highlights_url }}">
+                    <span><i class="fa fa-calendar" aria-hidden="true"></i> Highlights & Event</span>
+                </a>
+            </li>
+            </ul>
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </div>
+</body>
+<script src="{% static 'js/admin/script.js' %}"></script>
+<script src="{% static 'js/admin/modal.js' %}"></script>
+<!-- JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+<script>
+    {% for message in messages %}
+        alertify.set('notifier', 'position', 'top-right');
+        {% if message.tags == 'error' %}
+            alertify.error('{{ message }}');
+        {% else %}
+            alertify.success('{{ message }}');
+        {% endif %}
+    {% endfor %}
+</script> 
+</html>

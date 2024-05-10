@@ -1,0 +1,184 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+{% load static %}
+<div class="account-info">
+    <div class="account-info-picture">
+        {% if user.image and user.image.url %}
+            <img src="{{ request.user.image.url }}" alt="product">
+        {% else %}
+            <img src="https://www.downeastyachting.com/wp/wp-content/uploads/downeastyachting.com/2005/09/default-profile-480x480.png" alt="product">
+        {% endif %}
+    </div>
+    <div class="account-info-name">{{request.user}}</div>
+    <button class="account-info-more">
+        <a href="{% url 'log-out' %}" style="color: #fff; text-decoration:none;">Log Out</a>
+    </button>
+    </div>
+    </div>
+    <div class="app-content">
+    <div class="app-content-header">
+    <h1 class="app-content-headerText">Dashboard</h1>
+    <!-- <button class="mode-switch" title="Switch Theme">
+        <svg class="moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="24" height="24" viewBox="0 0 24 24">
+        <defs></defs>
+        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+        </svg>
+    </button> -->
+
+    <div id="openAboutPicModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="aboutPicForm" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image" required><br>
+
+            <label for="title">Image Title:</label>
+            <input type="text" id="title" name="title" required><br>
+            
+            <label for="description">Description:</label>
+            <textarea name="description" id="" cols="30" rows="10"></textarea><br>
+            
+            <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div id="openBannerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="bannerForm" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="subText">Sub Text:</label>
+            <input type="text" id="subText" name="subText" required><br>
+
+            <label for="primaryText">Primary Text:</label>
+            <input type="text" id="primaryText" name="primaryText" required><br>
+
+            <label for="primarySub">Primary Sub:</label>
+            <input type="text" id="primarySub" name="primarySub" required><br>
+
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" required><br>
+            
+            <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    </div>
+    <div class="app-content-actions">
+    <div>
+        <button class="app-content-headerButton" id="openBannerModalBtn"  {% if banners %}disabled{% endif %}>Add Banner</button>
+        <button class="app-content-headerButton" id="openAboutPicModalBtn"  {% if about_pics %}disabled{% endif %}>Add Background</button>     
+    </div>
+
+    <div class="app-content-actions-wrapper">
+        <div class="filter-button-wrapper action-button filter jsFilter">
+        </div>
+        <button class="action-button list active" title="List View">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list">
+            <line x1="8" y1="6" x2="21" y2="6" />
+            <line x1="8" y1="12" x2="21" y2="12" />
+            <line x1="8" y1="18" x2="21" y2="18" />
+            <line x1="3" y1="6" x2="3.01" y2="6" />
+            <line x1="3" y1="12" x2="3.01" y2="12" />
+            <line x1="3" y1="18" x2="3.01" y2="18" />
+        </svg>
+        </button>
+    </div>
+    </div>
+    <div class="products-area-wrapper tableView">
+    
+    {% for about in about_pics %}
+    <div class="products-row user-row">
+        <button class="cell-more-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">
+            <circle cx="12" cy="12" r="1" />
+            <circle cx="12" cy="5" r="1" />
+            <circle cx="12" cy="19" r="1" />
+        </svg>
+        </button>
+        <div class="admin-cell price"><span class="cell-label"></span><button class="edit-btn1" data-id="{{ about.id }}" data-type="about">EDIT</button></div>
+        <div class="admin-cell image">
+        {% if about.image and about.image.url %}
+            <img src="{{ about.image.url }}" alt="product">
+        {% else %}
+            <p>ABOUT PIC</p>
+        {% endif %}
+        <span>{{about.image_title}}</span>
+        </div>
+        <div class="admin-cell category"><span class="cell-label"></span>{{about.description}}</div>
+
+        </div>
+       <!-- Edit Modal -->
+    <div id="editModal1" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="editForm1" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="currentImage">Current Image:</label><br>
+                {% if about.image and about.image.url %}
+                    <img src="{{ about.image.url }}" alt="Current Image" style="max-width: 200px; max-height: 200px;"><br>
+                {% else %}
+                    <p>No image uploaded</p>
+                {% endif %}
+                <br>
+                <label for="image">Upload New Image:</label><br>
+                <input type="file" id="image" name="image"><br>
+
+                <label for="imageTitle">Image Title:</label>
+                <input type="text" id="imageTitle" name="imageTitle" value="{{ about.image_title }}"><br>
+
+                <label for="description">Description:</label>
+                <textarea name="description" id="" cols="30" rows="10">{{ about.description }}</textarea>
+                <br/>
+                <button type="button" class="edit-btnModal1" data-id="{{ about.id }}">Update</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+    {% for banner in banners %}
+    <div class="products-row user-row">
+        <button class="cell-more-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">
+            <circle cx="12" cy="12" r="1" />
+            <circle cx="12" cy="5" r="1" />
+            <circle cx="12" cy="19" r="1" />
+        </svg>
+        </button>
+        <div class="admin-cell price"><span class="cell-label"></span><button class="edit-btn" data-id="{{ banner.id }}" data-type="banner">EDIT</button></div>
+        <div class="admin-cell category"><span class="cell-label"></span>{{banner.sub_text}}</div>  
+        <div class="admin-cell category"><span class="cell-label"></span>{{banner.primary_text}}</div>    
+        <div class="admin-cell category"><span class="cell-label"></span>{{banner.primary_sub}}</div>    
+        <div class="admin-cell category"><span class="cell-label"></span>{{banner.description}}</div>
+
+        </div>
+    </div>
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="editForm">
+                {% csrf_token %}
+                <label for="subText">Sub Text:</label>
+                <input type="text" id="subText" name="subText" value="{{ banner.sub_text }}"><br>
+
+                <label for="primaryText">Primary Text:</label>
+                <input type="text" id="primaryText" name="primaryText" value="{{ banner.primary_text }}"><br>
+
+                <label for="primarySub">Primary Sub:</label>
+                <input type="text" id="primarySub" name="primarySub" value="{{ banner.primary_sub }}"><br>
+
+                <label for="description">Description:</label>
+                <textarea id="description" name="description">{{ banner.description }}</textarea><br>
+
+                <button type="button" class="edit-btnModal" data-id="{{ banner.id }}">Update</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+
+</div>
+
+<script src="{% static 'js/admin/dashboard.js' %}"></script>
+{% endblock content %}

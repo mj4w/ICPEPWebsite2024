@@ -1,0 +1,655 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}About Us | ICPEP.SE BulSU-MC{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/about_us.css' %}">
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+{% endblock  %}
+
+{% block content %}
+
+<!--############# DISREGARD THIS HTML CODE ######################-->
+<header style="display: none;">
+    <div class="container">
+        <input type="checkbox" id="nav-check">
+        <label for="nav-check" class="nav-toggler">
+            <span></span>
+        </label>
+
+        <a href="homepage.html" class="logo">
+            <img src="./homepage_images/icpep_logo2.png" width="60px" height="60px">
+            <p>ICPEP.SE BULSU-MC</p>
+        </a>
+
+        <nav class="navbar">
+            <ul>
+                <li><a href="event.html">Events</a></li>
+                <li><a href="resources_docu.html">Resources</a></li>
+                <li><a href="#">Membership</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+
+            <i class="fa-regular fa-user" id="user" onclick="toggleMenu()"></i>
+
+            <div class="sub-menu" id="subMenu">
+                <div class="sub-menu-info">
+                    <li>Juan A. Dele Cruz</li>
+                    <li>juan.delacruz@bulsu.edu.ph</li>
+                    <li><i class="fa-solid fa-right-from-bracket"></i> Logout</li>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<!--######################################################-->
+
+
+<main>
+
+    <div id="intro">
+        <!-- <div id="C">
+            <h1 id="cluster">About Us</h1>
+            <div id="background">
+                The students of ICPEP.SE at BULSU-MC are dedicated to academic excellence, fostering a culture of
+                continuous
+                learning through workshops, seminars, and collaborative inquiry. Their scholarly pursuits transcend
+
+
+            </div>
+
+        </div> -->
+
+    </div>
+    <!-- brief info start here -->
+    <section class="about">
+        <div class="container row">
+
+            <div class="about-content">
+                <h3 class="section-title">Who We Are</h3>
+                <p>The Institute of Computer Engineers of the Philippines BulSU - Meneses Campus shall and developed
+                    capable students to become leaders and direct the objectives of the organization and as well
+                    uphold the ideals of the Filipino students.
+                    <br><br>
+                    Formed in 2020, ICpEP.SE BulSU - Meneses Campus shall and has developed capable students to
+                    become leaders and direct the objectives of the organization and as well uphold the ideals of
+                    the Filipino students in attaining a national, scientific, mass-oriented and global competitive
+                    type of education.
+                </p>
+
+            </div>
+
+            <figure class="banner">
+                <img src="../static/img/bulsu_campuslogo.jpg" alt="about-us" width="650" height="350">
+            </figure>
+        </div>
+    </section>
+
+    <!-- VMG starts here -->
+    <section class="vmg">
+        <div class="container">
+            <h1 class="section-title">Vision, Mission and Goal</h1>
+
+            <div class="row">
+                <div class="vmg-box">
+                    <img src="{% static 'img/about_us/icon3.png' %}" alt="" id="logos">
+                    <h3>ICPEP MISSION</h3>
+                    <p>To become the leading online hub for computer engineering students, fostering innovation,
+                        collaboration, and excellence in the field of technology through accessible resources,
+                        mentorship, and community engagement.</p>
+                </div>
+                <div class="vmg-box">
+                    <img src="{% static 'img/about_us/icon2.png' %}" alt="" id="logos">
+                    <h3>ICPEP Vision</h3>
+                    <p>To become the leading online hub for computer engineering students, fostering innovation,
+                        collaboration, and excellence in the field of technology through accessible resources,
+                        mentorship, and community engagement.</p>
+                </div>
+                <div class="vmg-box">
+                    <img src="{% static 'img/about_us/icon1.png' %}" alt="" id="logos">
+                    <h3>ICPEP GOAL</h3>
+                    <p>To become the leading online hub for computer engineering students, fostering innovation,
+                        collaboration, and excellence in the field of technology through accessible resources,
+                        mentorship, and community engagement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- OFFICER starts here -->
+    <section class="officer">
+        <div class="container">
+            <h1 class="section-title">Meet the Executives</h1>
+            <p>Description here</p>
+
+            <div class="swiper officer-slider">
+                <div class="swiper-wrapper">
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/excutives pics/pres pic.jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Merie Jane Cagatin</h3>
+                            <span>ICPEP.SE BULSU-MC PRESIDENT</span>
+                            <!-- <p>"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa numquam officiis
+                                voluptatem ad obcaecati rem!"</p> -->
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/excutives pics/vp external.jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Sharmain D.L Atenciana</h3>
+                            <span>ICPEP.SE BULSU-MC VP-INTERNAL</span>
+                            <!-- <p>"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa numquam officiis
+                                voluptatem ad obcaecati rem!"</p> -->
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/excutives pics/roque picture.jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Lhia Roque</h3>
+                            <span>ICPEP.SE BULSU-MC VP-EXTERNAL</span>
+                            <!-- <p>"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa numquam officiis
+                                voluptatem ad obcaecati rem!"</p> -->
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/excutives pics/shanna.jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Shanna Marriel Santos</h3>
+                            <span>SECRETARY</span>
+                            <!-- <p>"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa numquam officiis
+                                voluptatem ad obcaecati rem!"</p> -->
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/excutives pics/nicole.jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Nicole Anne E. Mendoza</h3>
+                            <span>ICPEP.SE BULSU-MC ASSISTANT SECRETARY</span>
+                            <!-- <p>"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa numquam officiis
+                                voluptatem ad obcaecati rem!"</p> -->
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/excutives pics/geozy.jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Geoyz Ann T. Ablanida</h3>
+                            <span>TREASURER</span>
+                            <!-- <p>"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa numquam officiis
+                                voluptatem ad obcaecati rem!"</p> -->
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/excutives pics/la.jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Louisse Angelo Sapaula</h3>
+                            <span>ASSISTANT TREASURER</span>
+                            <!-- <p>"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa numquam officiis
+                                voluptatem ad obcaecati rem!"</p> -->
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/excutives pics/huey.jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Ronfred Huey R. Libunao</h3>
+                            <span>ICPEP.SE BULSU-MC AUDITOR</span>
+                            <!-- <p>"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa numquam officiis
+                                voluptatem ad obcaecati rem!"</p> -->
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/excutives pics/franz.jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Franz Mikhail B. Torres </h3>
+                            <span>ICPEP.SE BULSU-MC P.R.O</span>
+                            <!-- <p>"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa numquam officiis
+                                voluptatem ad obcaecati rem!"</p> -->
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <section class="officer">
+        <div class="container">
+            <h1 class="section-title">Meet the Multimedia Team</h1>
+            <p>Description here</p>
+
+            <div class="swiper officer-slider">
+                <div class="swiper-wrapper">
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/multimedia pics/lana galvez(head).jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Lana Mae P. Galvez</h3>
+                            <span>MULTIMEDIA HEAD</span>
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/multimedia pics/robert.jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Robert G. Delos Reyes</h3>
+                            <span> PROGRAMMING ASSISTANT</span>
+                          
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/multimedia pics/ed.jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Ephraim-ed B. Velasco </h3>
+                            <span> MULTIMEDIA ASSISTANT</span>
+                           
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/multimedia pics/charles.jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Charles Eduard DC. Español </h3>
+                            <span>MULTIMEIDA ASSISTANT</span>
+                  
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/multimedia pics/alex.jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Alessandra M. Dionisio </h3>
+                            <span>MULTIMEIDA ASSISTANT</span>
+                           
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/multimedia pics/aesep.jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Aesop Sean W. Flores </h3>
+                            <span>MULTIMEIDA ASSISTANT</span>
+                           
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <section class="officer">
+        <div class="container">
+            <h1 class="section-title">Meet The Programming Team </h1>
+            <p>Description here</p>
+
+            <div class="swiper officer-slider">
+                <div class="swiper-wrapper">
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/programing pics/marcel.jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Marcel James Aribal</h3>
+                            <span>PROGRAMMING HEAD</span>
+                          
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/programing pics/maxine.jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Mary Maxine S. Matias</h3>
+                            <span> PROGRAMMING ASSISTANT</span>
+                          
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/programing pics/kurt.jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Kurt Andrei A. Gutierrez</h3>
+                            <span> PROGRAMMING ASSISTANT</span>
+                          
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/programing pics/christian.jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Jhon Christian D. Cruz</h3>
+                            <span> PROGRAMMING ASSISTANT</span>
+                           
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <section class="officer">
+        <div class="container">
+            <h1 class="section-title">Meet The Writers Team </h1>
+            <p>Description here</p>
+
+            <div class="swiper officer-slider">
+                <div class="swiper-wrapper">
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/writers/arlyn(head).jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Arlyne Joy R. De Jesus</h3>
+                            <span>WRITERS HEAD</span>
+                           
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/writers/J-anne.jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>J-Ann C. Agbayani</h3>
+                            <span> MULTIMEDIA ASSISTANT</span>
+                           
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/writers/alliana.jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Allianna A. Cristobal</h3>
+                            <span>WRITERS ASSISTANT</span>
+                            
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/writers/crischel.jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Criscelle A. Magallon</h3>
+                            <span>WRITERS ASSISTANT</span>
+                            
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/writers/maryanne.jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Mary Antonnette C. Garcian</h3>
+                            <span>WRITERS ASSISTANT</span>
+                           
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <section class="officer">
+        <div class="container">
+            <h1 class="section-title">Meet The Writers Team </h1>
+            <p>Description here</p>
+
+            <div class="swiper officer-slider">
+                <div class="swiper-wrapper">
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/writers/arlyn(head).jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Jhommer DP.VALIENTE</h3>
+                            <span> HEAD</span>
+                          
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/writers/J-anne.jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>J-Ann C. Agbayani</h3>
+                            <span> MULTIMEDIA ASSISTANT</span>
+                           
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/writers/alliana.jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Allianna A. Cristobal</h3>
+                            <span>WRITERS ASSISTANT</span>
+                            
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/writers/crischel.jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Criscelle A. Magallon</h3>
+                            <span>WRITERS ASSISTANT</span>
+                          
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="officer-box box swiper-slide">
+                        <div class="officer-banner">
+                            <img src="assets/images/writers/maryanne.jpg" alt="">
+                        </div>
+                        <div class="officer-content">
+                            <h3>Mary Antonnette C. Garcian</h3>
+                            <span>WRITERS ASSISTANT</span>
+                            
+                            <div class="socials">
+                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+
+    </section>
+</main>
+
+
+{% endblock content %}
