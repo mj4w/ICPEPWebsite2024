@@ -31,7 +31,7 @@ class RegisterForm(UserCreationForm):
 
     class Meta: 
         model = User
-        fields = ('email', 'username', 'password1', 'password2', 'orgbox','year_section', 'date_expired')
+        fields = ('email', 'username', 'password1', 'password2', 'orgbox','year_section', 'sem_1','sem_2')
 
     def clean_username(self):
         username = self.cleaned_data.get('username')
@@ -50,12 +50,14 @@ class RegisterForm(UserCreationForm):
         return email
     
     def save(self, commit=True):
-        user = super().save(commit=False)
-        user.date_joined = user.date_joined or timezone.now()
-        user.date_expired = user.date_joined + timedelta(days=365)
-        if commit:
-            user.save()
-        return user
+            user = super().save(commit=False)
+            sem_1_duration = timezone.now() 
+            sem_2_duration = timezone.now() 
+            user.sem_1 = sem_1_duration
+            user.sem_2 = sem_2_duration
+            if commit:
+                user.save()
+            return user
         
         
 class LoginForm(AuthenticationForm):

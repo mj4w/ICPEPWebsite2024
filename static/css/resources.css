@@ -232,6 +232,15 @@ input[type="radio"]{
     transform: translateY(0);
     opacity: 1;
 }
+.g-drive{
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    background-color: #e9e8e8;
+    border-radius: 5px;
+}
 
 @media(max-width: 768px){
     /* .list{

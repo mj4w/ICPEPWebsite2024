@@ -23,6 +23,7 @@ urlpatterns = [
     
     path('admin-users/',views.admin_user, name='admin-user'),
     path('admin-highlights/',views.admin_highlights, name='admin-highlights'),
+    path('admin-register/', views.admin_register, name='admin-register'),
     
     path('approve-user/<int:user_id>/', views.approve_user, name='approve_user'),
     path('reject-user/<int:user_id>/', views.reject_user, name='reject_user'),
@@ -34,12 +35,13 @@ urlpatterns = [
     
     path('about-us/', views.about_us, name='about-us'),
     
-    path('subscription/', views.subscription, name='subscription'),
-    path('add-sub/<int:user_id>/',views.add_sub, name='add-sub'),
+    path('membership/', views.membership, name='membership'),
+    # path('add-sub/<int:user_id>/',views.add_sub, name='add-sub'),
     
     path('create-payment-intent/', views.create_payment_intent, name='create-payment-intent'),
     
     path('payment/', views.payment, name='payment'),
+    path('gpayment/', views.gpayment, name='gpayment'),
 ] 
 
 

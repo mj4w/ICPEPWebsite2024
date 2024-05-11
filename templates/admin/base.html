@@ -25,6 +25,7 @@
             {% url 'admin-user' as admin_user_url %}
             {% url 'admin-highlights' as admin_highlights_url %}
             {% url 'admin-dashboard' as admin_dashboard %}
+            {% url 'admin-register' as admin_register %}
             <li class="sidebar-list-item {% if request.path == admin_dashboard %}active{% endif %}">
                 <a href="{{admin_dashboard}}">
                 <span><i class="fa fa-home" aria-hidden="true"></i> Home</span>
@@ -38,6 +39,11 @@
             <li class="sidebar-list-item {% if request.path == admin_highlights_url %}active{% endif %}">
                 <a href="{{ admin_highlights_url }}">
                     <span><i class="fa fa-calendar" aria-hidden="true"></i> Highlights & Event</span>
+                </a>
+            </li>
+            <li class="sidebar-list-item {% if request.path == admin_register %}active{% endif %}">
+                <a href="{{ admin_register }}">
+                    <span><i class="fa-solid fa-plus"></i> Register</span>
                 </a>
             </li>
             </ul>

@@ -41,7 +41,7 @@
                 <ul>
                     <li><a href="{% url 'events' %}">Events</a></li>
                     <li><a href="{% url 'resources' %}">Resources</a></li>
-                    <li><a href="{% url 'subscription' %}">Subscription</a></li>
+                    <li><a href="{% url 'membership' %}">Membership</a></li>
                     <li><a href="{% url 'about-us' %}">About Us</a></li>
                 {% if request.user.is_authenticated %}
                 <i class="fa-regular fa-user" id="user" onclick="toggleMenu()"></i> 
@@ -94,31 +94,19 @@
         </div>
     </footer>
 
-<!-- SWIPER JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('.card:gt(2)').hide(); 
-
-        $('.view-more a').on('click', function(e) {
-            e.preventDefault();
-
-            $('.card:hidden').slice(0, 3).slideDown(); 
-        });
-    });
-</script>
-<!-- JavaScript -->
-<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-<script>
-    {% for message in messages %}
-        alertify.set('notifier', 'position', 'top-right');
-        {% if message.tags == 'error' %}
-            alertify.error('{{ message }}');
-        {% else %}
-            alertify.success('{{ message }}');
-        {% endif %}
-    {% endfor %}
-</script> 
+    <!-- SWIPER JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <!-- JavaScript -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script>
+        {% for message in messages %}
+            alertify.set('notifier', 'position', 'top-right');
+            {% if message.tags == 'error' %}
+                alertify.error('{{ message }}');
+            {% else %}
+                alertify.success('{{ message }}');
+            {% endif %}
+        {% endfor %}
+    </script>
 </body>
 </html>

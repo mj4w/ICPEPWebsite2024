@@ -66,9 +66,11 @@ def login_user(request):
             if form_login.is_valid():
                 user = authenticate(request, username=form_login.cleaned_data['username'], password=form_login.cleaned_data['password'])
                 if user is not None:
-                    if user.date_expired and user.date_expired <= timezone.now():
-                        messages.error(request, 'Your account has expired.')
-                        return redirect('subscription') 
+                    if user.sem_1 is not None and user.sem_2 is not None:
+                        current_time = timezone.now()
+                        if user.sem_1 <= current_time or user.sem_2 <= current_time:
+                            messages.error(request, 'Your account has expired or not activate yet.')
+                            return redirect('membership')
                     login(request, user)
                     
                     if user.username == "admin":
@@ -125,7 +127,7 @@ def register_user(request):
 def logout_user(request):
     logout(request)
     messages.success(request,'Thankyou For Visiting!')
-    return redirect(request.META.get('next', 'home'))
+    return redirect(request.META.get('HTTP_REFERER', 'home'))
 
 
 # coming soon
@@ -376,6 +378,14 @@ def delete_highlight(request, highlight_id):
     highlights.delete()
     return JsonResponse({'message': 'Highlight deleted successfully'}, status=204)
 
+
+def admin_register(request):
+    users = User.objects.all()
+    return render(request,'admin/register.html', {'users': users})
+
+
+
+
 def events(request):
     highlights = HighlightsEvent.objects.filter(date_from__gte=timezone.now()).order_by('-date_from')
     return render(request, 'events.html', {'highlights': highlights})
@@ -383,18 +393,40 @@ def events(request):
 def about_us(request):
     return render(request,'about_us.html')
 
-def subscription(request):
-    return render(request,'subscription.html')
-def add_sub(request, user_id):
-    add = get_object_or_404(User, id=user_id)
-    current_expiration = add.date_expired
-    if not current_expiration or current_expiration < timezone.now():
-        current_expiration = timezone.now()
-    new_expiration = current_expiration + timedelta(days=365)
-    add.date_expired = new_expiration
-    add.save()
-    return JsonResponse({'message': '+1 Year subscription'})
+def membership(request):
+    september = ""
+    january = ""
+    subscription_status = ""
+    date_now = timezone.now()
+    sub = 0
+    
+    if request.user.is_authenticated:
+        user_register = request.user.sem_1
+        if user_register and user_register > timezone.now():
+            # subscription_status = "Your registration is active."
+            sub = 1
+        else:
+            # subscription_status = "Your registration has expired. Renew now!"
+            sub = 2
 
+    current_month = datetime.now().month
+    if current_month in [1, 2, 3, 4, 5, 6, 7, 8]:
+        january = "This is the second semester. Register now!"
+    elif current_month in [9, 10, 11, 12]:
+        september = "This is the first semester. Register now!"
+
+    return render(request, 'membership.html', {'september': september, 'january': january, 'subscription_status': subscription_status, 'date_now': date_now,'sub':sub})
+
+
+# def add_sub(request, user_id):
+#     add = get_object_or_404(User, id=user_id)
+#     current_expiration = add.date_expired
+#     if not current_expiration or current_expiration < timezone.now():
+#         current_expiration = timezone.now()
+#     new_expiration = current_expiration + timedelta(days=365)
+#     add.date_expired = new_expiration
+#     add.save()
+#     return JsonResponse({'message': '+1 Year subscription'})
 
 import requests
 def create_payment_intent(request):
@@ -422,3 +454,7 @@ def create_payment_intent(request):
 
 def payment(request):
     return render(request, 'payment.html')
+
+def gpayment(request):
+    payment = Payment.objects.all()
+    return render(request, 'gcash_payment/gpayment.html',{'payment':payment})
