@@ -394,3 +394,31 @@ def add_sub(request, user_id):
     add.date_expired = new_expiration
     add.save()
     return JsonResponse({'message': '+1 Year subscription'})
+
+
+import requests
+def create_payment_intent(request):
+    url = "https://api.paymongo.com/v1/payment_intents"
+    payload = {
+        "data": {
+            "attributes": {
+                "amount": 5000,
+                "payment_method_allowed": ["gcash"],
+                "payment_method_options": {"card": {"request_three_d_secure": "any"}},
+                "currency": "PHP",
+                "capture_type": "automatic"
+            }
+        }
+    }
+    headers = {
+        "accept": "application/json",
+        "content-type": "application/json",
+        "authorization": "Basic c2tfdGVzdF9yYjRrWW1BTnBWVVJRclZHa1dXZk1uTk06"
+    }
+    response = requests.post(url, json=payload, headers=headers)
+    data = response.json()
+    
+    return JsonResponse(data)
+
+def payment(request):
+    return render(request, 'payment.html')

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <!-- Include Paymongo SDK or any other necessary scripts -->
+</head>
+<body>
+    <button id="payButton">Pay Now</button>
+
+    <script>
+        document.getElementById('payButton').addEventListener('click', function() {
+            // Make AJAX request to create payment intent
+            fetch('/create-payment-intent/')
+                .then(response => response.json())
+                .then(data => {
+                    const clientKey = data.payment_intent.data.attributes.client_key;
+                    const paymentIntentId = data.payment_intent.data.id;
+                    
+                    // Initialize Paymongo SDK with client key
+                    // Handle payment process using Paymongo SDK
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>

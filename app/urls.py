@@ -36,7 +36,12 @@ urlpatterns = [
     
     path('subscription/', views.subscription, name='subscription'),
     path('add-sub/<int:user_id>/',views.add_sub, name='add-sub'),
+    
+    path('create-payment-intent/', views.create_payment_intent, name='create-payment-intent'),
+    
+    path('payment/', views.payment, name='payment'),
 ] 
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
