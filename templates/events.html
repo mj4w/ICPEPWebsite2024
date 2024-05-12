@@ -17,7 +17,7 @@
                 <div class="month">{{ highlight.date_to|date:"M" }}</div>
             </div>
             <div class="event-right">
-                <h3 class="event-title">{{highlight.title}}</h3>
+                <a href="{% url 'highlights' highlight.id %}"><h3 class="event-title">{{highlight.title}}</h3></a>
                 <p class="event-desc">{{highlight.desc}}</p>
                 <p class="event-location"><i class="fa-solid fa-location-dot"></i>{{ highlight.location }}</p>
             </div>

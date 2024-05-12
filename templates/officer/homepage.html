@@ -1,0 +1,91 @@
+{% extends 'officer/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    body {
+        background-color: #ededed;
+        font-family: "Open Sans", sans-serif;
+    }
+    
+    h1 {
+        padding: 20px;
+        text-align: center;
+        font-size: 1.5em;
+    }
+    
+    nav {
+        width: 80%; 
+        max-width: 300px; 
+        margin: 40px auto;
+    }
+    
+    span {
+        padding: 20px;
+        background: #2d2f31;
+        color: white;
+        font-size: 1.2em;
+        font-variant: small-caps;
+        cursor: pointer;
+        display: block;
+    }
+    
+    span::after {
+        float: right;
+        right: 10%;
+        content: "+";
+    }
+    
+    .slide {
+        clear: both;
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        text-align: center;
+        transition: height 0.4s ease;
+    }
+    
+    .slide li {
+        padding: 15px 0; 
+        display: flex;
+        list-style: none;
+    }
+    
+    #touch {
+        position: absolute;
+        opacity: 0;
+        height: 0px;
+    }
+    
+    #touch:checked + .slide {
+        height: max-content; 
+    }
+    
+    @media screen and (max-width: 600px) {
+        #touch {
+            display: none;
+        }
+    
+        span::after {
+            content: "\f067"; 
+            font-family: FontAwesome; 
+        }
+    }
+      
+</style>
+<h1>Admin Office </h1>
+
+<nav>
+
+  <label for="touch"><span>Select Data</span></label>               
+
+  <ul class="slide">
+    <li><a href="{% url 'executive' %}">Executive Officers</a></li> 
+    <li><a href="{% url 'multimedia' %}">Multimedia Team</a></li>
+    <li><a href="{% url 'programming' %}">Programming Team</a></li>
+    <li><a href="{% url 'writers' %}">Writer's Team</a></li>
+    <li><a href="{% url 'documentation' %}">Documentation Team</a></li>
+    <li><a href="{% url 'esports' %}">Esport's Team</a></li>
+  </ul>
+
+</nav> 
+{% endblock content %}

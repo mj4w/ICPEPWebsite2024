@@ -1,0 +1,137 @@
+body {
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  text-align: center;
+  margin: 0 auto; 
+
+}
+
+
+.table-container {
+  margin-top: 20px; 
+  overflow-x: auto; 
+}
+
+.responsive-table {
+  list-style-type: none;
+  padding: 0;
+}
+
+.table-header {
+  background-color: #f2f2f2;
+}
+
+.table-row {
+  border-bottom: 1px solid #ddd;
+}
+
+.col {
+  display: inline-block;
+  vertical-align: top; 
+  width: 30%; 
+  padding: 10px 0;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.table-image {
+  max-width: 100px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.next-page-link {
+  display: flex;
+  justify-content:space-around; 
+  gap: 3;
+  font-size: 20px;
+}
+
+
+/* MODAL */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+    max-width: 500px;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .btn {
+    background-color: #F45C19;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    background-color: #D44B0E;
+  }
+  @media (max-width: 768px) {
+    .modal-content {
+      width: 90%;
+    }
+  }
+
+.executives-btn {
+    background-color: #F45C19;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.executives-btn:hover{
+    background-color: #D44B0E;
+}

@@ -1,0 +1,184 @@
+{% extends 'officer/base.html' %}
+{% load static %}
+{% block content %}
+<div id="myModal" class="modal">
+    <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Add an Esport's Team</h2>
+    <br>
+    <form id="imageForm" method="POST" enctype="multipart/form-data">
+        <h3>Head</h3>
+        <div class="form-group">
+            <label for="esports_head">Name</label>
+            <input type="text" id="esports_head" name="esports_head" class="form-control" placeholder="Enter Name" required>
+        </div>
+        <div class="form-group">
+            <label for="esports_image">Image</label>
+            <input type="file" id="esports_image" name="esports_image" class="form-control" required>
+        </div>
+        <h3>Esport's Assistant</h3>
+        <div class="form-group">
+            <label for="esports_asst_1_name">Assistant 1</label>
+            <input type="text" id="esports_asst_1_name" name="esports_asst_1_name" class="form-control" placeholder="Enter Name" required>
+        </div>
+        <div class="form-group">
+            <label for="esports_asst_1_image">Image</label>
+            <input type="file" id="esports_asst_1_image" name="esports_asst_1_image" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="esports_asst_1_role">Role</label>
+            <input type="text" id="esports_asst_1_role" name="esports_asst_1_role" class="form-control" placeholder="Type Esport's Assistant" required>
+        </div>
+       <hr>
+       <div class="form-group">
+            <label for="esports_asst_2_name">Assistant 2</label>
+            <input type="text" id="esports_asst_2_name" name="esports_asst_2_name" class="form-control" placeholder="Enter Name" required>
+        </div>
+        <div class="form-group">
+            <label for="esports_asst_2_image">Image</label>
+            <input type="file" id="esports_asst_2_image" name="esports_asst_2_image" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="esports_asst_2_role">Role</label>
+            <input type="text" id="esports_asst_2_role" name="esports_asst_2_role" class="form-control" placeholder="Type Esport's Assistant" required>
+        </div>
+        <hr>
+        <div class="form-group">
+             <label for="esports_asst_3_name">Assistant 3</label>
+             <input type="text" id="esports_asst_3_name" name="esports_asst_3_name" class="form-control" placeholder="Enter Name" required>
+         </div>
+         <div class="form-group">
+             <label for="esports_asst_3_image">Image</label>
+             <input type="file" id="esports_asst_3_image" name="esports_asst_3_image" class="form-control" required>
+         </div>
+         <div class="form-group">
+             <label for="esports_asst_3_role">Role</label>
+             <input type="text" id="esports_asst_3_role" name="esports_asst_3_role" class="form-control" placeholder="Type Esport's Assistant" required>
+         </div>
+         <hr>
+         <div class="form-group">
+              <label for="esports_asst_4_name">Assistant 4</label>
+              <input type="text" id="esports_asst_4_name" name="esports_asst_4_name" class="form-control" placeholder="Enter Name" required>
+          </div>
+          <div class="form-group">
+              <label for="esports_asst_4_image">Image</label>
+              <input type="file" id="esports_asst_4_image" name="esports_asst_4_image" class="form-control" required>
+          </div>
+          <div class="form-group">
+              <label for="esports_asst_4_role">Role</label>
+              <input type="text" id="esports_asst_4_role" name="esports_asst_4_role" class="form-control" placeholder="Type Esport's Assistant" required>
+          </div>
+          <hr>
+          <div class="form-group">
+               <label for="esports_asst_5_name">Assistant 5</label>
+               <input type="text" id="esports_asst_5_name" name="esports_asst_5_name" class="form-control" placeholder="Enter Name" required>
+           </div>
+           <div class="form-group">
+               <label for="esports_asst_5_image">Image</label>
+               <input type="file" id="esports_asst_5_image" name="esports_asst_5_image" class="form-control" required>
+           </div>
+           <div class="form-group">
+               <label for="esports_asst_5_role">Role</label>
+               <input type="text" id="esports_asst_5_role" name="esports_asst_5_role" class="form-control" placeholder="Type Esport's Assistant" required>
+           </div>
+           <hr>
+           <div class="form-group">
+                <label for="esports_asst_6_name">Assistant 6</label>
+                <input type="text" id="esports_asst_6_name" name="esports_asst_6_name" class="form-control" placeholder="Enter Name" required>
+            </div>
+            <div class="form-group">
+                <label for="esports_asst_6_image">Image</label>
+                <input type="file" id="esports_asst_6_image" name="esports_asst_6_image" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="esports_asst_6_role">Role</label>
+                <input type="text" id="esports_asst_6_role" name="esports_asst_6_role" class="form-control" placeholder="Type Esport's Assistant" required>
+            </div>
+            <hr>
+            <div class="form-group">
+                 <label for="esports_asst_7_name">Assistant 7</label>
+                 <input type="text" id="esports_asst_7_name" name="esports_asst_7_name" class="form-control" placeholder="Enter Name" required>
+             </div>
+             <div class="form-group">
+                 <label for="esports_asst_7_image">Image</label>
+                 <input type="file" id="esports_asst_7_image" name="esports_asst_7_image" class="form-control" required>
+             </div>
+             <div class="form-group">
+                 <label for="esports_asst_7_role">Role</label>
+                 <input type="text" id="esports_asst_7_role" name="esports_asst_7_role" class="form-control" placeholder="Type Esport's Assistant" required>
+             </div>
+             <hr>
+             <div class="form-group">
+                  <label for="esports_asst_8_name">Assistant 8</label>
+                  <input type="text" id="esports_asst_8_name" name="esports_asst_8_name" class="form-control" placeholder="Enter Name" required>
+              </div>
+              <div class="form-group">
+                  <label for="esports_asst_8_image">Image</label>
+                  <input type="file" id="esports_asst_8_image" name="esports_asst_8_image" class="form-control" required>
+              </div>
+              <div class="form-group">
+                  <label for="esports_asst_8_role">Role</label>
+                  <input type="text" id="esports_asst_8_role" name="esports_asst_8_role" class="form-control" placeholder="Type Esport's Assistant" required>
+              </div>
+              <hr>
+              <div class="form-group">
+                   <label for="esports_asst_9_name">Assistant 9</label>
+                   <input type="text" id="esports_asst_9_name" name="esports_asst_9_name" class="form-control" placeholder="Enter Name" required>
+               </div>
+               <div class="form-group">
+                   <label for="esports_asst_9_image">Image</label>
+                   <input type="file" id="esports_asst_9_image" name="esports_asst_9_image" class="form-control" required>
+               </div>
+               <div class="form-group">
+                   <label for="esports_asst_9_role">Role</label>
+                   <input type="text" id="esports_asst_9_role" name="esports_asst_9_role" class="form-control" placeholder="Type Esport's Assistant" required>
+               </div>
+               <hr>
+               <div class="form-group">
+                    <label for="esports_asst_10_name">Assistant 10</label>
+                    <input type="text" id="esports_asst_10_name" name="esports_asst_10_name" class="form-control" placeholder="Enter Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="esports_asst_10_image">Image</label>
+                    <input type="file" id="esports_asst_10_image" name="esports_asst_10_image" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="esports_asst_10_role">Role</label>
+                    <input type="text" id="esports_asst_10_role" name="esports_asst_10_role" class="form-control" placeholder="Type Esport's Assistant" required>
+                </div>
+            
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Esport's Team</h1>
+    <div class="table-container">
+        <button id="openModalBtn" class="executives-btn">Add Esport's Team</button>
+
+        <ul class="responsive-table">
+            <li class="table-header">
+                <div class="col col-1">Term</div>
+                <div class="col col-2">Name</div>
+                <div class="col col-3">Image</div>
+            </li>
+            <li class="table-row">
+                <div class="col col-1" data-label="Term">2023</div>
+                <div class="col col-2" data-label="Name">Sample Name</div>
+                <div class="col col-3" data-label="Image"><img src="{% static 'img/home-bg.jpg' %}" alt="" class="table-image"/></div>
+            </li>
+            <!-- Add more table rows as needed -->
+        </ul>
+    </div>
+    <div class="next-page-link">
+        <div>
+            <a href="{% url 'documentation' %}" ><i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

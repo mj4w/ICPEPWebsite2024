@@ -16,6 +16,8 @@ urlpatterns = [
     path('admin-dashboard/',views.admin_dashboard, name='admin-dashboard'),
     path('send-email/<int:event_id>/',views.send_highlight_email, name='send-email'),
     path('view-highlight/<int:highlight_id>/',views.view_highlight, name='view-highlight'),
+    path('view-user/<int:user_id>/',views.view_user, name='view-user'),
+    path('admin-logout/', views.admin_logout, name='admin-logout'),
     
     path('edit-banner/<int:id>/', views.edit_banner, name='edit-banner'),
     path('edit-about/<int:id>/', views.edit_about, name='edit-about'),
@@ -25,9 +27,22 @@ urlpatterns = [
     path('admin-highlights/',views.admin_highlights, name='admin-highlights'),
     path('admin-register/', views.admin_register, name='admin-register'),
     
+    path('home-officer/', views.homepage_officer, name='home-officer'),
+    path('executive/', views.executive, name='executive'),
+    path('documentation/', views.documentation, name='documentation'),
+    path('esports/', views.esports, name='esports'),
+    path('multimedia/', views.multimedia, name='multimedia'),
+    path('programming/', views.programming, name='programming'),
+    path('writers/', views.writers, name='writers'),
+    
     path('approve-user/<int:user_id>/', views.approve_user, name='approve_user'),
     path('reject-user/<int:user_id>/', views.reject_user, name='reject_user'),
     path('delete-user/<int:user_id>/', views.delete_user, name='delete_user'),
+    
+    path('sub-1-add/<int:user_id>/',views.sem_1_add, name='sub-1-add'),
+    path('sub-1-remove/<int:user_id>/',views.sem_1_remove, name='sub-1-remove'),
+    path('sub-2-add/<int:user_id>/',views.sem_2_add, name='sub-2-add'),
+    path('sub-2-remove/<int:user_id>/',views.sem_2_remove, name='sub-2-remove'),
     
     path('delete-highlight/<int:highlight_id>/', views.delete_highlight, name='delete_highlight'),
     

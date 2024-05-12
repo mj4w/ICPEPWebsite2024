@@ -1,0 +1,170 @@
+{% extends 'officer/base.html' %}
+{% load static %}
+{% block content %}
+<div id="myModal" class="modal">
+    <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Add an Executive Officer</h2>
+    <br>
+    <form id="imageForm" method="POST" enctype="multipart/form-data">
+        {{year}}
+        <h3>President</h3>
+        <div class="form-group">
+            <label for="president_name">Name</label>
+            <input type="text" id="president_name" name="president_name" class="form-control" placeholder="Enter Name" required>
+        </div>
+        <div class="form-group">
+            <label for="president_image">Image</label>
+            <input type="file" id="president_image" name="president_img" class="form-control" required>
+        </div>
+        <h3>VP INTERNAL</h3>
+        <div class="form-group">
+            <label for="vp_internal_name">Name</label>
+            <input type="text" id="vp_internal_name" name="vp_internal_name" class="form-control" placeholder="Enter Name" required>
+        </div>
+        <div class="form-group">
+            <label for="vp_internal_image">Image</label>
+            <input type="file" id="vp_internal_image" name="vp_internal_image" class="form-control" required>
+        </div>
+        <h3>VP EXTERNAL</h3>
+        <div class="form-group">
+            <label for="vp_external_name">Name</label>
+            <input type="text" id="vp_external_name" name="vp_external_name" class="form-control" placeholder="Enter Name" required>
+        </div>
+        <div class="form-group">
+            <label for="vp_external_image">Image</label>
+            <input type="file" id="vp_external_image" name="vp_external_image" class="form-control" required>
+        </div>
+        <h3>SECRETARY</h3>
+        <div class="form-group">
+            <label for="secretary">Name</label>
+            <input type="text" id="secretary" name="secretary_name" class="form-control" placeholder="Enter Name" required>
+        </div>
+        <div class="form-group">
+            <label for="secretary">Image</label>
+            <input type="file" id="secretary" name="secretary_image" class="form-control" required>
+        </div>
+        <h3>Asst. SECRETARY</h3>
+        <div class="form-group">
+            <label for="asst_secretary_name">Name</label>
+            <input type="text" id="asst_secretary_name" name="asst_secretary_name" class="form-control" placeholder="Enter Name" required>
+        </div>
+        <div class="form-group">
+            <label for="asst_secretary_image">Image</label>
+            <input type="file" id="asst_secretary_image" name="asst_secretary_image" class="form-control" required>
+        </div>
+        <h3>TREASURER</h3>
+        <div class="form-group">
+            <label for="treasurer_name">Name</label>
+            <input type="text" id="treasurer_name" name="treasurer_name" class="form-control" placeholder="Enter Name" required>
+        </div>
+        <div class="form-group">
+            <label for="treasurer_image">Image</label>
+            <input type="file" id="treasurer_image" name="treasurer_image" class="form-control" required>
+        </div>
+        <h3>Asst. TREASURER</h3>
+        <div class="form-group">
+            <label for="asst_treasurer_name">Name</label>
+            <input type="text" id="asst_treasurer_name" name="asst_treasurer_name" class="form-control" placeholder="Enter Name" required>
+        </div>
+        <div class="form-group">
+            <label for="asst_treasurer_image">Image</label>
+            <input type="file" id="asst_treasurer_image" name="asst_treasurer_image" class="form-control" required>
+        </div>
+        <h3>AUDITOR</h3>
+        <div class="form-group">
+            <label for="auditor">Name</label>
+            <input type="text" id="auditor" name="auditor_name" class="form-control" placeholder="Enter Name" required>
+        </div>
+        <div class="form-group">
+            <label for="auditor_image">Image</label>
+            <input type="file" id="auditor_image" name="auditor_image" class="form-control" required>
+        </div>
+        <h3>PRO</h3>
+        <div class="form-group">
+            <label for="pro_name">Name</label>
+            <input type="text" id="pro_name" name="pro_name" class="form-control" placeholder="Enter Name" required>
+        </div>
+        <div class="form-group">
+            <label for="pro_image">Image</label>
+            <input type="file" id="pro_image" name="pro_image" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Executive Officers </h1>
+    <div class="table-container">
+        <button id="openModalBtn" class="executives-btn">Add Executives Officer</button>
+
+        <ul class="responsive-table">
+            <li class="table-header">
+                <div class="col col-1">Term</div>
+                <div class="col col-2">Name</div>
+                <div class="col col-3">Image</div>
+            </li>
+            {% for executive in executives %}
+            <li class="table-row">
+                <div class="col col-1" data-label="Term">{{executive.year}}</div>
+                <div class="col col-2" data-label="Name">{{executive.president}}</div>
+                <div class="col col-3" data-label="Image"><img src="{{executive.president_img.image.url}}" alt="" class="table-image"/></div>
+            </li>
+            <li class="table-row">
+                <div class="col col-1" data-label="Term">{{executive.year}}</div>
+                <div class="col col-2" data-label="Name">{{executive.vp_internal}}</div>
+                <div class="col col-3" data-label="Image"><img src="{{executive.vp_internal_img.image.url}}" alt="" class="table-image"/></div>
+            </li>
+            <li class="table-row">
+                <div class="col col-1" data-label="Term">{{executive.year}}</div>
+                <div class="col col-2" data-label="Name">{{executive}}</div>
+                <div class="col col-3" data-label="Image"><img src="{% static 'img/home-bg.jpg' %}" alt="" class="table-image"/></div>
+            </li>
+            <li class="table-row">
+                <div class="col col-1" data-label="Term">{{executive.year}}</div>
+                <div class="col col-2" data-label="Name">{{executive}}</div>
+                <div class="col col-3" data-label="Image"><img src="{% static 'img/home-bg.jpg' %}" alt="" class="table-image"/></div>
+            </li>
+            <li class="table-row">
+                <div class="col col-1" data-label="Term">{{executive.year}}</div>
+                <div class="col col-2" data-label="Name">{{executive}}</div>
+                <div class="col col-3" data-label="Image"><img src="{% static 'img/home-bg.jpg' %}" alt="" class="table-image"/></div>
+            </li>
+            <li class="table-row">
+                <div class="col col-1" data-label="Term">{{executive.year}}</div>
+                <div class="col col-2" data-label="Name">{{executive}}</div>
+                <div class="col col-3" data-label="Image"><img src="{% static 'img/home-bg.jpg' %}" alt="" class="table-image"/></div>
+            </li>
+            <li class="table-row">
+                <div class="col col-1" data-label="Term">{{executive.year}}</div>
+                <div class="col col-2" data-label="Name">{{executive}}</div>
+                <div class="col col-3" data-label="Image"><img src="{% static 'img/home-bg.jpg' %}" alt="" class="table-image"/></div>
+            </li>
+            <li class="table-row">
+                <div class="col col-1" data-label="Term">{{executive.year}}</div>
+                <div class="col col-2" data-label="Name">{{executive}}</div>
+                <div class="col col-3" data-label="Image"><img src="{% static 'img/home-bg.jpg' %}" alt="" class="table-image"/></div>
+            </li>
+            <li class="table-row">
+                <div class="col col-1" data-label="Term">{{executive.year}}</div>
+                <div class="col col-2" data-label="Name">{{executive}}</div>
+                <div class="col col-3" data-label="Image"><img src="{% static 'img/home-bg.jpg' %}" alt="" class="table-image"/></div>
+            </li>
+            {% endfor %}
+            <!-- Add more table rows as needed -->
+        </ul>
+    </div>
+    <div class="next-page-link">
+        <div>
+            <a href="{% url 'home-officer' %}" ><i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+        <div>
+            <a href="{% url 'multimedia' %}" ><i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</div>
+
+    
+
+{% endblock content %}

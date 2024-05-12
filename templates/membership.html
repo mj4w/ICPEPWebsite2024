@@ -40,8 +40,8 @@
         <div class="events-card">
             <div class="event-left">
                 {% if request.user.is_authenticated %}
-                <div class="date">{{ request.user.sem_1|date:"Y" }}</div>
-                <div class="month">{{ request.user.sem_1|date:"M" }}</div>
+                <div class="date">{{ request.user.sem_2|date:"Y" }}</div>
+                <div class="month">{{ request.user.sem_2|date:"M" }}</div>
                 {% else %}
                 <div class="date">{{ date_now|date:"Y" }}</div>
                 <div class="month">{{ date_now|date:"M" }}</div>

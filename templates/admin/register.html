@@ -12,7 +12,7 @@
     </div>
     <div class="account-info-name">{{request.user}}</div>
     <button class="account-info-more">
-        <a href="{% url 'log-out' %}" style="color: #fff; text-decoration:none;">Log Out</a>
+        <a href="{% url 'admin-logout' %}" style="color: #fff; text-decoration:none;">Log Out</a>
     </button>
     </div>
 </div>
@@ -74,16 +74,15 @@
         <span class="cell-label">1st Sem:</span>
         <div class="admin-cell status-cell">
             <span class="cell-label">1st Sem:</span>
-            <i class="fa-solid fa-plus" style="margin-right: 20px;"></i>
-            <span id="" class="">{{user.sem_1}}</span>
-            <i class="fa-solid fa-minus" style="margin-left: 20px;" ></i>
-
+            <span style="margin-right: 20px;"><button class="sem-1-add" data-user-id="{{ user.id }}"><i class="fa-solid fa-plus"></i></button></span>
+            <span id="sem-1-{{ user.id }}" class="">{{user.sem_1}}</span>
+            <span style="margin-left: 20px;"><button class="sem-1-remove" data-user-id="{{ user.id }}"><i class="fa-solid fa-minus"></i></button></span>
         </div>             
         </div>
         <div class="admin-cell sales"><span class="cell-label">2nd Sem:</span>
-            <i class="fa-solid fa-plus" style="margin-right: 20px;"></i>
+            <span style="margin-right: 20px;"><button class="sem-2-add" data-user-id="{{ user.id }}"><i class="fa-solid fa-plus"></i></button></span>
              {{user.sem_2}}
-             <i class="fa-solid fa-minus" style="margin-left: 20px;" ></i>
+            <span style="margin-left: 20px;"><button class="sem-2-remove" data-user-id="{{ user.id }}"><i class="fa-solid fa-minus"></i></button></span>
         </div>
     </div>
     {% endfor %}
@@ -107,4 +106,111 @@
         });
     });
     </script>
+    
+    <script>
+        function sub_1_add(userId){
+            fetch(`/sub-1-add/${userId}/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    action: 'add'
+                })
+            })
+            .then(response => {
+                alertify.set('notifier', 'position', 'top-right');
+                if (response.ok) {
+                    console.log('Register Completed');
+                    alertify.success(`Register Completed Semester 1`);
+                    
+                } else {
+                    console.error('Failed to add user');
+                }
+                setTimeout(() => window.location.reload(), 3500);
+            })
+
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }  
+        function sub_1_remove(userId){
+            fetch(`/sub-1-remove/${userId}/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    action: 'remove'
+                })
+            })
+            .then(response => {
+                alertify.set('notifier', 'position', 'top-right');
+                if (response.ok) {
+                    console.log('Remove Register');
+                    alertify.success(`Remove Register Semester 1`);
+                } else {
+                    console.error('Failed to add user');
+                }
+                setTimeout(() => window.location.reload(), 3500);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }  
+        function sub_2_add(userId){
+            fetch(`/sub-2-add/${userId}/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    action: 'add'
+                })
+            })
+            .then(response => {
+                alertify.set('notifier', 'position', 'top-right');
+                if (response.ok) {
+                    console.log('Register Completed');
+                    alertify.success(`Register Completed Semester 2`);
+                } else {
+                    console.error('Failed to add user');
+                }
+                setTimeout(() => window.location.reload(), 3500);
+            })
+
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }  
+        function sub_2_remove(userId){
+            fetch(`/sub-2-remove/${userId}/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    action: 'add'
+                })
+            })
+            .then(response => {
+                alertify.set('notifier', 'position', 'top-right');
+                if (response.ok) {
+                    console.log('Remove Register');
+                    alertify.success(`Remove Register Semester 2`);
+                } else {
+                    console.error('Failed to add user');
+                }
+                setTimeout(() => window.location.reload(), 3500);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }  
+    </script>
+    <script src="{% static 'js/admin/register.js' %}"></script>
 {% endblock content %}

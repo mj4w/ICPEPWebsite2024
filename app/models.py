@@ -153,6 +153,7 @@ class ExecutiveOfficer(models.Model):
     pro = models.CharField(max_length=100, blank=True)
     pro_img = models.ImageField(upload_to='pro', blank=True)
     
+    
 class MultimediaTeam(models.Model):
     year = models.ForeignKey(OfficerYear, models.SET_NULL, blank=True, null=True)
     multimedia_head = models.CharField(max_length=100, blank=True)
@@ -178,6 +179,17 @@ class MultimediaTeam(models.Model):
     multimedia_assistant_8_img = models.ImageField(upload_to='multimedia_assistant', blank=True)
     multimedia_assistant_9_img = models.ImageField(upload_to='multimedia_assistant', blank=True)
     multimedia_assistant_10_img = models.ImageField(upload_to='multimedia_assistant', blank=True)
+    
+    role_assistant_1 = models.CharField(max_length=100, blank=True)
+    role_assistant_2 = models.CharField(max_length=100, blank=True)
+    role_assistant_3 = models.CharField(max_length=100, blank=True)
+    role_assistant_4 = models.CharField(max_length=100, blank=True)
+    role_assistant_5 = models.CharField(max_length=100, blank=True)
+    role_assistant_6 = models.CharField(max_length=100, blank=True)
+    role_assistant_7 = models.CharField(max_length=100, blank=True)
+    role_assistant_8 = models.CharField(max_length=100, blank=True)
+    role_assistant_9 = models.CharField(max_length=100, blank=True)
+    role_assistant_10 = models.CharField(max_length=100, blank=True)
     
 class ProgrammingTeam(models.Model):
     year = models.ForeignKey(OfficerYear, models.SET_NULL, blank=True, null=True)
@@ -205,6 +217,17 @@ class ProgrammingTeam(models.Model):
     programming_assistant_9_img = models.ImageField(upload_to='programming_assistant', blank=True)
     programming_assistant_10_img = models.ImageField(upload_to='programming_assistant', blank=True)
     
+    role_assistant_1 = models.CharField(max_length=100, blank=True)
+    role_assistant_2 = models.CharField(max_length=100, blank=True)
+    role_assistant_3 = models.CharField(max_length=100, blank=True)
+    role_assistant_4 = models.CharField(max_length=100, blank=True)
+    role_assistant_5 = models.CharField(max_length=100, blank=True)
+    role_assistant_6 = models.CharField(max_length=100, blank=True)
+    role_assistant_7 = models.CharField(max_length=100, blank=True)
+    role_assistant_8 = models.CharField(max_length=100, blank=True)
+    role_assistant_9 = models.CharField(max_length=100, blank=True)
+    role_assistant_10 = models.CharField(max_length=100, blank=True)
+    
 class WritersTeam(models.Model):
     year = models.ForeignKey(OfficerYear, models.SET_NULL, blank=True, null=True)
     writers_head = models.CharField(max_length=100, blank=True)
@@ -230,6 +253,17 @@ class WritersTeam(models.Model):
     writers_assistant_8_img = models.ImageField(upload_to='writers_assistant', blank=True)
     writers_assistant_9_img = models.ImageField(upload_to='writers_assistant', blank=True)
     writers_assistant_10_img = models.ImageField(upload_to='writers_assistant', blank=True)
+    
+    role_assistant_1 = models.CharField(max_length=100, blank=True)
+    role_assistant_2 = models.CharField(max_length=100, blank=True)
+    role_assistant_3 = models.CharField(max_length=100, blank=True)
+    role_assistant_4 = models.CharField(max_length=100, blank=True)
+    role_assistant_5 = models.CharField(max_length=100, blank=True)
+    role_assistant_6 = models.CharField(max_length=100, blank=True)
+    role_assistant_7 = models.CharField(max_length=100, blank=True)
+    role_assistant_8 = models.CharField(max_length=100, blank=True)
+    role_assistant_9 = models.CharField(max_length=100, blank=True)
+    role_assistant_10 = models.CharField(max_length=100, blank=True)
 
 class EsportsTeam(models.Model):
     year = models.ForeignKey(OfficerYear, models.SET_NULL, blank=True, null=True)
@@ -256,6 +290,17 @@ class EsportsTeam(models.Model):
     esport_assistant_8_img=  models.ImageField(upload_to='esport_assistant', blank=True)
     esport_assistant_9_img=  models.ImageField(upload_to='esport_assistant', blank=True)
     esport_assistant_10_img=  models.ImageField(upload_to='esport_assistant', blank=True)
+    
+    role_assistant_1 = models.CharField(max_length=100, blank=True)
+    role_assistant_2 = models.CharField(max_length=100, blank=True)
+    role_assistant_3 = models.CharField(max_length=100, blank=True)
+    role_assistant_4 = models.CharField(max_length=100, blank=True)
+    role_assistant_5 = models.CharField(max_length=100, blank=True)
+    role_assistant_6 = models.CharField(max_length=100, blank=True)
+    role_assistant_7 = models.CharField(max_length=100, blank=True)
+    role_assistant_8 = models.CharField(max_length=100, blank=True)
+    role_assistant_9 = models.CharField(max_length=100, blank=True)
+    role_assistant_10 = models.CharField(max_length=100, blank=True)
 
 class DocumentationTeam(models.Model):
     year = models.ForeignKey(OfficerYear, models.SET_NULL, blank=True, null=True)
@@ -282,3 +327,14 @@ class DocumentationTeam(models.Model):
     documentation_assistant_8_img = models.ImageField(upload_to='documentation_assistant', blank=True)
     documentation_assistant_9_img = models.ImageField(upload_to='documentation_assistant', blank=True)
     documentation_assistant_10_img = models.ImageField(upload_to='documentation_assistant', blank=True)
+    
+    role_assistant_1 = models.CharField(max_length=100, blank=True)
+    role_assistant_2 = models.CharField(max_length=100, blank=True)
+    role_assistant_3 = models.CharField(max_length=100, blank=True)
+    role_assistant_4 = models.CharField(max_length=100, blank=True)
+    role_assistant_5 = models.CharField(max_length=100, blank=True)
+    role_assistant_6 = models.CharField(max_length=100, blank=True)
+    role_assistant_7 = models.CharField(max_length=100, blank=True)
+    role_assistant_8 = models.CharField(max_length=100, blank=True)
+    role_assistant_9 = models.CharField(max_length=100, blank=True)
+    role_assistant_10 = models.CharField(max_length=100, blank=True)

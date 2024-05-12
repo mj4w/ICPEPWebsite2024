@@ -108,5 +108,16 @@
         </div>
     </div>
 </section>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.card:gt(2)').hide(); 
 
+        $('.view-more a').on('click', function(e) {
+            e.preventDefault();
+
+            $('.card:hidden').slice(0, 3).slideDown(); 
+        });
+    });
+</script>
 {% endblock content %}

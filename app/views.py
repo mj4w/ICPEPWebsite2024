@@ -20,7 +20,8 @@ from django.core.files.storage import FileSystemStorage
 from django.urls import reverse
 from django.core.files.storage import default_storage
 import os
-# Create your views here.
+
+
 def home(request):
     current_date = datetime.now().date()
     
@@ -73,9 +74,12 @@ def login_user(request):
                             return redirect('membership')
                     login(request, user)
                     
-                    if user.username == "admin":
-                        messages.success(request,'Welcome sa DARK WEB!')
+                    if user.is_superuser:
+                        messages.success(request, 'Welcome to the admin panel!')
                         return redirect('admin-user')
+                    elif user.is_staff:
+                        messages.success(request, 'Welcome to the admin panel!')
+                        return redirect('home-officer')
                     else:
                         next_url = request.GET.get('next', reverse('home')) 
                         messages.success(request, 'Successfully logged in!')
@@ -210,10 +214,10 @@ def edit_about(request, id):
             'description': about.description,
         }
         return JsonResponse(about_data)
-
+    
 @login_required
 def admin_user(request):
-    users = User.objects.all()
+    users = User.objects.filter(is_superuser=False, is_staff=False)
     if request.method == 'POST':
 
         # Get form data
@@ -257,7 +261,7 @@ def approve_user(request, user_id):
 
     subject = 'Account Approval Notification'
     login_url = settings.LOGIN_URL
-    message = f'Your account has been approved. You can now <a href="{login_url}">login to your account</a>.'
+    message = f'Your account has been activated. Please ensure that you have registered with our ICPEP organization. Once registered, you can proceed to log in. Please follow the link to access your account: <a href="{login_url}">Login to your account</a>.'
     recipient_list = [user.email]
     send_mail(subject, message, None, recipient_list, html_message=message)
 
@@ -281,7 +285,7 @@ def delete_user(request, user_id):
     user.delete()
     return JsonResponse({'message': 'User deleted successfully'}, status=204)
 
-
+@login_required
 def admin_highlights(request):
     if request.method == 'POST':
         url = request.POST.get('url')
@@ -351,7 +355,7 @@ def send_highlight_email(request, event_id):
             return JsonResponse({'success': True, 'message': 'Emails sent successfully'})
         except Exception as e:
             return JsonResponse({'success': False, 'message': str(e)})
-    
+@login_required    
 def view_highlight(request, highlight_id):
     from django.core.serializers.json import DjangoJSONEncoder
     highlight = get_object_or_404(HighlightsEvent, id=highlight_id)
@@ -371,6 +375,82 @@ def view_highlight(request, highlight_id):
     }
     return JsonResponse(highlight_data, encoder=DjangoJSONEncoder)
 
+@login_required    
+def view_user(request, user_id):
+    from django.core.serializers.json import DjangoJSONEncoder
+    user = get_object_or_404(User, id=user_id)
+    image_url = user.image.url if user.image else None
+    user_data = {
+        'username': user.username,
+        'email': user.email,
+        'orgbox': user.orgbox,
+        'is_active': user.is_active,
+        'image': image_url,
+        'date_joined': user.date_joined,
+        'sem_1': user.sem_1,
+        'sem_2': user.sem_2,
+    }
+    return JsonResponse(user_data, encoder=DjangoJSONEncoder)
+
+@login_required
+def homepage_officer(request):
+    return render(request,'officer/homepage.html')
+
+
+@login_required
+def executive(request):
+    year = OfficerYearForm()
+    executives = ExecutiveOfficer.objects.all()
+    if request.method == "POST":
+        year = OfficerYearForm(request.POST)
+        if year.is_valid():
+            year_instance = year.save()
+            ExecutiveOfficer.objects.create(
+                year = year_instance,
+                president = request.POST.get('president_name'),
+                president_img = request.FILES.get('president_image'),
+                vp_internal = request.POST.get('vp_internal_name'),
+                vp_internal_img = request.FILES.get('vp_internal_image'),
+                vp_external = request.POST.get('vp_external_name'),
+                vp_external_img = request.FILES.get('vp_external_image'),
+                secretary = request.POST.get('secretary'),
+                secretary_img = request.FILES.get('secretary_image'),
+                assistant_secretary = request.POST.get('asst_secretary_name'),
+                assistant_secretary_img = request.FILES.get('asst_secretary_image'),
+                treasurer = request.POST.get('treasurer_name'),
+                treasurer_img = request.FILES.get('treasurer_image'),
+                assistant_treasurer = request.POST.get('asst_treasurer_name'),
+                assistant_treasurer_img = request.FILES.get('asst_treasurer_image'),
+                auditor = request.POST.get('auditor_name'),
+                auditor_img = request.FILES.get('auditor_image'),
+                pro = request.POST.get('pro_name'),
+                pro_img = request.FILES.get('pro_image'),
+            )
+            messages.success(request, 'Executive Officers data saved successfully.')
+            return redirect('executive') 
+
+    messages.success(request,'Welcome to Executive Officer')
+    return render(request,'officer/executive.html', {'year': year,'executives': executives})
+
+@login_required
+def documentation(request):
+    return render(request,'officer/documentation.html')
+
+@login_required
+def esports(request):
+    return render(request,'officer/esports.html')
+
+@login_required
+def multimedia(request):
+    return render(request,'officer/multimedia.html')
+
+@login_required
+def programming(request):
+    return render(request,'officer/programming.html')
+
+@login_required
+def writers(request):
+    return render(request,'officer/writers.html')
 
 @require_http_methods(["DELETE"])
 def delete_highlight(request, highlight_id):
@@ -378,16 +458,19 @@ def delete_highlight(request, highlight_id):
     highlights.delete()
     return JsonResponse({'message': 'Highlight deleted successfully'}, status=204)
 
-
+@login_required
 def admin_register(request):
-    users = User.objects.all()
+    users = User.objects.filter(is_superuser=False, is_staff=False)
     return render(request,'admin/register.html', {'users': users})
 
-
+def admin_logout(request):
+    logout(request)
+    messages.success(request,'Thanks Admin!')
+    return redirect('home')
 
 
 def events(request):
-    highlights = HighlightsEvent.objects.filter(date_from__gte=timezone.now()).order_by('-date_from')
+    highlights = HighlightsEvent.objects.filter(date_from__gte=timezone.now()).order_by('date_from')
     return render(request, 'events.html', {'highlights': highlights})
 
 def about_us(request):
@@ -417,7 +500,43 @@ def membership(request):
 
     return render(request, 'membership.html', {'september': september, 'january': january, 'subscription_status': subscription_status, 'date_now': date_now,'sub':sub})
 
+def sem_1_add(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+    if user.sem_1 is None:
+        user.sem_1 = timezone.now() + timedelta(days=4*30) 
+    else:
+        user.sem_1 += timedelta(days=4*30)  
+    user.save()
+    return JsonResponse({'message': 'Sem 1 activated'})
 
+def sem_1_remove(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+    
+    if user.sem_1 is not None:
+        new_sem_date = user.sem_1 - timedelta(days=30 * 4)
+        user.sem_1 = new_sem_date
+        user.save()
+        
+    return JsonResponse({'message': 'Sem 1 date decreased by 4 months'})
+
+def sem_2_add(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+    if user.sem_2 is None:
+        user.sem_2 = timezone.now() + timedelta(days=8*30) 
+    else:
+        user.sem_2 += timedelta(days=8*30)
+    user.save()
+    return JsonResponse({'message': 'Sem 2 activated'})
+
+def sem_2_remove(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+    
+    if user.sem_2 is not None:
+        new_sem_date = user.sem_2 - timedelta(days=30 * 8)
+        user.sem_2 = new_sem_date
+        user.save()
+        
+    return JsonResponse({'message': 'Sem 1 date decreased by 4 months'})
 # def add_sub(request, user_id):
 #     add = get_object_or_404(User, id=user_id)
 #     current_expiration = add.date_expired
@@ -458,3 +577,4 @@ def payment(request):
 def gpayment(request):
     payment = Payment.objects.all()
     return render(request, 'gcash_payment/gpayment.html',{'payment':payment})
+
