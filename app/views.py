@@ -20,6 +20,7 @@ from django.core.files.storage import FileSystemStorage
 from django.urls import reverse
 from django.core.files.storage import default_storage
 import os
+from .decorators import restrict_non_superuser,restrict_non_staff
 
 
 def home(request):
@@ -67,18 +68,22 @@ def login_user(request):
             if form_login.is_valid():
                 user = authenticate(request, username=form_login.cleaned_data['username'], password=form_login.cleaned_data['password'])
                 if user is not None:
-                    if user.sem_1 is not None and user.sem_2 is not None:
-                        current_time = timezone.now()
-                        if user.sem_1 <= current_time or user.sem_2 <= current_time:
-                            messages.error(request, 'Your account has expired or not activate yet.')
+                    current_time = timezone.now()
+                    print(current_time)
+                    print(current_time <= user.sem_1)
+                    print(user.sem_2)
+                    if user.sem_1 and user.sem_2:
+                        if current_time <= user.sem_1 or current_time <= user.sem_2:
+                            login(request, user)
+                        else:
+                            messages.error(request, 'Your account has expired or not activated yet.')
                             return redirect('membership')
+
                     login(request, user)
-                    
                     if user.is_superuser:
                         messages.success(request, 'Welcome to the admin panel!')
                         return redirect('admin-user')
                     elif user.is_staff:
-                        messages.success(request, 'Welcome to the admin panel!')
                         return redirect('home-officer')
                     else:
                         next_url = request.GET.get('next', reverse('home')) 
@@ -106,10 +111,12 @@ def register_user(request):
                 user.is_active = False  # Set user registration as pending
                 user.save()
                 # login(request, user)
+                payment = Payment.objects.all()[0]
                 student_num = user.username
                 subject = 'Pending Registration: {}'.format(student_num)
                 message = render_to_string('email_template/email_template_register.html', {
                     'email': user.email,
+                    'payment_email': payment.email,
                 })
                 recipient_list = [user.email]
                 email = EmailMessage(subject, message, to=recipient_list)
@@ -142,6 +149,7 @@ def coming_soon(request):
 
 # admin page
 @login_required
+@restrict_non_superuser
 def admin_dashboard(request):
     if request.method == 'POST':
         if 'subText' in request.POST and 'primaryText' in request.POST and 'primarySub' in request.POST:
@@ -165,6 +173,7 @@ def admin_dashboard(request):
         return render(request, 'admin/dashboard.html', {'banners': banners, 'about_pics': about_pics})
 
 @login_required
+@restrict_non_superuser
 def edit_banner(request, id):
     banner = get_object_or_404(Banner, pk=id)
     if request.method == 'POST':
@@ -189,6 +198,7 @@ def edit_banner(request, id):
         }
         return JsonResponse(banner_data)
 @login_required
+@restrict_non_superuser
 def edit_about(request, id):
     about = get_object_or_404(AboutPic, pk=id)
     
@@ -216,6 +226,7 @@ def edit_about(request, id):
         return JsonResponse(about_data)
     
 @login_required
+@restrict_non_superuser
 def admin_user(request):
     users = User.objects.filter(is_superuser=False, is_staff=False)
     if request.method == 'POST':
@@ -261,7 +272,7 @@ def approve_user(request, user_id):
 
     subject = 'Account Approval Notification'
     login_url = settings.LOGIN_URL
-    message = f'Your account has been activated. Please ensure that you have registered with our ICPEP organization. Once registered, you can proceed to log in. Please follow the link to access your account: <a href="{login_url}">Login to your account</a>.'
+    message = f'Your account has been verified. Please ensure that you have registered with our ICPEP organization. Once registered, you can proceed to log in. Please follow the link to access your account: <a href="{login_url}">Login to your account</a>.'
     recipient_list = [user.email]
     send_mail(subject, message, None, recipient_list, html_message=message)
 
@@ -286,6 +297,7 @@ def delete_user(request, user_id):
     return JsonResponse({'message': 'User deleted successfully'}, status=204)
 
 @login_required
+@restrict_non_superuser
 def admin_highlights(request):
     if request.method == 'POST':
         url = request.POST.get('url')
@@ -355,7 +367,8 @@ def send_highlight_email(request, event_id):
             return JsonResponse({'success': True, 'message': 'Emails sent successfully'})
         except Exception as e:
             return JsonResponse({'success': False, 'message': str(e)})
-@login_required    
+@login_required  
+@restrict_non_superuser  
 def view_highlight(request, highlight_id):
     from django.core.serializers.json import DjangoJSONEncoder
     highlight = get_object_or_404(HighlightsEvent, id=highlight_id)
@@ -375,7 +388,8 @@ def view_highlight(request, highlight_id):
     }
     return JsonResponse(highlight_data, encoder=DjangoJSONEncoder)
 
-@login_required    
+@login_required 
+@restrict_non_superuser   
 def view_user(request, user_id):
     from django.core.serializers.json import DjangoJSONEncoder
     user = get_object_or_404(User, id=user_id)
@@ -392,12 +406,80 @@ def view_user(request, user_id):
     }
     return JsonResponse(user_data, encoder=DjangoJSONEncoder)
 
+@login_required 
+@restrict_non_superuser 
+def create_payment(request):
+    if request.method == "POST":
+        acct_name = request.POST.get('acct_name')
+        email = request.POST.get('email')
+        image = request.FILES.get('image')
+        Payment.objects.create(acct_name=acct_name, email=email, image=image)
+    payments = Payment.objects.all()
+    return render(request, 'admin/create_payment.html', {'payments': payments})
+
 @login_required
+@restrict_non_superuser
+def edit_payment(request, id):
+    payment = get_object_or_404(Payment, pk=id)
+    
+    if request.method == "POST":
+        image_file = request.FILES.get('image')
+        if image_file:
+            file_path = default_storage.save(image_file.name, image_file)
+            if payment.image:
+                default_storage.delete(payment.image.name)
+
+            payment.image = file_path
+        
+        payment.acct_name = request.POST.get('acct_name', payment.acct_name)
+        payment.email = request.POST.get('email', payment.email)
+        
+        payment.save() 
+        
+        return JsonResponse({'message': 'payment Updated Successfully'})
+    else:
+        payment_data = {
+            'image': payment.image.url if payment.image else '',  
+            'acct_name': payment.acct_name,
+            'email': payment.email,
+        }
+        return JsonResponse(payment_data)
+
+@login_required 
+@restrict_non_superuser 
+def vision_mission_goal(request):
+    return render(request, 'admin/vision_mission_goal.html')
+
+@login_required 
+@restrict_non_superuser 
+def about_us_context(request):
+    return render(request, 'admin/about_us_context.html')
+
+@login_required
+@restrict_non_staff
 def homepage_officer(request):
     return render(request,'officer/homepage.html')
 
 
 @login_required
+@restrict_non_staff
+def executive_banner(request):
+    year = OfficerYearForm()
+    banners = ExecutiveBanner.objects.all()
+    if request.method == "POST":
+        year = OfficerYearForm(request.POST)
+        if year.is_valid():
+            year_instance = year.save()
+            ExecutiveBanner.objects.create(
+                year = year_instance,
+                image = request.FILES.get('banner_image'),
+            )
+            messages.success(request, 'Executive Banner data saved successfully.')
+            return redirect('executive-banner') 
+
+    return render(request,'officer/banners.html', {'year': year,'banners':banners})
+@login_required
+@restrict_non_staff
 def executive(request):
     year = OfficerYearForm()
     executives = ExecutiveOfficer.objects.all()
@@ -413,7 +495,7 @@ def executive(request):
                 vp_internal_img = request.FILES.get('vp_internal_image'),
                 vp_external = request.POST.get('vp_external_name'),
                 vp_external_img = request.FILES.get('vp_external_image'),
-                secretary = request.POST.get('secretary'),
+                secretary = request.POST.get('secretary_name'),
                 secretary_img = request.FILES.get('secretary_image'),
                 assistant_secretary = request.POST.get('asst_secretary_name'),
                 assistant_secretary_img = request.FILES.get('asst_secretary_image'),
@@ -429,28 +511,201 @@ def executive(request):
             messages.success(request, 'Executive Officers data saved successfully.')
             return redirect('executive') 
 
-    messages.success(request,'Welcome to Executive Officer')
-    return render(request,'officer/executive.html', {'year': year,'executives': executives})
+    return render(request,'officer/executive.html', {'year': year,'executives':executives})
 
 @login_required
+@restrict_non_staff
 def documentation(request):
-    return render(request,'officer/documentation.html')
+    year = OfficerYearForm()
+    documentations = DocumentationTeam.objects.all()
+    if request.method == "POST":
+        year = OfficerYearForm(request.POST)
+        if year.is_valid():
+            year_instance = year.save(commit=False)
+            year_instance.save()
+            documentation_head = request.POST.get('documentation_head')
+            documentation_head_img = request.FILES.get('documentation_image')
+            assistants = []
+            for i in range(1, 11):  
+                assistant_name = request.POST.get(f'documentation_asst_{i}_name')
+                assistant_img = request.FILES.get(f'documentation_asst_{i}_image')
+                if assistant_name:
+                    assistant, _ = DocumentationAssistant.objects.get_or_create(name=assistant_name)
+                    if assistant_img:
+                        assistant.image = assistant_img
+                        assistant.save()
+                    assistants.append(assistant)
+            documentation_instance = DocumentationTeam.objects.create(
+                year=year_instance,
+                documentation_head=documentation_head,
+                documentation_head_img=documentation_head_img
+            )
+            documentation_instance.assistants.set(assistants)
+            messages.success(request, 'Documentation Team data saved successfully.')
+            return redirect('documentation') 
+    return render(request,'officer/documentation.html', {'documentations':documentations,'year':year})
 
 @login_required
+@restrict_non_staff
 def esports(request):
-    return render(request,'officer/esports.html')
+    year = OfficerYearForm()
+    esports = EsportsTeam.objects.all()
+    if request.method == "POST":
+        year = OfficerYearForm(request.POST)
+        if year.is_valid():
+            year_instance = year.save(commit=False)
+            year_instance.save()
+            esports_head = request.POST.get('esports_head')
+            esports_head_img = request.FILES.get('esports_image')
+            assistants = []
+            for i in range(1, 11):  
+                assistant_name = request.POST.get(f'esports_asst_{i}_name')
+                assistant_img = request.FILES.get(f'esports_asst_{i}_image')
+                if assistant_name:
+                    assistant, _ = EsportsAssistant.objects.get_or_create(name=assistant_name)
+                    if assistant_img:
+                        assistant.image = assistant_img
+                        assistant.save()
+                    assistants.append(assistant)
+            esports_instance = EsportsTeam.objects.create(
+                year=year_instance,
+                esports_head=esports_head,
+                esports_head_img=esports_head_img
+            )
+            esports_instance.assistants.set(assistants)
+            messages.success(request, 'Esports Team data saved successfully.')
+            return redirect('esports') 
+    return render(request,'officer/esports.html',{'esportss':esports,'year':year})
 
 @login_required
+@restrict_non_staff
 def multimedia(request):
-    return render(request,'officer/multimedia.html')
+    year = OfficerYearForm()
+    multimedias = MultimediaTeam.objects.all()
+    if request.method == "POST":
+        year = OfficerYearForm(request.POST)
+        if year.is_valid():
+            year_instance = year.save(commit=False)
+            year_instance.save()
+            multimedia_head = request.POST.get('multimedia_head')
+            multimedia_head_img = request.FILES.get('multimedia_image')
+            assistants = []
+            for i in range(1, 11):  
+                assistant_name = request.POST.get(f'multimedia_asst_{i}_name')
+                assistant_img = request.FILES.get(f'multimedia_asst_{i}_image')
+                if assistant_name:
+                    assistant, _ = MultimediaAssistant.objects.get_or_create(name=assistant_name)
+                    if assistant_img:
+                        assistant.image = assistant_img
+                        assistant.save()
+                    assistants.append(assistant)
+            multimedia_instance = MultimediaTeam.objects.create(
+                year=year_instance,
+                multimedia_head=multimedia_head,
+                multimedia_head_img=multimedia_head_img
+            )
+            multimedia_instance.assistants.set(assistants)
+            messages.success(request, 'Multimedia Team data saved successfully.')
+            return redirect('multimedia') 
+    return render(request,'officer/multimedia.html',{'multimedias':multimedias,'year':year})
 
 @login_required
+@restrict_non_staff
 def programming(request):
-    return render(request,'officer/programming.html')
+    year = OfficerYearForm()
+    programmings = ProgrammingTeam.objects.all()
+    if request.method == "POST":
+        year = OfficerYearForm(request.POST)
+        if year.is_valid():
+            year_instance = year.save(commit=False)
+            year_instance.save()
+            programming_head = request.POST.get('programming_head')
+            programming_head_img = request.FILES.get('programming_image')
+            assistants = []
+            for i in range(1, 11):  
+                assistant_name = request.POST.get(f'programming_asst_{i}_name')
+                assistant_img = request.FILES.get(f'programming_asst_{i}_image')
+                if assistant_name:
+                    assistant, _ = ProgrammingAssistant.objects.get_or_create(name=assistant_name)
+                    if assistant_img:
+                        assistant.image = assistant_img
+                        assistant.save()
+                    assistants.append(assistant)
+            programming_instance = ProgrammingTeam.objects.create(
+                year=year_instance,
+                programming_head=programming_head,
+                programming_head_img=programming_head_img
+            )
+            programming_instance.assistants.set(assistants)
+            messages.success(request, 'Programming Team data saved successfully.')
+            return redirect('programming') 
+    return render(request,'officer/programming.html',{'programmings': programmings, 'year':year})
 
 @login_required
+@restrict_non_staff
 def writers(request):
-    return render(request,'officer/writers.html')
+    year = OfficerYearForm()
+    writers = WritersTeam.objects.all()
+    if request.method == "POST":
+        year = OfficerYearForm(request.POST)
+        if year.is_valid():
+            year_instance = year.save(commit=False)
+            year_instance.save()
+            writers_head = request.POST.get('writers_head')
+            writers_head_img = request.FILES.get('writers_image')
+            assistants = []
+            for i in range(1, 11):  
+                assistant_name = request.POST.get(f'writers_asst_{i}_name')
+                assistant_img = request.FILES.get(f'writers_asst_{i}_image')
+                if assistant_name:
+                    assistant, _ = WritersAssistant.objects.get_or_create(name=assistant_name)
+                    if assistant_img:
+                        assistant.image = assistant_img
+                        assistant.save()
+                    assistants.append(assistant)
+            writers_instance = WritersTeam.objects.create(
+                year=year_instance,
+                writers_head=writers_head,
+                writers_head_img=writers_head_img
+            )
+            writers_instance.assistants.set(assistants)
+            messages.success(request, 'Writers Team data saved successfully.')
+            return redirect('writers') 
+    return render(request,'officer/writers.html',{'writers': writers, 'year':year})
+
+@login_required
+@restrict_non_staff
+def social_media(request):
+    year = OfficerYearForm()
+    socials = SocialMediaTeam.objects.all()
+    if request.method == "POST":
+        year = OfficerYearForm(request.POST)
+        if year.is_valid():
+            year_instance = year.save(commit=False)
+            year_instance.save()
+            social_media_head = request.POST.get('social_media_head')
+            social_media_head_img = request.FILES.get('social_media_image')
+            assistants = []
+            for i in range(1, 11):  
+                assistant_name = request.POST.get(f'social_assist_{i}_name')
+                assistant_img = request.FILES.get(f'social_assist_{i}_image')
+                if assistant_name:
+                    assistant, _ = SocialMediaAssistant.objects.get_or_create(name=assistant_name)
+                    if assistant_img:
+                        assistant.image = assistant_img
+                        assistant.save()
+                    assistants.append(assistant)
+            social_media_instance = SocialMediaTeam.objects.create(
+                year=year_instance,
+                social_media_head=social_media_head,
+                social_media_head_img=social_media_head_img
+            )
+            social_media_instance.assistants.set(assistants)
+            messages.success(request, 'Social Media Team data saved successfully.')
+            return redirect('social-media') 
+    return render(request,'officer/social_media.html',{'socials': socials, 'year':year})
+
+
 
 @require_http_methods(["DELETE"])
 def delete_highlight(request, highlight_id):
@@ -473,8 +728,83 @@ def events(request):
     highlights = HighlightsEvent.objects.filter(date_from__gte=timezone.now()).order_by('date_from')
     return render(request, 'events.html', {'highlights': highlights})
 
+def get_all_years():
+    """
+    Utility function to get all unique years from different models.
+    """
+    years = set()
+
+    executive_years = ExecutiveOfficer.objects.values_list('year__year', flat=True).distinct()
+    years.update(executive_years)
+    
+    multimedia_years = MultimediaTeam.objects.values_list('year__year', flat=True).distinct()
+    years.update(multimedia_years)
+
+    programming_years = ProgrammingTeam.objects.values_list('year__year', flat=True).distinct()
+    years.update(programming_years)
+    
+    
+    return sorted(years)
+
+
 def about_us(request):
-    return render(request,'about_us.html')
+    all_years = get_all_years()
+    print(all_years)
+
+    selected_year = request.GET.get('selected_year')
+
+    latest_year = OfficerYear.objects.latest('year')
+
+    latest_executives = ExecutiveOfficer.objects.filter(year__year=selected_year).first()
+
+    latest_programming = ProgrammingTeam.objects.filter(year__year=selected_year).first()
+    assistants_prog = latest_programming.assistants.all() if latest_programming else []
+
+    latest_documentation = DocumentationTeam.objects.filter(year__year=selected_year).first()
+    assistants_docu = latest_documentation.assistants.all() if latest_documentation else []
+
+    latest_writers = WritersTeam.objects.filter(year__year=selected_year).first()
+    assistants_writers = latest_writers.assistants.all() if latest_writers else []
+
+    latest_multimedia = MultimediaTeam.objects.filter(year__year=selected_year).first()
+    assistants_multimedia = latest_multimedia.assistants.all() if latest_multimedia else []
+
+    latest_esports = EsportsTeam.objects.filter(year__year=selected_year).first()
+    assistants_esports = latest_esports.assistants.all() if latest_esports else []
+    
+    latest_social_media = SocialMediaTeam.objects.filter(year__year=selected_year).first()
+    assistants_social_media = latest_social_media.assistants.all() if latest_social_media else []
+    
+    latest_banner = ExecutiveBanner.objects.filter(year__year=selected_year).first()
+
+    context = {
+        'year': latest_year,
+        'latest_executives': latest_executives,
+        'latest_documentation': latest_documentation,
+        'assistants_docu': assistants_docu,
+        
+        'latest_programming': latest_programming,
+        'assistants_prog': assistants_prog,
+        
+        'latest_writers': latest_writers,
+        'assistants_writers': assistants_writers,
+        
+        'latest_multimedia': latest_multimedia,
+        'assistants_multimedia': assistants_multimedia,
+        
+        'latest_esports': latest_esports,
+        'assistants_esports': assistants_esports,
+        
+        'latest_social_media': latest_social_media,
+        'assistants_social_media': assistants_social_media,
+        
+        'all_years': all_years, 
+        
+        'latest_banner':latest_banner,
+    }
+    
+    return render(request, 'about_us.html', context)
+
 
 def membership(request):
     september = ""
@@ -507,6 +837,13 @@ def sem_1_add(request, user_id):
     else:
         user.sem_1 += timedelta(days=4*30)  
     user.save()
+    login = settings.LOGIN_URL
+    formatted_sem_1_date = user.sem_1.strftime('%B %d, %Y')
+    subject = 'Account Registration Completed'
+    message = f'Your account has been registered valid until {formatted_sem_1_date}. <a href={login}>Login Now</a>'
+    recipient_list = [user.email]
+    send_mail(subject, message, None, recipient_list, html_message=message)
+    
     return JsonResponse({'message': 'Sem 1 activated'})
 
 def sem_1_remove(request, user_id):
@@ -516,7 +853,7 @@ def sem_1_remove(request, user_id):
         new_sem_date = user.sem_1 - timedelta(days=30 * 4)
         user.sem_1 = new_sem_date
         user.save()
-        
+          
     return JsonResponse({'message': 'Sem 1 date decreased by 4 months'})
 
 def sem_2_add(request, user_id):
@@ -526,6 +863,14 @@ def sem_2_add(request, user_id):
     else:
         user.sem_2 += timedelta(days=8*30)
     user.save()
+    
+    login = settings.LOGIN_URL
+    formatted_sem_2_date = user.sem_2.strftime('%B %d, %Y')
+    subject = 'Account Registration Completed'
+    message = f'Your account has been registered valid until {formatted_sem_2_date}. <a href={login}>Login Now</a>'
+    recipient_list = [user.email]
+    send_mail(subject, message, None, recipient_list, html_message=message)
+    
     return JsonResponse({'message': 'Sem 2 activated'})
 
 def sem_2_remove(request, user_id):
@@ -575,6 +920,6 @@ def payment(request):
     return render(request, 'payment.html')
 
 def gpayment(request):
-    payment = Payment.objects.all()
+    payment = Payment.objects.all()[0]
     return render(request, 'gcash_payment/gpayment.html',{'payment':payment})
 

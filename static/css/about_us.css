@@ -28,7 +28,6 @@ body {
     align-items: center;
     text-align: center;
     justify-content: center;
-    background-image: url("../img//about_us/bg-about-us.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: contain;
@@ -310,4 +309,33 @@ body {
 
 
 
+}
+
+
+.form-container {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.form-container select {
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    outline: none;
+}
+
+.form-container button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #F45C19;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+    background-color: #F45C19;
 }

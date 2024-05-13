@@ -32,7 +32,7 @@
     span::after {
         float: right;
         right: 10%;
-        content: "+";
+        content: "Logout";
     }
     
     .slide {
@@ -76,15 +76,20 @@
 
 <nav>
 
-  <label for="touch"><span>Select Data</span></label>               
+  <label for="touch"><a href="{% url 'admin-logout' %}">
+    <span>Select Data</span>
+  </a></label>               
 
   <ul class="slide">
+    <li><a href="{% url 'executive-banner' %}">Executive Banner</a></li>
     <li><a href="{% url 'executive' %}">Executive Officers</a></li> 
     <li><a href="{% url 'multimedia' %}">Multimedia Team</a></li>
     <li><a href="{% url 'programming' %}">Programming Team</a></li>
     <li><a href="{% url 'writers' %}">Writer's Team</a></li>
     <li><a href="{% url 'documentation' %}">Documentation Team</a></li>
     <li><a href="{% url 'esports' %}">Esport's Team</a></li>
+    <li><a href="{% url 'social-media' %}">Social Media Team</a></li>
+ 
   </ul>
 
 </nav> 

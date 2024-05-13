@@ -7,6 +7,8 @@
     <h2>Add an Documentation Team</h2>
     <br>
     <form id="imageForm" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{year}}
         <h3>Head</h3>
         <div class="form-group">
             <label for="documentation_head">Name</label>
@@ -25,10 +27,6 @@
             <label for="documentation_asst_1_image">Image</label>
             <input type="file" id="documentation_asst_1_image" name="documentation_asst_1_image" class="form-control" required>
         </div>
-        <div class="form-group">
-            <label for="documentation_asst_1_role">Role</label>
-            <input type="text" id="documentation_asst_1_role" name="documentation_asst_1_role" class="form-control" placeholder="Type Documentation Assistant" required>
-        </div>
        <hr>
        <div class="form-group">
             <label for="documentation_asst_2_name">Assistant 2</label>
@@ -37,10 +35,6 @@
         <div class="form-group">
             <label for="documentation_asst_2_image">Image</label>
             <input type="file" id="documentation_asst_2_image" name="documentation_asst_2_image" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label for="documentation_asst_2_role">Role</label>
-            <input type="text" id="documentation_asst_2_role" name="documentation_asst_2_role" class="form-control" placeholder="Type Documentation Assistant" required>
         </div>
         <hr>
         <div class="form-group">
@@ -51,100 +45,68 @@
              <label for="documentation_asst_3_image">Image</label>
              <input type="file" id="documentation_asst_3_image" name="documentation_asst_3_image" class="form-control" required>
          </div>
-         <div class="form-group">
-             <label for="documentation_asst_3_role">Role</label>
-             <input type="text" id="documentation_asst_3_role" name="documentation_asst_3_role" class="form-control" placeholder="Type Documentation Assistant" required>
-         </div>
          <hr>
          <div class="form-group">
               <label for="documentation_asst_4_name">Assistant 4</label>
-              <input type="text" id="documentation_asst_4_name" name="documentation_asst_4_name" class="form-control" placeholder="Enter Name" required>
+              <input type="text" id="documentation_asst_4_name" name="documentation_asst_4_name" class="form-control" placeholder="Enter Name">
           </div>
           <div class="form-group">
               <label for="documentation_asst_4_image">Image</label>
-              <input type="file" id="documentation_asst_4_image" name="documentation_asst_4_image" class="form-control" required>
-          </div>
-          <div class="form-group">
-              <label for="documentation_asst_4_role">Role</label>
-              <input type="text" id="documentation_asst_4_role" name="documentation_asst_4_role" class="form-control" placeholder="Type Documentation Assistant" required>
+              <input type="file" id="documentation_asst_4_image" name="documentation_asst_4_image" class="form-control">
           </div>
           <hr>
           <div class="form-group">
                <label for="documentation_asst_5_name">Assistant 5</label>
-               <input type="text" id="documentation_asst_5_name" name="documentation_asst_5_name" class="form-control" placeholder="Enter Name" required>
+               <input type="text" id="documentation_asst_5_name" name="documentation_asst_5_name" class="form-control" placeholder="Enter Name">
            </div>
            <div class="form-group">
                <label for="documentation_asst_5_image">Image</label>
-               <input type="file" id="documentation_asst_5_image" name="documentation_asst_5_image" class="form-control" required>
-           </div>
-           <div class="form-group">
-               <label for="documentation_asst_5_role">Role</label>
-               <input type="text" id="documentation_asst_5_role" name="documentation_asst_5_role" class="form-control" placeholder="Type Documentation Assistant" required>
+               <input type="file" id="documentation_asst_5_image" name="documentation_asst_5_image" class="form-control">
            </div>
            <hr>
            <div class="form-group">
                 <label for="documentation_asst_6_name">Assistant 6</label>
-                <input type="text" id="documentation_asst_6_name" name="documentation_asst_6_name" class="form-control" placeholder="Enter Name" required>
+                <input type="text" id="documentation_asst_6_name" name="documentation_asst_6_name" class="form-control" placeholder="Enter Name">
             </div>
             <div class="form-group">
                 <label for="documentation_asst_6_image">Image</label>
-                <input type="file" id="documentation_asst_6_image" name="documentation_asst_6_image" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="documentation_asst_6_role">Role</label>
-                <input type="text" id="documentation_asst_6_role" name="documentation_asst_6_role" class="form-control" placeholder="Type Documentation Assistant" required>
+                <input type="file" id="documentation_asst_6_image" name="documentation_asst_6_image" class="form-control">
             </div>
             <hr>
             <div class="form-group">
                  <label for="documentation_asst_7_name">Assistant 7</label>
-                 <input type="text" id="documentation_asst_7_name" name="documentation_asst_7_name" class="form-control" placeholder="Enter Name" required>
+                 <input type="text" id="documentation_asst_7_name" name="documentation_asst_7_name" class="form-control" placeholder="Enter Name">
              </div>
              <div class="form-group">
                  <label for="documentation_asst_7_image">Image</label>
-                 <input type="file" id="documentation_asst_7_image" name="documentation_asst_7_image" class="form-control" required>
-             </div>
-             <div class="form-group">
-                 <label for="documentation_asst_7_role">Role</label>
-                 <input type="text" id="documentation_asst_7_role" name="documentation_asst_7_role" class="form-control" placeholder="Type Documentation Assistant" required>
+                 <input type="file" id="documentation_asst_7_image" name="documentation_asst_7_image" class="form-control">
              </div>
              <hr>
              <div class="form-group">
                   <label for="documentation_asst_8_name">Assistant 8</label>
-                  <input type="text" id="documentation_asst_8_name" name="documentation_asst_8_name" class="form-control" placeholder="Enter Name" required>
+                  <input type="text" id="documentation_asst_8_name" name="documentation_asst_8_name" class="form-control" placeholder="Enter Name">
               </div>
               <div class="form-group">
                   <label for="documentation_asst_8_image">Image</label>
-                  <input type="file" id="documentation_asst_8_image" name="documentation_asst_8_image" class="form-control" required>
-              </div>
-              <div class="form-group">
-                  <label for="documentation_asst_8_role">Role</label>
-                  <input type="text" id="documentation_asst_8_role" name="documentation_asst_8_role" class="form-control" placeholder="Type Documentation Assistant" required>
+                  <input type="file" id="documentation_asst_8_image" name="documentation_asst_8_image" class="form-control">
               </div>
               <hr>
               <div class="form-group">
                    <label for="documentation_asst_9_name">Assistant 9</label>
-                   <input type="text" id="documentation_asst_9_name" name="documentation_asst_9_name" class="form-control" placeholder="Enter Name" required>
+                   <input type="text" id="documentation_asst_9_name" name="documentation_asst_9_name" class="form-control" placeholder="Enter Name">
                </div>
                <div class="form-group">
                    <label for="documentation_asst_9_image">Image</label>
-                   <input type="file" id="documentation_asst_9_image" name="documentation_asst_9_image" class="form-control" required>
-               </div>
-               <div class="form-group">
-                   <label for="documentation_asst_9_role">Role</label>
-                   <input type="text" id="documentation_asst_9_role" name="documentation_asst_9_role" class="form-control" placeholder="Type Documentation Assistant" required>
+                   <input type="file" id="documentation_asst_9_image" name="documentation_asst_9_image" class="form-control">
                </div>
                <hr>
                <div class="form-group">
                     <label for="documentation_asst_10_name">Assistant 10</label>
-                    <input type="text" id="documentation_asst_10_name" name="documentation_asst_10_name" class="form-control" placeholder="Enter Name" required>
+                    <input type="text" id="documentation_asst_10_name" name="documentation_asst_10_name" class="form-control" placeholder="Enter Name">
                 </div>
                 <div class="form-group">
                     <label for="documentation_asst_10_image">Image</label>
-                    <input type="file" id="documentation_asst_10_image" name="documentation_asst_10_image" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="documentation_asst_10_role">Role</label>
-                    <input type="text" id="documentation_asst_10_role" name="documentation_asst_10_role" class="form-control" placeholder="Type Documentation Assistant" required>
+                    <input type="file" id="documentation_asst_10_image" name="documentation_asst_10_image" class="form-control">
                 </div>
             
         <button type="submit" class="btn btn-primary">Submit</button>
@@ -163,11 +125,30 @@
                 <div class="col col-2">Name</div>
                 <div class="col col-3">Image</div>
             </li>
+            {% for documentation in documentations %}
             <li class="table-row">
-                <div class="col col-1" data-label="Term">2023</div>
-                <div class="col col-2" data-label="Name">Sample Name</div>
-                <div class="col col-3" data-label="Image"><img src="{% static 'img/home-bg.jpg' %}" alt="" class="table-image"/></div>
+                <div class="col col-1" data-label="Term">{{documentation.year}}</div>
+                <div class="col col-2" data-label="Name">{{documentation.documentation_head}}</div>
+                {% if documentation.documentation_head_img %}
+                <div class="col col-3" data-label="Image"><img src="{{documentation.documentation_head_img.url}}" alt="" class="table-image"/></div>
+                {% else %}
+                <div class="col col-3" data-label="Image"><img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="" class="table-image"/></div>
+                {% endif %}
             </li>
+            {% for assistant in documentation.assistants.all %}
+            <li class="table-row">
+                <div class="col col-1" data-label="Term">{{documentation.year}}</div>
+                <div class="col col-2" data-label="Name">{{assistant.name}}</div>
+                {% if assistant.image %}
+                <div class="col col-3" data-label="Image"><img src="{{ assistant.image.url }}" alt="{{ assistant.name }}" class="table-image"/></div>
+                {% else %}
+                <div class="col col-3" data-label="Image"><img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="{{ assistant.name }}" class="table-image"/></div>
+                {% endif %}
+
+            </li>
+            {% endfor %}
+        
+            {% endfor %}
             <!-- Add more table rows as needed -->
         </ul>
     </div>

@@ -128,9 +128,9 @@
         <div class="admin-cell status-cell">
             <span class="cell-label">Status:</span>
             {% if user.is_active == True %}
-            <span id="user-status-{{user.id}}" class="status active">Active </span>
+            <span id="user-status-{{user.id}}" class="status active">Verified </span>
             {% else %}
-            <span id="user-status-{{user.id}}" class="status">Not Active</span>
+            <span id="user-status-{{user.id}}" class="status">Not Verified</span>
             {% endif %}
 
         </div>             

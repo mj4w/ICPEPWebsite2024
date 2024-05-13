@@ -48,6 +48,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'app.middleware.RestrictAdminMiddleware',
+    'app.middleware.RegistrationExpirationMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'ICPEP.urls'

@@ -1,0 +1,165 @@
+{% extends 'officer/base.html' %}
+{% load static %}
+{% block content %}
+<div id="myModal" class="modal">
+    <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Add an Social Media Team</h2>
+    <br>
+    <form id="imageForm" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{year}}
+        <h3>Head</h3>
+        <div class="form-group">
+            <label for="social_media_head">Name</label>
+            <input type="text" id="social_media_head" name="social_media_head" class="form-control" placeholder="Enter Name" >
+        </div>
+        <div class="form-group">
+            <label for="social_media_image">Image</label>
+            <input type="file" id="social_media_image" name="social_media_image" class="form-control">
+        </div>
+        <h3>Social Media Assistant</h3>
+        <div class="form-group">
+            <label for="social_assist_1_name">Assistant 1</label>
+            <input type="text" id="social_assist_1_name" name="social_assist_1_name" class="form-control" placeholder="Enter Name" required>
+        </div>
+        <div class="form-group">
+            <label for="social_assist_1_image">Image</label>
+            <input type="file" id="social_assist_1_image" name="social_assist_1_image" class="form-control" required>
+        </div>
+       <hr>
+       <div class="form-group">
+            <label for="social_assist_2_name">Assistant 2</label>
+            <input type="text" id="social_assist_2_name" name="social_assist_2_name" class="form-control" placeholder="Enter Name" required>
+        </div>
+        <div class="form-group">
+            <label for="social_assist_2_image">Image</label>
+            <input type="file" id="social_assist_2_image" name="social_assist_2_image" class="form-control" required>
+        </div>
+        <hr>
+        <div class="form-group">
+             <label for="social_assist_3_name">Assistant 3</label>
+             <input type="text" id="social_assist_3_name" name="social_assist_3_name" class="form-control" placeholder="Enter Name" required>
+         </div>
+         <div class="form-group">
+             <label for="social_assist_3_image">Image</label>
+             <input type="file" id="social_assist_3_image" name="social_assist_3_image" class="form-control" required>
+         </div>
+         <hr>
+         <div class="form-group">
+              <label for="social_assist_4_name">Assistant 4</label>
+              <input type="text" id="social_assist_4_name" name="social_assist_4_name" class="form-control" placeholder="Enter Name" >
+          </div>
+          <div class="form-group">
+              <label for="social_assist_4_image">Image</label>
+              <input type="file" id="social_assist_4_image" name="social_assist_4_image" class="form-control" >
+          </div>
+          <hr>
+          <div class="form-group">
+               <label for="social_assist_5_name">Assistant 5</label>
+               <input type="text" id="social_assist_5_name" name="social_assist_5_name" class="form-control" placeholder="Enter Name" >
+           </div>
+           <div class="form-group">
+               <label for="social_assist_5_image">Image</label>
+               <input type="file" id="social_assist_5_image" name="social_assist_5_image" class="form-control" >
+           </div>
+           <hr>
+           <div class="form-group">
+                <label for="social_assist_6_name">Assistant 6</label>
+                <input type="text" id="social_assist_6_name" name="social_assist_6_name" class="form-control" placeholder="Enter Name" >
+            </div>
+            <div class="form-group">
+                <label for="social_assist_6_image">Image</label>
+                <input type="file" id="social_assist_6_image" name="social_assist_6_image" class="form-control" >
+            </div>
+            <hr>
+            <div class="form-group">
+                 <label for="social_assist_7_name">Assistant 7</label>
+                 <input type="text" id="social_assist_7_name" name="social_assist_7_name" class="form-control" placeholder="Enter Name" >
+             </div>
+             <div class="form-group">
+                 <label for="social_assist_7_image">Image</label>
+                 <input type="file" id="social_assist_7_image" name="social_assist_7_image" class="form-control" >
+             </div>
+             <hr>
+             <div class="form-group">
+                  <label for="social_assist_8_name">Assistant 8</label>
+                  <input type="text" id="social_assist_8_name" name="social_assist_8_name" class="form-control" placeholder="Enter Name" >
+              </div>
+              <div class="form-group">
+                  <label for="social_assist_8_image">Image</label>
+                  <input type="file" id="social_assist_8_image" name="social_assist_8_image" class="form-control" >
+              </div>
+              <hr>
+              <div class="form-group">
+                   <label for="social_assist_9_name">Assistant 9</label>
+                   <input type="text" id="social_assist_9_name" name="social_assist_9_name" class="form-control" placeholder="Enter Name" >
+               </div>
+               <div class="form-group">
+                   <label for="social_assist_9_image">Image</label>
+                   <input type="file" id="social_assist_9_image" name="social_assist_9_image" class="form-control" >
+               </div>
+               <hr>
+               <div class="form-group">
+                    <label for="social_assist_10_name">Assistant 10</label>
+                    <input type="text" id="social_assist_10_name" name="social_assist_10_name" class="form-control" placeholder="Enter Name" >
+                </div>
+                <div class="form-group">
+                    <label for="social_assist_10_image">Image</label>
+                    <input type="file" id="social_assist_10_image" name="social_assist_10_image" class="form-control" >
+                </div>
+            
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Social Media Team</h1>
+    <div class="table-container">
+        <button id="openModalBtn" class="executives-btn">Add Social Media Team</button>
+
+        <ul class="responsive-table">
+            <li class="table-header">
+                <div class="col col-1">Term</div>
+                <div class="col col-2">Name</div>
+                <div class="col col-3">Image</div>
+            </li>
+            {% for social in socials %}
+            <li class="table-row">
+                <div class="col col-1" data-label="Term">{{social.year}}</div>
+                <div class="col col-2" data-label="Name">{{social.social_media_head}}</div>
+                {% if social.social_media_head_img %}
+                <div class="col col-3" data-label="Image"><img src="{{social.social_media_head_img.url}}" alt="" class="table-image"/></div>
+                {% else %}
+                <div class="col col-3" data-label="Image"><img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="" class="table-image"/></div>
+                {% endif %}
+            </li>
+            {% for assistant in social.assistants.all %}
+            <li class="table-row">
+                <div class="col col-1" data-label="Term">{{social.year}}</div>
+                <div class="col col-2" data-label="Name">{{assistant.name}}</div>
+                {% if assistant.image %}
+                <div class="col col-3" data-label="Image"><img src="{{ assistant.image.url }}" alt="{{ assistant.name }}" class="table-image"/></div>
+                {% else %}
+                <div class="col col-3" data-label="Image"><img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="{{ assistant.name }}" class="table-image"/></div>
+                {% endif %}
+
+            </li>
+            {% endfor %}
+        
+            {% endfor %}
+            <!-- Add more table rows as needed -->
+        </ul>
+    </div>
+    <div class="next-page-link">
+        <div>
+            <a href="{% url 'esports' %}" ><i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

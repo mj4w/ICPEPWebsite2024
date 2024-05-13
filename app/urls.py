@@ -27,6 +27,11 @@ urlpatterns = [
     path('admin-highlights/',views.admin_highlights, name='admin-highlights'),
     path('admin-register/', views.admin_register, name='admin-register'),
     
+    path('admin-create-payment/',views.create_payment, name='admin-create-payment'),
+    path('edit-payment/<int:id>/', views.edit_payment, name='edit-payment'),
+    path('admin-vision-mission-goal/', views.vision_mission_goal, name='admin-vision-mission-goal'),
+    path('admin-about-us-context/', views.about_us_context, name='admin-about-us-context'),
+    
     path('home-officer/', views.homepage_officer, name='home-officer'),
     path('executive/', views.executive, name='executive'),
     path('documentation/', views.documentation, name='documentation'),
@@ -34,6 +39,8 @@ urlpatterns = [
     path('multimedia/', views.multimedia, name='multimedia'),
     path('programming/', views.programming, name='programming'),
     path('writers/', views.writers, name='writers'),
+    path('social-media/', views.social_media, name='social-media'),
+    path('executive-banner/', views.executive_banner, name='executive-banner'),
     
     path('approve-user/<int:user_id>/', views.approve_user, name='approve_user'),
     path('reject-user/<int:user_id>/', views.reject_user, name='reject_user'),

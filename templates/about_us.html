@@ -47,7 +47,7 @@
 
 <main>
 
-    <div id="intro">
+    <div id="intro" style="background-image: url('{{ latest_banner.image.url }}');">
         <!-- <div id="C">
             <h1 id="cluster">About Us</h1>
             <div id="background">
@@ -113,155 +113,164 @@
     <!-- OFFICER starts here -->
     <section class="officer">
         <div class="container">
+            <div class="section-title">
+                <div class="form-container">
+                    <form method="GET">
+                        <select name="selected_year" id="selected_year">
+                            <option value="">Select a year</option>
+                            {% for year in all_years %}
+                                <option value="{{ year }}">{{ year }}</option>
+                            {% endfor %}
+                        </select>
+                        <button type="submit">Go</button>
+                    </form>
+                </div>
+            </div>
+
+            <h1 class="section-title">{{latest_executives.year}}</h1>
             <h1 class="section-title">Meet the Executives</h1>
-            <p>Description here</p>
+            <!-- <p>Description here</p> -->
 
             <div class="swiper officer-slider">
                 <div class="swiper-wrapper">
+                
                     <div class="officer-box box swiper-slide">
+                        {% if latest_executives.president_img %}
                         <div class="officer-banner">
-                            <img src="assets/images/excutives pics/pres pic.jpg" alt="">
+                            <img src="{{latest_executives.president_img.url}}" alt="">
                         </div>
+                        {% else %}
+                        <div class="officer-banner">
+                            <img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="">
+                        </div>
+                        {% endif %}
                         <div class="officer-content">
-                            <h3>Merie Jane Cagatin</h3>
+                            <h3>{{latest_executives.president}}</h3>
                             <span>ICPEP.SE BULSU-MC PRESIDENT</span>
-                            <!-- <p>"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa numquam officiis
-                                voluptatem ad obcaecati rem!"</p> -->
-                            <!-- <div class="socials">
-                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
-                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
-                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
-                            </div> -->
                         </div>
                     </div>
+            
                     <div class="officer-box box swiper-slide">
+                        {% if latest_executives.vp_internal_img %}
                         <div class="officer-banner">
-                            <img src="assets/images/excutives pics/vp external.jpg" alt="">
+                            <img src="{{latest_executives.vp_internal_img.url}}" alt="">
                         </div>
+                        {% else %}
+                        <div class="officer-banner">
+                            <img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="">
+                        </div>
+                        {% endif %}
                         <div class="officer-content">
-                            <h3>Sharmain D.L Atenciana</h3>
+                            <h3>{{latest_executives.vp_internal}}</h3>
                             <span>ICPEP.SE BULSU-MC VP-INTERNAL</span>
-                            <!-- <p>"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa numquam officiis
-                                voluptatem ad obcaecati rem!"</p> -->
-                            <!-- <div class="socials">
-                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
-                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
-                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
-                            </div> -->
                         </div>
                     </div>
                     <div class="officer-box box swiper-slide">
+                        {% if latest_executives.vp_external_img %}
                         <div class="officer-banner">
-                            <img src="assets/images/excutives pics/roque picture.jpg" alt="">
+                            <img src="{{latest_executives.vp_external_img.url}}" alt="">
                         </div>
+                        {% else %}
+                        <div class="officer-banner">
+                            <img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="">
+                        </div>
+                        {% endif %}
                         <div class="officer-content">
-                            <h3>Lhia Roque</h3>
+                            <h3>{{latest_executives.vp_external}}</h3>
                             <span>ICPEP.SE BULSU-MC VP-EXTERNAL</span>
-                            <!-- <p>"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa numquam officiis
-                                voluptatem ad obcaecati rem!"</p> -->
-                            <!-- <div class="socials">
-                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
-                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
-                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
-                            </div> -->
                         </div>
                     </div>
                     <div class="officer-box box swiper-slide">
+                        {% if latest_executives.secretary_img %}
                         <div class="officer-banner">
-                            <img src="assets/images/excutives pics/shanna.jpg" alt="">
+                            <img src="{{latest_executives.secretary_img.url}}" alt="">
                         </div>
+                        {% else %}
+                        <div class="officer-banner">
+                            <img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="">
+                        </div>
+                        {% endif %}
                         <div class="officer-content">
-                            <h3>Shanna Marriel Santos</h3>
+                            <h3>{{latest_executives.secretary}}</h3>
                             <span>SECRETARY</span>
-                            <!-- <p>"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa numquam officiis
-                                voluptatem ad obcaecati rem!"</p> -->
-                            <!-- <div class="socials">
-                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
-                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
-                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
-                            </div> -->
                         </div>
                     </div>
                     <div class="officer-box box swiper-slide">
+                        {% if latest_executives.assistant_secretary_img %}
                         <div class="officer-banner">
-                            <img src="assets/images/excutives pics/nicole.jpg" alt="">
+                            <img src="{{latest_executives.assistant_secretary_img.url}}" alt="">
                         </div>
+                        {% else %}
+                        <div class="officer-banner">
+                            <img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="">
+                        </div>
+                        {% endif %}
                         <div class="officer-content">
-                            <h3>Nicole Anne E. Mendoza</h3>
+                            <h3>{{latest_executives.assistant_secretary}}</h3>
                             <span>ICPEP.SE BULSU-MC ASSISTANT SECRETARY</span>
-                            <!-- <p>"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa numquam officiis
-                                voluptatem ad obcaecati rem!"</p> -->
-                            <!-- <div class="socials">
-                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
-                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
-                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
-                            </div> -->
                         </div>
                     </div>
                     <div class="officer-box box swiper-slide">
+                        {% if latest_executives.treasurer_img %}
                         <div class="officer-banner">
-                            <img src="assets/images/excutives pics/geozy.jpg" alt="">
+                            <img src="{{latest_executives.treasurer_img.url}}" alt="">
                         </div>
+                        {% else %}
+                        <div class="officer-banner">
+                            <img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="">
+                        </div>
+                        {% endif %}
                         <div class="officer-content">
-                            <h3>Geoyz Ann T. Ablanida</h3>
+                            <h3>{{latest_executives.treasurer}}</h3>
                             <span>TREASURER</span>
-                            <!-- <p>"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa numquam officiis
-                                voluptatem ad obcaecati rem!"</p> -->
-                            <!-- <div class="socials">
-                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
-                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
-                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
-                            </div> -->
                         </div>
                     </div>
                     <div class="officer-box box swiper-slide">
+                        {% if latest_executives.assistant_treasurer_img %}
                         <div class="officer-banner">
-                            <img src="assets/images/excutives pics/la.jpg" alt="">
+                            <img src="{{latest_executives.assistant_treasurer_img.url}}" alt="">
                         </div>
+                        {% else %}
+                        <div class="officer-banner">
+                            <img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="">
+                        </div>
+                        {% endif %}
                         <div class="officer-content">
-                            <h3>Louisse Angelo Sapaula</h3>
+                            <h3>{{latest_executives.assistant_treasurer}}</h3>
                             <span>ASSISTANT TREASURER</span>
-                            <!-- <p>"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa numquam officiis
-                                voluptatem ad obcaecati rem!"</p> -->
-                            <!-- <div class="socials">
-                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
-                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
-                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
-                            </div> -->
                         </div>
                     </div>
                     <div class="officer-box box swiper-slide">
+                        {% if latest_executives.auditor_img %}
                         <div class="officer-banner">
-                            <img src="assets/images/excutives pics/huey.jpg" alt="">
+                            <img src="{{latest_executives.auditor_img.url}}" alt="">
                         </div>
+                        {% else %}
+                        <div class="officer-banner">
+                            <img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="">
+                        </div>
+                        {% endif %}
                         <div class="officer-content">
-                            <h3>Ronfred Huey R. Libunao</h3>
+                            <h3>{{latest_executives.auditor}}</h3>
                             <span>ICPEP.SE BULSU-MC AUDITOR</span>
-                            <!-- <p>"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa numquam officiis
-                                voluptatem ad obcaecati rem!"</p> -->
-                            <!-- <div class="socials">
-                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
-                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
-                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
-                            </div> -->
                         </div>
                     </div>
                     <div class="officer-box box swiper-slide">
+                        {% if latest_executives.pro_img %}
                         <div class="officer-banner">
-                            <img src="assets/images/excutives pics/franz.jpg" alt="">
+                            <img src="{{latest_executives.pro_img.url}}" alt="">
                         </div>
+                        {% else %}
+                        <div class="officer-banner">
+                            <img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="">
+                        </div>
+                        {% endif %}
                         <div class="officer-content">
-                            <h3>Franz Mikhail B. Torres </h3>
+                            <h3>{{latest_executives.pro}}</h3>
                             <span>ICPEP.SE BULSU-MC P.R.O</span>
-                            <!-- <p>"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa numquam officiis
-                                voluptatem ad obcaecati rem!"</p> -->
-                            <!-- <div class="socials">
-                                <a href="#" id="social"><i class="fa-brands fa-facebook"></i></a>
-                                <a href="#" id="social"><i class="fa-brands fa-github"></i></a>
-                                <a href="#" id="social"><i class="fa-brands fa-square-instagram"></i></a>
-                            </div> -->
                         </div>
                     </div>
+
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
@@ -272,30 +281,48 @@
 
     <section class="officer">
         <div class="container">
+            {% if latest_multimedia %}
             <h1 class="section-title">Meet the Multimedia Team</h1>
-            <p>Description here</p>
+            <!-- <p>Description here</p> -->
 
             <div class="swiper officer-slider">
                 <div class="swiper-wrapper">
+              
                     <div class="officer-box box swiper-slide">
+                        {% if latest_multimedia.multimedia_head_img %}
                         <div class="officer-banner">
-                            <img src="assets/images/multimedia pics/lana galvez(head).jpg" alt="">
+                            <img src="{{latest_multimedia.multimedia_head_img.url}}" alt="">
                         </div>
+                        {% else %}
+                        <div class="officer-banner">
+                            <img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="">
+                        </div>
+                        {% endif %}
                         <div class="officer-content">
-                            <h3>Lana Mae P. Galvez</h3>
+                            <h3>{{ latest_multimedia.multimedia_head}}</h3>
                             <span>MULTIMEDIA HEAD</span>
                         </div>
                     </div>
+      
+                    {% for assistant in assistants_multimedia %}
                     <div class="officer-box box swiper-slide">
+                        {% if assistant.image %}
                         <div class="officer-banner">
-                            <img src="assets/images/multimedia pics/robert.jpg" alt="">
+                            <img src="{{ assistant.image.url }}" alt="">
                         </div>
+                        {% else %}
+                        <div class="officer-banner">
+                            <img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="">
+                        </div>
+                        {% endif %}
                         <div class="officer-content">
-                            <h3>Robert G. Delos Reyes</h3>
-                            <span> PROGRAMMING ASSISTANT</span>
+                            <h3>{{ assistant.name }}</h3>
+                            <span>Multimedia Assistant</span>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
+                {% endif %}
                 <div class="swiper-pagination"></div>
             </div>
         </div>
@@ -305,30 +332,48 @@
 
     <section class="officer">
         <div class="container">
+            {% if latest_programming %}
             <h1 class="section-title">Meet The Programming Team </h1>
-            <p>Description here</p>
+            <!-- <p>Description here</p> -->
 
             <div class="swiper officer-slider">
                 <div class="swiper-wrapper">
+              
                     <div class="officer-box box swiper-slide">
+                        {% if latest_programming.programming_head_img %}
                         <div class="officer-banner">
-                            <img src="assets/images/programing pics/marcel.jpg" alt="">
+                            <img src="{{latest_programming.programming_head_img.url}}" alt="">
                         </div>
+                        {% else %}
+                        <div class="officer-banner">
+                            <img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="">
+                        </div>
+                        {% endif %}
                         <div class="officer-content">
-                            <h3>Marcel James Aribal</h3>
+                            <h3>{{ latest_programming.programming_head}}</h3>
                             <span>PROGRAMMING HEAD</span>
                         </div>
                     </div>
+      
+                    {% for assistant in assistants_prog %}
                     <div class="officer-box box swiper-slide">
+                        {% if assistant.image %}
                         <div class="officer-banner">
-                            <img src="assets/images/programing pics/maxine.jpg" alt="">
+                            <img src="{{ assistant.image.url }}" alt="">
                         </div>
+                        {% else %}
+                        <div class="officer-banner">
+                            <img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="">
+                        </div>
+                        {% endif %}
                         <div class="officer-content">
-                            <h3>Mary Maxine S. Matias</h3>
-                            <span> PROGRAMMING ASSISTANT</span>
+                            <h3>{{ assistant.name }}</h3>
+                            <span>Programming Assistant</span>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
+                {% endif %}
                 <div class="swiper-pagination"></div>
             </div>
         </div>
@@ -338,30 +383,48 @@
 
     <section class="officer">
         <div class="container">
+            {% if latest_writers %}
             <h1 class="section-title">Meet The Writers Team </h1>
-            <p>Description here</p>
+            <!-- <p>Description here</p> -->
 
             <div class="swiper officer-slider">
                 <div class="swiper-wrapper">
+              
                     <div class="officer-box box swiper-slide">
+                        {% if latest_writers.writers_head_img %}
                         <div class="officer-banner">
-                            <img src="assets/images/writers/arlyn(head).jpg" alt="">
+                            <img src="{{latest_writers.writers_head_img.url}}" alt="">
                         </div>
+                        {% else %}
+                        <div class="officer-banner">
+                            <img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="">
+                        </div>
+                        {% endif %}
                         <div class="officer-content">
-                            <h3>Arlyne Joy R. De Jesus</h3>
+                            <h3>{{ latest_writers.writers_head}}</h3>
                             <span>WRITERS HEAD</span>
                         </div>
                     </div>
+      
+                    {% for assistant in assistants_writers %}
                     <div class="officer-box box swiper-slide">
+                        {% if assistant.image %}
                         <div class="officer-banner">
-                            <img src="assets/images/writers/J-anne.jpg" alt="">
+                            <img src="{{ assistant.image.url }}" alt="">
                         </div>
+                        {% else %}
+                        <div class="officer-banner">
+                            <img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="">
+                        </div>
+                        {% endif %}
                         <div class="officer-content">
-                            <h3>J-Ann C. Agbayani</h3>
-                            <span> MULTIMEDIA ASSISTANT</span>
+                            <h3>{{ assistant.name }}</h3>
+                            <span>Writers Assistant</span>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
+                {% endif %}
                 <div class="swiper-pagination"></div>
             </div>
         </div>
@@ -371,30 +434,44 @@
 
     <section class="officer">
         <div class="container">
+            {% if latest_documentation %}
             <h1 class="section-title">Meet The Documentation Team </h1>
-            <p>Description here</p>
+            <!-- <p>Description here</p> -->
 
             <div class="swiper officer-slider">
                 <div class="swiper-wrapper">
+        
                     <div class="officer-box box swiper-slide">
+                        {% if latest_documentation.documentation_head_img %}
                         <div class="officer-banner">
-                            <img src="assets/images/writers/arlyn(head).jpg" alt="">
+                            <img src="{{latest_documentation.documentation_head_img.url}}" alt="">
                         </div>
+                        {% endif %}
                         <div class="officer-content">
-                            <h3>Jhommer DP.VALIENTE</h3>
-                            <span> HEAD</span>
+                            <h3>{{ latest_documentation.documentation_head }}</h3>
+                            <span>DOCUMENTATION HEAD</span>
                         </div>
                     </div>
-                    <div class="officer-box box swiper-slide">
+      
+                    {% for assistant in assistants_docu %}
+                    <div class="officer-box box swiper-slide">       
+                        {% if assistant.image %}
                         <div class="officer-banner">
-                            <img src="assets/images/writers/J-anne.jpg" alt="">
+                            <img src="{{ assistant.image.url }}" alt="">
                         </div>
+                        {% else %}
+                        <div class="officer-banner">
+                            <img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="">
+                        </div>
+                        {% endif %}
                         <div class="officer-content">
-                            <h3>J-Ann C. Agbayani</h3>
-                            <span> MULTIMEDIA ASSISTANT</span>
+                            <h3>{{ assistant.name }}</h3>
+                            <span>Documentation Assistant</span>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
+                {% endif %}
                 <div class="swiper-pagination"></div>
             </div>
         </div>
@@ -403,30 +480,86 @@
     </section>
     <section class="officer">
         <div class="container">
+            {% if latest_esports %}
             <h1 class="section-title">Meet The Esport's Team </h1>
-            <p>Description here</p>
 
             <div class="swiper officer-slider">
                 <div class="swiper-wrapper">
                     <div class="officer-box box swiper-slide">
+                        {% if latest_esports.esports_head_img %}
                         <div class="officer-banner">
-                            <img src="assets/images/writers/arlyn(head).jpg" alt="">
+                            <img src="{{latest_esports.esports_head_img.url}}" alt="">
                         </div>
+                        {% endif %}
                         <div class="officer-content">
-                            <h3>Jhommer DP.VALIENTE</h3>
-                            <span> HEAD</span>
+                            <h3>{{ latest_esports.esports_head }}</h3>
+                            <span>ESPORTS HEAD</span>
                         </div>
                     </div>
-                    <div class="officer-box box swiper-slide">
+      
+                    {% for assistant in assistants_esports %}
+                    <div class="officer-box box swiper-slide">       
+                        {% if assistant.image %}
                         <div class="officer-banner">
-                            <img src="assets/images/writers/J-anne.jpg" alt="">
+                            <img src="{{ assistant.image.url }}" alt="">
                         </div>
+                        {% else %}
+                        <div class="officer-banner">
+                            <img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="">
+                        </div>
+                        {% endif %}
                         <div class="officer-content">
-                            <h3>J-Ann C. Agbayani</h3>
-                            <span> MULTIMEDIA ASSISTANT</span>
+                            <h3>{{ assistant.name }}</h3>
+                            <span>Esports Assistant</span>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
+                {% endif %}
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+
+    </section>
+    <section class="officer">
+        <div class="container">
+            {% if latest_social_media %}
+            <h1 class="section-title">Meet The Social Media Team </h1>
+
+            <div class="swiper officer-slider">
+                <div class="swiper-wrapper">
+                    <div class="officer-box box swiper-slide">
+                        {% if latest_social_media.social_media_head_img %}
+                        <div class="officer-banner">
+                            <img src="{{latest_social_media.social_media_head_img.url}}" alt="">
+                        </div>
+                        {% endif %}
+                        <div class="officer-content">
+                            <h3>{{ latest_social_media.social_media_head }}</h3>
+                            <span>SOCIAL MEDIA HEAD</span>
+                        </div>
+                    </div>
+      
+                    {% for assistant in assistants_social_media %}
+                    <div class="officer-box box swiper-slide">       
+                        {% if assistant.image %}
+                        <div class="officer-banner">
+                            <img src="{{ assistant.image.url }}" alt="">
+                        </div>
+                        {% else %}
+                        <div class="officer-banner">
+                            <img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="">
+                        </div>
+                        {% endif %}
+                        <div class="officer-content">
+                            <h3>{{ assistant.name }}</h3>
+                            <span>Social Media Assistant</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
                 <div class="swiper-pagination"></div>
             </div>
         </div>

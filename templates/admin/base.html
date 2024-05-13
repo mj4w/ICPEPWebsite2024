@@ -26,6 +26,9 @@
             {% url 'admin-highlights' as admin_highlights_url %}
             {% url 'admin-dashboard' as admin_dashboard %}
             {% url 'admin-register' as admin_register %}
+            {% url 'admin-about-us-context' as about_us_context %}
+            {% url 'admin-create-payment' as admin_create_payment %}
+            {% url 'admin-vision-mission-goal' as admin_vision_mission_goal %}
             <li class="sidebar-list-item {% if request.path == admin_dashboard %}active{% endif %}">
                 <a href="{{admin_dashboard}}">
                 <span><i class="fa fa-home" aria-hidden="true"></i> Home</span>
@@ -44,6 +47,21 @@
             <li class="sidebar-list-item {% if request.path == admin_register %}active{% endif %}">
                 <a href="{{ admin_register }}">
                     <span><i class="fa-solid fa-plus"></i> Register</span>
+                </a>
+            </li>
+            <li class="sidebar-list-item {% if request.path == about_us_context %}active{% endif %}">
+                <a href="{{ about_us_context }}">
+                    <span><i class="fa-regular fa-address-card"></i> About Us Context</span>
+                </a>
+            </li>
+            <li class="sidebar-list-item {% if request.path == admin_create_payment %}active{% endif %}">
+                <a href="{{ admin_create_payment }}">
+                    <span><i class="fa-solid fa-money-bill"></i> Create Payment</span>
+                </a>
+            </li>
+            <li class="sidebar-list-item {% if request.path == admin_vision_mission_goal %}active{% endif %}">
+                <a href="{{ admin_vision_mission_goal }}">
+                    <span><i class="fa-solid fa-bullseye"></i> VisionMissionGoal</span>
                 </a>
             </li>
             </ul>

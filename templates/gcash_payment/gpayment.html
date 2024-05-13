@@ -8,18 +8,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment | Registration</title>
     <link rel="shortcut icon" href="{% static 'img/homepage_images/icpep_logo2.png' %}" type="image/svg+xml">
-    <link rel="stylesheet" href="qr.css">
+    <link rel="stylesheet" href="{% static 'css/gpayment.css' %}">
 </head>
 
 <body>
 
     <div class="qr_holder">
         <div id="content_holder">
-            <div><img src="{{ payment.image.url }}" alt="QR CODE NOT AVAILABLE "></div>
+            {% if payment.image %}
+            <div>
+                <a href="{{ payment.image.url }}" download="qr_code.png">
+                    <img src="{{ payment.image.url }}" alt="QR CODE NOT AVAILABLE">
+                </a>
+            </div>
+            {% endif %}
             <h2>PHP 50.00</h2>
             <h4>Account Name: {{ payment.acct_name }}</h4>
             <br>
-            <p>Email us after you send the payment in <a href="{{payment.email}}">{{payment.email}}</a></p>
+            <!-- <p>Email us after you send the payment in <a href="{{payment.email}}">{{payment.email}}</a></p> -->
+            <a href="mailto:{{payment.email}}?subject=Payment%20BSCPE%20<year_level>&body=Student%20Number%0D%0APayment%20Screenshot">
+                Click here to email
+            </a>
             <br><br>
             <div class="view-more">
                 <a href="{% url 'home' %}" class="btn">Done</a>
@@ -27,9 +36,9 @@
         </div>
         
     </div>
-    <div class="attribution">
-        <p>Copyright © 2023 All rights reserved | <span>Programming Team 2023-2024</span></p>
-      </div>
+    <!-- <div class="attribution">
+        <p>Copyright © 2023-2024 All rights reserved | <span>Programming Team 2023-2024</span></p>
+      </div> -->
 </body>
 
 </html>

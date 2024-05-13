@@ -1,0 +1,53 @@
+{% extends 'officer/base.html' %}
+{% load static %}
+{% block content %}
+<div id="myModal" class="modal">
+    <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Add an Banner</h2>
+    <br>
+    <form id="imageForm" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{year}}
+        <div class="form-group">
+            <label for="banner_image">Image</label>
+            <input type="file" id="banner_image" name="banner_image" class="form-control" required>
+        </div>
+            
+        <button
+         type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Executive Banner</h1>
+    <div class="table-container">
+        <button id="openModalBtn" class="executives-btn">Add Banner</button>
+
+        <ul class="responsive-table">
+            <li class="table-header">
+                <div class="col col-1">Term</div>
+                <div class="col col-3">Image</div>
+            </li>
+            {% for banner in banners %}
+            <li class="table-row">
+                <div class="col col-1" data-label="Term">{{banner.year}}</div>
+                {% if banner.image %}
+                <div class="col col-3" data-label="Image"><img src="{{banner.image.url}}" alt="" class="table-image"/></div>
+                {% else %}
+                <div class="col col-3" data-label="Image"><img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="" class="table-image"/></div>
+                {% endif %}
+            </li>
+        
+            {% endfor %}
+            <!-- Add more table rows as needed -->
+        </ul>
+    </div>
+    <div class="next-page-link">
+        <div>
+            <a href="{% url 'home-officer' %}" ><i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+    </div>
+</div>
+{% endblock content %}
