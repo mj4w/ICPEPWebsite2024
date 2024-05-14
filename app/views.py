@@ -271,7 +271,7 @@ def approve_user(request, user_id):
     user.save()
 
     subject = 'Account Approval Notification'
-    login_url = request.build_absolute_uri(reverse('login'))
+    login_url = request.build_absolute_uri(reverse('login-user'))
     message = f'Your account has been verified. Please ensure that you have registered with our ICPEP organization. Once registered, you can proceed to log in. Please follow the link to access your account: <a href="{login_url}">Login to your account</a>.'
     recipient_list = [user.email]
     send_mail(subject, message, None, recipient_list, html_message=message)
@@ -915,7 +915,7 @@ def sem_1_add(request, user_id):
     else:
         user.sem_1 += timedelta(days=4*30)  
     user.save()
-    login = request.build_absolute_uri(reverse('login'))
+    login = request.build_absolute_uri(reverse('login-user'))
     formatted_sem_1_date = user.sem_1.strftime('%B %d, %Y')
     subject = 'Account Registration Completed'
     message = f'Your account has been registered valid until {formatted_sem_1_date}. <a href={login}>Login Now</a>'
@@ -942,7 +942,7 @@ def sem_2_add(request, user_id):
         user.sem_2 += timedelta(days=8*30)
     user.save()
     
-    login = request.build_absolute_uri(reverse('login'))
+    login = request.build_absolute_uri(reverse('login-user'))
     formatted_sem_2_date = user.sem_2.strftime('%B %d, %Y')
     subject = 'Account Registration Completed'
     message = f'Your account has been registered valid until {formatted_sem_2_date}. <a href={login}>Login Now</a>'
