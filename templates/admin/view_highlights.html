@@ -30,38 +30,50 @@
             <span class="close">&times;</span>
             <form id="highlightsForm" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
+            <div class="form-group">
             <label for="url">Form Link:</label>
-            <input type="text" id="url" name="url" required><br>
-            
+            <input type="text" id="url" name="url" required class="form-control"><br>
+            </div>
+            <div class="form-group">
             <label for="image">Image:</label>
-            <input type="file" id="image" name="image"><br>
-            
+            <input type="file" id="image" name="image" class="form-control"><br>
+            </div>
+            <div class="form-group">
             <label for="title">Title:</label>
-            <input type="text" id="title" name="title"><br>
-            
+            <input type="text" id="title" name="title" class="form-control"><br>
+            </div>
+            <div class="form-group">
             <label for="time">Time:</label>
-            <input type="time" id="time" name="time"><br>
-            
+            <input type="time" id="time" name="time" class="form-control"><br>
+            </div>
+            <div class="form-group">
             <label for="startDate">Start Date:</label>
-            <input type="date" id="startDate" name="startDate" required><br>
-            
+            <input type="date" id="startDate" name="startDate" required class="form-control"><br>
+            </div>
+            <div class="form-group">
             <label for="endDate">End Date:</label>
-            <input type="date" id="endDate" name="endDate" required><br>
-            
+            <input type="date" id="endDate" name="endDate" required class="form-control"><br>
+            </div>
+            <div class="form-group">
             <label for="location">Location:</label>
-            <input type="text" id="location" name="location" required><br>
-            
+            <input type="text" id="location" name="location" required class="form-control"><br>
+            </div>
+            <div class="form-group">
             <label for="description">Description:</label>
-            <textarea id="description" name="description" required></textarea><br>
-            
+            <textarea id="description" name="description" required class="form-control"></textarea><br>
+            </div>
+            <div class="form-group">
             <label for="linkDescription">Link Description:</label>
-            <input type="text" id="linkDescription" name="linkDescription"><br>
-            
+            <input type="text" id="linkDescription" name="linkDescription" class="form-control"><br>
+            </div>
+            <div class="form-group">
             <label for="hostedBy">Hosted By:</label>
-            <input type="text" id="hostedBy" name="hostedBy" required><br>
-            
+            <input type="text" id="hostedBy" name="hostedBy" required class="form-control"><br>
+            </div>
+            <div class="form-group">
             <label for="learnMore">Learn More:</label>
-            <input type="text" id="learnMore" name="learnMore"><br>
+            <input type="text" id="learnMore" name="learnMore" class="form-control"><br>
+            </div>
             
             <button type="submit">Submit</button>
             </form>
