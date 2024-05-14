@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-5ad6ze8@z_36a+p%i!ittn6&j!(d1157%qg@gi16b8$e^sip^=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*','127.0.0.1','localhost','10.0']
+ALLOWED_HOSTS = ['*','127.0.0.1','localhost','10.0', 'http://www.icpep.online/']
 
 
 # Application definition
