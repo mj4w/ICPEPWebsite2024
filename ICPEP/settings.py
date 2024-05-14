@@ -88,7 +88,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'icpep_data',
-        'USER': 'mj4w',
+        'USER': 'root',
         'PASSWORD': '083002',
         'HOST':'localhost',
         'PORT':'3306',
@@ -151,8 +151,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587  
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'celgamerx123@gmail.com'  
-EMAIL_HOST_PASSWORD = 'zhhawqtuqxttdziz'  
+EMAIL_HOST_USER = 'icpep.se.menesescampus@gmail.com'  
+EMAIL_HOST_PASSWORD = 'ezfkkvwhxmetdpbv'  
 
 
 # CONFIG
