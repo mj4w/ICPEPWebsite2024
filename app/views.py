@@ -448,12 +448,77 @@ def edit_payment(request, id):
 @login_required 
 @restrict_non_superuser 
 def vision_mission_goal(request):
-    return render(request, 'admin/vision_mission_goal.html')
+    if request.method == "POST":
+        vision = request.POST.get('vision')
+        mission = request.POST.get('mission')
+        goal = request.POST.get('goal')
+        VisionMissionGoal.objects.create(vision=vision, mission=mission, goal=goal)
+    vmgs = VisionMissionGoal.objects.all()
+    return render(request, 'admin/vision_mission_goal.html',{'vmgs':vmgs})
+
+@login_required
+@restrict_non_superuser
+def edit_vmg(request, id):
+    vision_mission_goal = get_object_or_404(VisionMissionGoal, pk=id)
+    
+    if request.method == "POST":
+        
+        vision_mission_goal.vision = request.POST.get('vision', vision_mission_goal.vision)
+        vision_mission_goal.mission = request.POST.get('mission', vision_mission_goal.mission)
+        vision_mission_goal.goal = request.POST.get('goal', vision_mission_goal.goal)
+        
+        vision_mission_goal.save() 
+        
+        return JsonResponse({'message': 'About Us Context Updated Successfully'})
+    else:
+        vision_mission_goal_data = {
+            'vision': vision_mission_goal.vision,
+            'mission': vision_mission_goal.mission,
+            'goal': vision_mission_goal.goal,
+        }
+        return JsonResponse(vision_mission_goal_data)
+
 
 @login_required 
 @restrict_non_superuser 
 def about_us_context(request):
-    return render(request, 'admin/about_us_context.html')
+    if request.method == "POST":
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        image = request.FILES.get('image')
+        AboutUsContext.objects.create(title=title, description=description, image=image)
+    about_us_contexts = AboutUsContext.objects.all()
+    print(about_us_context)
+    return render(request, 'admin/about_us_context.html', {'about_us_contexts': about_us_contexts})
+
+@login_required
+@restrict_non_superuser
+def edit_context(request, id):
+    about_us = get_object_or_404(AboutUsContext, pk=id)
+    
+    if request.method == "POST":
+        image_file = request.FILES.get('image')
+        if image_file:
+            file_path = default_storage.save(image_file.name, image_file)
+            if about_us.image:
+                default_storage.delete(about_us.image.name)
+
+            about_us.image = file_path
+        
+        about_us.title = request.POST.get('title', about_us.title)
+        about_us.description = request.POST.get('description', about_us.description)
+        
+        about_us.save() 
+        
+        return JsonResponse({'message': 'About Us Context Updated Successfully'})
+    else:
+        about_us_data = {
+            'image': about_us.image.url if about_us.image else '',  
+            'title': about_us.title,
+            'description': about_us.description,
+        }
+        return JsonResponse(about_us_data)
+
 
 @login_required
 @restrict_non_staff
@@ -753,6 +818,11 @@ def about_us(request):
 
     selected_year = request.GET.get('selected_year')
 
+    current_year = datetime.now().year
+
+    if not selected_year:
+        selected_year = f"{current_year}-{current_year + 1}"
+
     latest_year = OfficerYear.objects.latest('year')
 
     latest_executives = ExecutiveOfficer.objects.filter(year__year=selected_year).first()
@@ -776,6 +846,10 @@ def about_us(request):
     assistants_social_media = latest_social_media.assistants.all() if latest_social_media else []
     
     latest_banner = ExecutiveBanner.objects.filter(year__year=selected_year).first()
+    
+    about_us_context = AboutUsContext.objects.first()
+    
+    vision_mission_goal = VisionMissionGoal.objects.first()
 
     context = {
         'year': latest_year,
@@ -801,6 +875,10 @@ def about_us(request):
         'all_years': all_years, 
         
         'latest_banner':latest_banner,
+        'selected_year': selected_year,
+        
+        'about_us_context':about_us_context,
+        'vision_mission_goal': vision_mission_goal,
     }
     
     return render(request, 'about_us.html', context)

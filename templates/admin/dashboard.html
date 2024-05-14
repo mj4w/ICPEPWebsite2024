@@ -30,16 +30,22 @@
             <span class="close">&times;</span>
             <form id="aboutPicForm" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <label for="image">Image:</label>
-            <input type="file" id="image" name="image" required><br>
+            <div class="form-group">
+                <label for="image">Image:</label>
+                <input type="file" id="image" name="image" class="form-control" required><br>
+    
+            </div>
+            <div class="form-group">
+                <label for="title">Image Title:</label>
+                <input type="text" id="title" name="title" class="form-control" required><br>       
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea name="description" id="" cols="30" class="form-control" rows="10"></textarea><br>
+            </div>
 
-            <label for="title">Image Title:</label>
-            <input type="text" id="title" name="title" required><br>
             
-            <label for="description">Description:</label>
-            <textarea name="description" id="" cols="30" rows="10"></textarea><br>
-            
-            <button type="submit">Submit</button>
+            <button type="submit"  class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>
@@ -48,19 +54,29 @@
             <span class="close">&times;</span>
             <form id="bannerForm" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <label for="subText">Sub Text:</label>
-            <input type="text" id="subText" name="subText" required><br>
+            <div class="form-group">
+                <label for="subText">Sub Text:</label>
+                <input type="text" id="subText" name="subText" required class="form-control"><br>
+            </div>
 
-            <label for="primaryText">Primary Text:</label>
-            <input type="text" id="primaryText" name="primaryText" required><br>
 
-            <label for="primarySub">Primary Sub:</label>
-            <input type="text" id="primarySub" name="primarySub" required><br>
+            <div class="form-group">
+                <label for="primaryText">Primary Text:</label>
+                <input type="text" id="primaryText" name="primaryText" required class="form-control"><br>
+            </div>
 
-            <label for="description">Description:</label>
-            <input type="text" id="description" name="description" required><br>
+            <div class="form-group">
+                <label for="primarySub">Primary Sub:</label>
+                <input type="text" id="primarySub" name="primarySub" required class="form-control"><br>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <input type="text" id="description" name="description" required class="form-control"><br>
+            </div>
+
             
-            <button type="submit">Submit</button>
+            <button type="submit"  class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>
@@ -115,6 +131,7 @@
             <span class="close">&times;</span>
             <form id="editForm1" enctype="multipart/form-data">
                 {% csrf_token %}
+                <div class="form-group">
                 <label for="currentImage">Current Image:</label><br>
                 {% if about.image and about.image.url %}
                     <img src="{{ about.image.url }}" alt="Current Image" style="max-width: 200px; max-height: 200px;"><br>
@@ -122,16 +139,21 @@
                     <p>No image uploaded</p>
                 {% endif %}
                 <br>
+                </div>
+                <div class="form-group">
                 <label for="image">Upload New Image:</label><br>
                 <input type="file" id="image" name="image"><br>
-
+                </div>
+                <div class="form-group">
                 <label for="imageTitle">Image Title:</label>
                 <input type="text" id="imageTitle" name="imageTitle" value="{{ about.image_title }}"><br>
-
+                </div>
+                <div class="form-group">
                 <label for="description">Description:</label>
                 <textarea name="description" id="" cols="30" rows="10">{{ about.description }}</textarea>
                 <br/>
-                <button type="button" class="edit-btnModal1" data-id="{{ about.id }}">Update</button>
+                </div>
+                <button type="button" class="edit-btnModal1 btn btn-primary" data-id="{{ about.id }}">Update</button>
             </form>
         </div>
     </div>
@@ -159,19 +181,26 @@
             <span class="close">&times;</span>
             <form id="editForm">
                 {% csrf_token %}
-                <label for="subText">Sub Text:</label>
-                <input type="text" id="subText" name="subText" value="{{ banner.sub_text }}"><br>
+                <div class="form-group">
+                    <label for="subText">Sub Text:</label>
+                    <input type="text" id="subText" name="subText" value="{{ banner.sub_text }}"><br>
+                </div>
 
-                <label for="primaryText">Primary Text:</label>
-                <input type="text" id="primaryText" name="primaryText" value="{{ banner.primary_text }}"><br>
+                <div class="form-group">
+                    <label for="primaryText">Primary Text:</label>
+                    <input type="text" id="primaryText" name="primaryText" value="{{ banner.primary_text }}"><br>
+                </div>
 
-                <label for="primarySub">Primary Sub:</label>
-                <input type="text" id="primarySub" name="primarySub" value="{{ banner.primary_sub }}"><br>
+                <div class="form-group">
+                    <label for="primarySub">Primary Sub:</label>
+                    <input type="text" id="primarySub" name="primarySub" value="{{ banner.primary_sub }}"><br>                   
+                </div>
 
-                <label for="description">Description:</label>
-                <textarea id="description" name="description">{{ banner.description }}</textarea><br>
-
-                <button type="button" class="edit-btnModal" data-id="{{ banner.id }}">Update</button>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description">{{ banner.description }}</textarea><br>
+                </div>
+                <button type="button" class="edit-btnModal btn btn-primary" data-id="{{ banner.id }}">Update</button>
             </form>
         </div>
     </div>

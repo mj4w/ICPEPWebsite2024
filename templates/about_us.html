@@ -66,15 +66,15 @@
         <div class="container row">
 
             <div class="about-content">
-                <h3 class="section-title">ICPEP.SE BULSU MC</h3>
-                <p>The Institute of Computer Engineering at Bulacan State University (BulSU) stands as a vital component of the university's evolution and commitment to education and innovation. Established within the broader context of BulSU's growth, the institute reflects the university's responsiveness to the increasing demand for skilled professionals in computer engineering. Since its inception, it has continually adapted its curriculum and resources to align with industry standards and technological advancements, ensuring that students receive a relevant and comprehensive education. Through a focus on research and innovation, the institute fosters an environment where faculty and students collaborate on projects that contribute to the advancement of computer engineering knowledge and applications. Furthermore, the institute's partnerships with industry stakeholders provide students with valuable opportunities for hands-on experience and career development. Bolstered by BulSU's overarching dedication to excellence, the Institute of Computer Engineering plays a pivotal role in preparing graduates who are poised to make significant contributions to the field and society at large.
-                </p>
+                <h3 class="section-title">{{about_us_context.title}}</h3>
+                <p>{{about_us_context.description}}</p>
 
             </div>
-
+            {% if about_us_context.image %}
             <figure class="banner">
-                <img src="../static/img/bulsu_campuslogo.jpg" alt="about-us" width="650" height="350">
+                <img src="{{about_us_context.image.url}}" alt="about-us" width="650" height="350">
             </figure>
+            {% endif %}
         </div>
     </section>
 
@@ -87,23 +87,17 @@
                 <div class="vmg-box">
                     <img src="{% static 'img/about_us/icon3.png' %}" alt="" id="logos">
                     <h3>ICPEP MISSION</h3>
-                    <p>To become the leading online hub for computer engineering students, fostering innovation,
-                        collaboration, and excellence in the field of technology through accessible resources,
-                        mentorship, and community engagement.</p>
+                    <p>{{vision_mission_goal.vision}}</p>
                 </div>
                 <div class="vmg-box">
                     <img src="{% static 'img/about_us/icon2.png' %}" alt="" id="logos">
                     <h3>ICPEP Vision</h3>
-                    <p>To become the leading online hub for computer engineering students, fostering innovation,
-                        collaboration, and excellence in the field of technology through accessible resources,
-                        mentorship, and community engagement.</p>
+                    <p>{{vision_mission_goal.mission}}</p>
                 </div>
                 <div class="vmg-box">
                     <img src="{% static 'img/about_us/icon1.png' %}" alt="" id="logos">
                     <h3>ICPEP GOAL</h3>
-                    <p>To become the leading online hub for computer engineering students, fostering innovation,
-                        collaboration, and excellence in the field of technology through accessible resources,
-                        mentorship, and community engagement.</p>
+                    <p>{{vision_mission_goal.goal}}</p>
                 </div>
             </div>
         </div>
@@ -127,7 +121,7 @@
                 </div>
             </div>
 
-            <h1 class="section-title">{{latest_executives.year}}</h1>
+            <h1 class="section-title">{{selected_year}}</h1>
             <h1 class="section-title">Meet the Executives</h1>
             <!-- <p>Description here</p> -->
 

@@ -30,7 +30,9 @@ urlpatterns = [
     path('admin-create-payment/',views.create_payment, name='admin-create-payment'),
     path('edit-payment/<int:id>/', views.edit_payment, name='edit-payment'),
     path('admin-vision-mission-goal/', views.vision_mission_goal, name='admin-vision-mission-goal'),
+    path('edit-vmg/<int:id>/', views.edit_vmg, name='edit-vmg'),
     path('admin-about-us-context/', views.about_us_context, name='admin-about-us-context'),
+    path('edit-context/<int:id>/', views.edit_context, name='edit-context'),
     
     path('home-officer/', views.homepage_officer, name='home-officer'),
     path('executive/', views.executive, name='executive'),

@@ -30,34 +30,53 @@
             <span class="close">&times;</span>
             <form id="userForm" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName" required><br>
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required class="form-control"><br>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" required class="form-control"><br>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Student Number:</label>
+                <input type="text" id="username" name="username" required class="form-control"><br>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required class="form-control"><br>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required class="form-control"><br>
+            </div>
+
+            <div class="form-group">
+                <label for="orgBox">Already Member?</label>
+                <input type="checkbox" id="orgBox" name="orgBox" class="form-control"><br>
+            </div>
+
+            <div class="form-group">
+                <label for="isStaff">Is Staff:</label>
+                <input type="checkbox" id="isStaff" name="isStaff" class="form-control"><br>
+            </div>
+
+            <div class="form-group">
+                <label for="isActive">Is Active:</label>
+                <input type="checkbox" id="isActive" name="isActive" class="form-control"><br>
+            </div>
+  
+            <div class="form-group">
+                <label for="userImage">User Image:</label>
+                <input type="file" id="userImage" name="userImage" class="form-control"><br>
+            </div>
+
             
-            <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName" required><br>
-            
-            <label for="username">Student Number:</label>
-            <input type="text" id="username" name="username" required><br>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br>
-            
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required><br>
-            
-            <label for="orgBox">Already Member?</label>
-            <input type="checkbox" id="orgBox" name="orgBox"><br>
-            
-            <label for="isStaff">Is Staff:</label>
-            <input type="checkbox" id="isStaff" name="isStaff"><br>
-            
-            <label for="isActive">Is Active:</label>
-            <input type="checkbox" id="isActive" name="isActive"><br>
-            
-            <label for="userImage">User Image:</label>
-            <input type="file" id="userImage" name="userImage"><br>
-            
-            <button type="submit">Submit</button>
+            <button type="submit"  class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>

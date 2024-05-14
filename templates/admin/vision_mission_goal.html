@@ -1,0 +1,121 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+{% load static %}
+<div class="account-info">
+    <div class="account-info-picture">
+        {% if user.image and user.image.url %}
+            <img src="{{ request.user.image.url }}" alt="product">
+        {% else %}
+            <img src="https://www.downeastyachting.com/wp/wp-content/uploads/downeastyachting.com/2005/09/default-profile-480x480.png" alt="product">
+        {% endif %}
+    </div>
+    <div class="account-info-name">{{request.user}}</div>
+    <button class="account-info-more">
+        <a href="{% url 'admin-logout' %}" style="color: #fff; text-decoration:none;">Log Out</a>
+    </button>
+    </div>
+    </div>
+    <div class="app-content">
+    <div class="app-content-header">
+    <h1 class="app-content-headerText">Vision Mission Goal</h1>
+    <!-- <button class="mode-switch" title="Switch Theme">
+        <svg class="moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="24" height="24" viewBox="0 0 24 24">
+        <defs></defs>
+        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+        </svg>
+    </button> -->
+
+    <div id="openAboutPicModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="aboutPicForm" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+           
+            <label for="vision">Vision: </label>
+            <textarea name="vision" id="vision" cols="30" rows="10"></textarea><br>
+            
+            <label for="mission">Mission:</label>
+           <textarea name="mission" id="mission" cols="30" rows="10"></textarea><br><br>
+
+            <label for="goal">Goal:</label>
+            <textarea name="goal" id="goal" cols="30" rows="10"></textarea><br>
+
+            <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    </div>
+    <div class="app-content-actions">
+    <div>
+        <button class="app-content-headerButton" id="openAboutPicModalBtn"  {% if vmgs %}disabled{% endif %}>Add Vision Mission Goal</button>     
+    </div>
+
+    <div class="app-content-actions-wrapper">
+        <div class="filter-button-wrapper action-button filter jsFilter">
+        </div>
+        <button class="action-button list active" title="List View">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list">
+            <line x1="8" y1="6" x2="21" y2="6" />
+            <line x1="8" y1="12" x2="21" y2="12" />
+            <line x1="8" y1="18" x2="21" y2="18" />
+            <line x1="3" y1="6" x2="3.01" y2="6" />
+            <line x1="3" y1="12" x2="3.01" y2="12" />
+            <line x1="3" y1="18" x2="3.01" y2="18" />
+        </svg>
+        </button>
+    </div>
+    </div>
+    <div class="products-area-wrapper tableView">
+    
+    {% for vmg in vmgs %}
+    <div class="products-row user-row">
+        <button class="cell-more-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">
+            <circle cx="12" cy="12" r="1" />
+            <circle cx="12" cy="5" r="1" />
+            <circle cx="12" cy="19" r="1" />
+        </svg>
+        </button>
+        <div class="admin-cell price"><span class="cell-label"></span><button class="edit-btn1" data-id="{{ vmg.id }}" data-type="about">EDIT</button></div>
+        <div class="admin-cell image">
+
+        <span>{{vmg.vision}}</span>
+        </div>
+        <div class="admin-cell category"><span class="cell-label"></span>{{vmg.mission}}</div>
+        <div class="admin-cell category"><span class="cell-label"></span>{{vmg.goal}}</div>
+
+        </div>
+       <!-- Edit Modal -->
+    <div id="editModal1" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="editForm1" enctype="multipart/form-data">
+                {% csrf_token %}
+                <br>
+                <div class="form-group">
+                    <label for="vision">Vision:</label><br>
+                    <textarea name="vision" id="vision" cols="30" rows="10" class="form-control">{{vmg.vision}}</textarea><br>
+                </div>
+
+                <div class="form-group">
+                    <label for="mission">Mission:</label>
+                    <textarea name="mission" id="mission" cols="30" rows="10" class="form-control">{{vmg.mission}}</textarea><br>
+                </div>
+
+                <div class="form-group">
+                    <label for="goal">Goal:</label>
+                    <textarea name="goal" id="goal" cols="30" rows="10" class="form-control">{{vmg.goal}}</textarea>
+                    <br/>
+                </div>
+
+                <button type="button" class="edit-btnModal1 btn btn-primary" data-id="{{ vmg.id }}" >Update</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+
+</div>
+
+<script src="{% static 'js/admin/vision_mission_goal.js' %}"></script>
+{% endblock content %}
