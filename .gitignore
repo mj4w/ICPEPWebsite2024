@@ -1,2 +1,4 @@
 env
 .env
+icpep.sh
+icpepkeypair.pem
