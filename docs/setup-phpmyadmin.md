@@ -1,0 +1,1 @@
+https://medium.com/@thexpertdev/how-to-configure-phpmyadmin-securely-with-nginx-8c761a531298
