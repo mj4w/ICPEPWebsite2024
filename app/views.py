@@ -341,7 +341,7 @@ def send_highlight_email(request, event_id):
             event = HighlightsEvent.objects.get(pk=event_id)
 
             # Get other relevant event details
-            highlights_url = f"{settings.HIGHLIGHTS}{event_id}/"
+            highlights_url = reverse('highlights', kwargs={'pk': event_id})
             event_title = event.title
             event_url = event.url
             event_hosted = event.details

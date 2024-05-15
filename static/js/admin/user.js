@@ -32,11 +32,11 @@ function updateStatus(userId, isActive) {
     console.log('Status element:', statusElement);
     if (statusElement) {
         if (isActive) {
-            statusElement.textContent = 'Active';
+            statusElement.textContent = 'Verified';
             statusElement.classList.add('active');
             statusElement.classList.remove('inactive');
         } else {
-            statusElement.textContent = 'Not Active';
+            statusElement.textContent = 'Not Verified';
             statusElement.classList.remove('active');
             statusElement.classList.add('inactive');
         }
