@@ -156,5 +156,5 @@ EMAIL_HOST_PASSWORD = 'ezfkkvwhxmetdpbv'
 
 
 # CONFIG
-LOGIN_URL = 'http://127.0.0.1:8000/login'
-HIGHLIGHTS = 'http://127.0.0.1:8000/highlights/'
+LOGIN_URL = 'https://icpep.online/login'
+HIGHLIGHTS = 'https://icpep.online/highlights/'
