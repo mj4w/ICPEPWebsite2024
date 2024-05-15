@@ -88,7 +88,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'icpep_data',
-        'USER': 'root',
+        'USER': 'admin',
         'PASSWORD': '083002',
         'HOST':'localhost',
         'PORT':'3306',
