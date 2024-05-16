@@ -2,3 +2,4 @@ env
 .env
 icpep.sh
 icpepkeypair.pem
+.env
