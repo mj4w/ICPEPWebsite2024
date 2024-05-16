@@ -37,7 +37,9 @@
       <h1>Waiting for your Registration to Approve.</h1>
     </div>
     <div class="content">
-        <img src="https://i.ibb.co/hRb4xw8/icpep-logo2.png" alt="ICPEP Logo">
+        {% if image_url %}
+          <img src="{{ image_url }}" alt="Payment Image">
+        {% endif %}
         <p>Reply to this email, if you send your payment to activate your account.</p>
         <a href="mailto:{{payment_email}}?subject=Payment%20BSCPE%20<year_level>&body=Student%20Number%0D%0APayment%20Screenshot">
           Click here to email

@@ -112,11 +112,13 @@ def register_user(request):
                 user.save()
                 # login(request, user)
                 payment = Payment.objects.all()[0]
+                image_url = payment.image.url
                 student_num = user.username
                 subject = 'Pending Registration: {}'.format(student_num)
                 message = render_to_string('email_template/email_template_register.html', {
                     'email': user.email,
                     'payment_email': payment.email,
+                    'image_url': image_url,
                 })
                 recipient_list = [user.email]
                 email = EmailMessage(subject, message, to=recipient_list)
@@ -352,7 +354,7 @@ def send_highlight_email(request, event_id):
             for user in users:
                 subject = 'New Event: {}'.format(event_title)
                 message = render_to_string('email_template/event_template.html', {
-                    'name': user.last_name,
+                    'name': user.last_name if user.last_name else user.username,
                     'event_title': event_title,
                     'event_url': event_url,
                     'event_id': highlights_url,
