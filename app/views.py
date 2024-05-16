@@ -111,8 +111,11 @@ def register_user(request):
                 user.is_active = False  # Set user registration as pending
                 user.save()
                 # login(request, user)
-                payment = Payment.objects.all()[0]
-                image_url = payment.image.url
+                payment = Payment.objects.first()
+                if payment:
+                    image_url = request.build_absolute_uri(payment.image.url)
+                else:
+                    image_url = ''
                 student_num = user.username
                 subject = 'Pending Registration: {}'.format(student_num)
                 message = render_to_string('email_template/email_template_register.html', {
