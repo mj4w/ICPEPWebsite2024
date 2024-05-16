@@ -104,24 +104,58 @@
     </section>
 
 
-    <!-- OFFICER starts here -->
     <section class="officer">
         <div class="container">
             <div class="section-title">
                 <div class="form-container">
-                    <form method="GET">
+                    <form method="GET" onchange="this.submit()">
                         <select name="selected_year" id="selected_year">
                             <option value="">Select a year</option>
                             {% for year in all_years %}
                                 <option value="{{ year }}">{{ year }}</option>
                             {% endfor %}
                         </select>
-                        <button type="submit">Go</button>
                     </form>
                 </div>
             </div>
-            {% if latest_executives %}
+            {% if latest_adviser %}
             <h1 class="section-title">{{selected_year}}</h1>
+            <h1 class="section-title">Meet the Advisers</h1>
+            <!-- <p>Description here</p> -->
+
+            <div class="swiper officer-slider">
+                <div class="swiper-wrapper" style="margin:0 auto;">
+                    {% for adviser in latest_adviser %}
+                    <div class="officer-box box swiper-slide">
+                        {% if adviser.image %}
+                        <div class="officer-banner">
+                            <img src="{{adviser.image.url}}" alt="">
+                        </div>
+                        {% else %}
+                        <div class="officer-banner">
+                            <img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="">
+                        </div>
+                        {% endif %}
+                        <div class="officer-content">
+                            <h3>{{ adviser.name}}</h3>
+                            <span>Adviser</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <div class="swiper-pagination"></div>
+            </div>
+        
+        </div>
+
+
+    </section>
+    <!-- OFFICER starts here -->
+    <section class="officer">
+        <div class="container">
+
+            {% if latest_executives %}
             <h1 class="section-title">Meet the Executives</h1>
             <!-- <p>Description here</p> -->
 
@@ -272,6 +306,7 @@
 
 
     </section>
+
 
     <section class="officer">
         <div class="container">
@@ -549,6 +584,83 @@
                         <div class="officer-content">
                             <h3>{{ assistant.name }}</h3>
                             <span>Social Media Assistant</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <section class="officer">
+        <div class="container">
+            {% if latest_marketing %}
+            <h1 class="section-title">Meet The Marketing Team </h1>
+
+            <div class="swiper officer-slider">
+                <div class="swiper-wrapper">
+                    <div class="officer-box box swiper-slide">
+                        {% if latest_marketing.marketing_team_img %}
+                        <div class="officer-banner">
+                            <img src="{{latest_marketing.marketing_team_img.url}}" alt="">
+                        </div>
+                        {% endif %}
+                        <div class="officer-content">
+                            <h3>{{ latest_marketing.marketing_team_head }}</h3>
+                            <span>MARKETING HEAD</span>
+                        </div>
+                    </div>
+      
+                    {% for assistant in assistants_marketing %}
+                    <div class="officer-box box swiper-slide">       
+                        {% if assistant.image %}
+                        <div class="officer-banner">
+                            <img src="{{ assistant.image.url }}" alt="">
+                        </div>
+                        {% else %}
+                        <div class="officer-banner">
+                            <img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="">
+                        </div>
+                        {% endif %}
+                        <div class="officer-content">
+                            <h3>{{ assistant.name }}</h3>
+                            <span>Marketing Assistant</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+
+    </section>
+    <section class="officer">
+        <div class="container">
+            {% if latest_board_member %}
+            <h1 class="section-title">Meet The Board Members </h1>
+
+            <div class="swiper officer-slider">
+                <div class="swiper-wrapper">
+                    {% for board in latest_board_member %}
+                    <div class="officer-box box swiper-slide">       
+                        {% if board.image %}
+                        <div class="officer-banner">
+                            <img src="{{ board.image.url }}" alt="">
+                        </div>
+                        {% else %}
+                        <div class="officer-banner">
+                            <img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="">
+                        </div>
+                        {% endif %}
+                        <div class="officer-content">
+                            <h3>{{ board.name }}</h3>
+                            <span>{{board.position}}</span>
                         </div>
                     </div>
                     {% endfor %}

@@ -1,0 +1,69 @@
+{% extends 'officer/base.html' %}
+{% load static %}
+{% block content %}
+<div id="myModal" class="modal">
+    <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Add an Board Member</h2>
+    <br>
+    <form id="imageForm" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{year}}
+        <h3>Board Member</h3>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Enter Name" required>
+        </div>
+        <div class="form-group">
+            <label for="image">Image</label>
+            <input type="file" id="image" name="image" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="position">Position</label>
+            <input type="text" id="position" name="position" class="form-control" required>
+        </div>
+            
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Board Member</h1>
+    <div class="table-container">
+        <button id="openModalBtn" class="executives-btn">Add Board Member</button>
+
+        <ul class="responsive-table">
+            <li class="table-header">
+                <div class="col col-1">Term</div>
+                <div class="col col-2">Name</div>
+                <div class="col col-3">Image</div>
+                <div class="col col-4">Position</div>
+            </li>
+            {% for board in boards %}
+            <li class="table-row">
+                <div class="col col-1" data-label="Term">{{board.year}}</div>
+                <div class="col col-2" data-label="Name">{{board.name}}</div>
+                {% if board.image %}
+                <div class="col col-3" data-label="Image"><img src="{{board.image.url}}" alt="" class="table-image"/></div>
+                {% else %}
+                <div class="col col-3" data-label="Image"><img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="" class="table-image"/></div>
+                {% endif %}
+                <div class="col col-4" data-label="Position">{{board.position}}</div>
+            </li>
+        
+            {% endfor %}
+            <!-- Add more table rows as needed -->
+        </ul>
+    </div>
+    <div class="next-page-link">
+        <div>
+            <a href="{% url 'marketing' %}" ><i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+        <div>
+            <a href="{% url 'adviser' %}" ><i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

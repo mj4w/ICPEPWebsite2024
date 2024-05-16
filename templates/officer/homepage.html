@@ -35,20 +35,6 @@
         content: "Logout";
     }
     
-    .slide {
-        clear: both;
-        width: 100%;
-        height: auto;
-        overflow: hidden;
-        text-align: center;
-        transition: height 0.4s ease;
-    }
-    
-    .slide li {
-        padding: 15px 0; 
-        display: flex;
-        list-style: none;
-    }
     
     #touch {
         position: absolute;
@@ -58,6 +44,36 @@
     
     #touch:checked + .slide {
         height: max-content; 
+    }
+    .slide {
+        overflow: hidden;
+        transition: height 0.4s ease;
+        margin-top: 0;
+        padding: 0;
+        list-style: none;
+    }
+    
+    .slide li {
+        padding: 15px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 1px solid #ccc; 
+    }
+    
+    .slide li:last-child {
+        border-bottom: none; 
+    }
+    
+    .slide a {
+        color: #333;
+        text-decoration: none;
+        font-size: 1.2em;
+        transition: color 0.3s ease;
+    }
+    
+    .slide a:hover {
+        color: #2d2f31; 
     }
     
     @media screen and (max-width: 600px) {
@@ -69,10 +85,26 @@
             content: "\f067"; 
             font-family: FontAwesome; 
         }
+        .slide {
+            display: none;
+            padding: 10px 0; 
+        }
+    
+        #touch:checked + .slide {
+            display: block;
+        }
+    
+        .slide li {
+            border-bottom: 1px solid #ccc;
+        }
+    
+        .slide a {
+            font-size: 1.2em;
+        }
     }
       
 </style>
-<h1>Admin Office </h1>
+<h1>Admin's Office </h1>
 
 <nav>
 
@@ -89,6 +121,9 @@
     <li><a href="{% url 'documentation' %}">Documentation Team</a></li>
     <li><a href="{% url 'esports' %}">Esport's Team</a></li>
     <li><a href="{% url 'social-media' %}">Social Media Team</a></li>
+    <li><a href="{% url 'marketing' %}">Marketing Team</a></li>
+    <li><a href="{% url 'board-member' %}">Board Member</a></li>
+    <li><a href="{% url 'adviser' %}">Adviser</a></li>
  
   </ul>
 

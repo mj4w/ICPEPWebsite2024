@@ -775,7 +775,81 @@ def social_media(request):
             return redirect('social-media') 
     return render(request,'officer/social_media.html',{'socials': socials, 'year':year})
 
+@login_required
+@restrict_non_staff
+def marketing(request):
+    year = OfficerYearForm()
+    marketings = MarketingTeam.objects.all()
+    if request.method == "POST":
+        year = OfficerYearForm(request.POST)
+        if year.is_valid():
+            year_instance = year.save(commit=False)
+            year_instance.save()
+            marketing_head = request.POST.get('marketing_head')
+            marketing_head_img = request.FILES.get('marketing_image')
+            assistants = []
+            for i in range(1, 11):  
+                assistant_name = request.POST.get(f'marketing_asst_{i}_name')
+                assistant_img = request.FILES.get(f'marketing_asst_{i}_image')
+                if assistant_name:
+                    assistant, _ = MarketingTeamAssistant.objects.get_or_create(name=assistant_name)
+                    if assistant_img:
+                        assistant.image = assistant_img
+                        assistant.save()
+                    assistants.append(assistant)
+            marketing_instance = MarketingTeam.objects.create(
+                year=year_instance,
+                marketing_team_head=marketing_head,
+                marketing_team_img=marketing_head_img
+            )
+            marketing_instance.assistants.set(assistants)
+            messages.success(request, 'Marketing Team data saved successfully.')
+            return redirect('marketing') 
+    return render(request,'officer/marketing.html',{'marketings': marketings, 'year':year})
 
+@login_required
+@restrict_non_staff
+def adviser(request):
+    year = OfficerYearForm()
+    advisers = Adviser.objects.all()
+    if request.method == "POST":
+        year = OfficerYearForm(request.POST)
+        if year.is_valid():
+            year_instance = year.save(commit=False)
+            year_instance.save()
+            name = request.POST.get('name')
+            image = request.FILES.get('image')
+            Adviser.objects.create(
+                year=year_instance,
+                name=name,
+                image=image
+            )
+            messages.success(request, 'Adviser data saved successfully.')
+            return redirect('adviser') 
+    return render(request,'officer/adviser.html',{'advisers': advisers, 'year':year})
+
+@login_required
+@restrict_non_staff
+def board_member(request):
+    year = OfficerYearForm()
+    boards = BoardMember.objects.all()
+    if request.method == "POST":
+        year = OfficerYearForm(request.POST)
+        if year.is_valid():
+            year_instance = year.save(commit=False)
+            year_instance.save()
+            position = request.POST.get('position')
+            name = request.POST.get('name')
+            image = request.FILES.get('image')
+            BoardMember.objects.create(
+                year=year_instance,
+                name=name,
+                image=image,
+                position=position,
+            )
+            messages.success(request, 'Board Member data saved successfully.')
+            return redirect('board-member') 
+    return render(request,'officer/board_members.html',{'boards': boards, 'year':year})
 
 @require_http_methods(["DELETE"])
 def delete_highlight(request, highlight_id):
@@ -824,7 +898,7 @@ def about_us(request):
     selected_year = request.GET.get('selected_year')
 
     current_year = datetime.now().year
-
+    print(selected_year)
     if not selected_year:
         selected_year = f"{current_year}-{current_year + 1}"
 
@@ -850,7 +924,15 @@ def about_us(request):
     latest_social_media = SocialMediaTeam.objects.filter(year__year=selected_year).first()
     assistants_social_media = latest_social_media.assistants.all() if latest_social_media else []
     
+    latest_marketing = MarketingTeam.objects.filter(year__year=selected_year).first()
+    assistants_marketing = latest_marketing.assistants.all() if latest_marketing else []
+    
     latest_banner = ExecutiveBanner.objects.filter(year__year=selected_year).first()
+    
+    latest_advisers = Adviser.objects.filter(year__year=selected_year)
+
+    
+    latest_board_members = BoardMember.objects.filter(year__year=selected_year)
     
     about_us_context = AboutUsContext.objects.first()
     
@@ -884,6 +966,15 @@ def about_us(request):
         
         'about_us_context':about_us_context,
         'vision_mission_goal': vision_mission_goal,
+        
+        'latest_marketing':latest_marketing,
+        'assistants_marketing': assistants_marketing,
+        
+        'latest_board_member':latest_board_members,
+        
+        'latest_adviser':latest_advisers,
+        
+        
     }
     
     return render(request, 'about_us.html', context)

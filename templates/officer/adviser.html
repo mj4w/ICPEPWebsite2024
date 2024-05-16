@@ -1,0 +1,62 @@
+{% extends 'officer/base.html' %}
+{% load static %}
+{% block content %}
+<div id="myModal" class="modal">
+    <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Add an Adviser</h2>
+    <br>
+    <form id="imageForm" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{year}}
+        <h3>Adviser</h3>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Enter Name" required>
+        </div>
+        <div class="form-group">
+            <label for="image">Image</label>
+            <input type="file" id="image" name="image" class="form-control">
+        </div>
+            
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Adviser</h1>
+    <div class="table-container">
+        <button id="openModalBtn" class="executives-btn">Add Adviser</button>
+
+        <ul class="responsive-table">
+            <li class="table-header">
+                <div class="col col-1">Term</div>
+                <div class="col col-2">Name</div>
+                <div class="col col-3">Image</div>
+            </li>
+            {% for adviser in advisers %}
+            <li class="table-row">
+                <div class="col col-1" data-label="Term">{{adviser.year}}</div>
+                <div class="col col-2" data-label="Name">{{adviser.name}}</div>
+                {% if adviser.image %}
+                <div class="col col-3" data-label="Image"><img src="{{adviser.image.url}}" alt="" class="table-image"/></div>
+                {% else %}
+                <div class="col col-3" data-label="Image"><img src="{% static 'img/no_img_shown/NoImg.png' %}" alt="" class="table-image"/></div>
+                {% endif %}
+            </li>
+        
+            {% endfor %}
+            <!-- Add more table rows as needed -->
+        </ul>
+    </div>
+    <div class="next-page-link">
+        <div>
+            <a href="{% url 'board-member' %}" ><i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+        <div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -43,6 +43,9 @@ urlpatterns = [
     path('writers/', views.writers, name='writers'),
     path('social-media/', views.social_media, name='social-media'),
     path('executive-banner/', views.executive_banner, name='executive-banner'),
+    path('marketing/', views.marketing, name='marketing'),
+    path('adviser/', views.adviser, name='adviser'),
+    path('board-member/', views.board_member, name='board-member'),
     
     path('approve-user/<int:user_id>/', views.approve_user, name='approve_user'),
     path('reject-user/<int:user_id>/', views.reject_user, name='reject_user'),

@@ -254,3 +254,41 @@ class SocialMediaTeam(models.Model):
 
     def __str__(self):
         return self.social_media_head
+    
+
+    
+class MarketingTeamAssistant(models.Model):
+    name = models.CharField(max_length=100, blank=True, null=True)
+    image = models.ImageField(upload_to='marketing_team_assistant/', blank=True, null=True)
+    
+    def __str__(self):
+        return self.name
+
+class MarketingTeam(models.Model):
+    year = models.ForeignKey(OfficerYear, models.SET_NULL, blank=True, null=True)
+    marketing_team_head = models.CharField(max_length=100, blank=True, null=True)
+    marketing_team_img = models.ImageField(upload_to='marketing_team/', blank=True, null=True)
+    assistants = models.ManyToManyField(MarketingTeamAssistant)
+
+    def __str__(self):
+        return self.marketing_team
+    
+
+class Adviser(models.Model):
+    year = models.ForeignKey(OfficerYear, models.SET_NULL, blank=True, null=True)
+    name = models.CharField(max_length=100, blank=True, null=True)
+    image = models.ImageField(upload_to='adviser/', blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+class BoardMember(models.Model):
+    year = models.ForeignKey(OfficerYear, models.SET_NULL, blank=True, null=True)
+    position = models.CharField(max_length=100, blank=True, null=True)
+    name = models.CharField(max_length=100, blank=True, null=True)
+    image = models.ImageField(upload_to='board_members/', blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.position} - {self.name}"
+
+    
