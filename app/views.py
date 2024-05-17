@@ -1097,3 +1097,7 @@ def gpayment(request):
     payment = Payment.objects.all()[0]
     return render(request, 'gcash_payment/gpayment.html',{'payment':payment})
 
+
+
+def submit_ticket(request):
+    return redirect('https://github.com/mj4w/ICPEPWebsite2024/issues')

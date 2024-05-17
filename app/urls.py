@@ -69,6 +69,12 @@ urlpatterns = [
     
     path('payment/', views.payment, name='payment'),
     path('gpayment/', views.gpayment, name='gpayment'),
+    
+    
+    
+    #submit a ticket
+    
+    path('submit-a-ticket/', views.submit_ticket, name='submit-a-ticket'),
 ] 
 
 
