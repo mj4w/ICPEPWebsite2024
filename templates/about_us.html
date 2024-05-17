@@ -46,7 +46,7 @@
 
 
 <main>
-
+    {% if latest_banner.image %}
     <div id="intro" style="background-image: url('{{ latest_banner.image.url }}');">
         <!-- <div id="C">
             <h1 id="cluster">About Us</h1>
@@ -61,6 +61,7 @@
         </div> -->
 
     </div>
+    {% endif %}
     <!-- brief info start here -->
     <section class="about">
         <div class="container row">
@@ -125,7 +126,7 @@
             <!-- <p>Description here</p> -->
 
             <div class="swiper officer-slider">
-                <div class="swiper-wrapper" style="margin:0 auto;">
+                <div class="swiper-wrapper">
                     {% for adviser in latest_adviser %}
                     <div class="officer-box box swiper-slide">
                         {% if adviser.image %}

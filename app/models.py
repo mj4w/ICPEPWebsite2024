@@ -1,13 +1,19 @@
 from django.db import models
 from django.contrib.auth.models import PermissionsMixin, AbstractBaseUser, BaseUserManager,AbstractUser
-# Create your models here.
+from storages.backends.s3boto3 import S3Boto3Storage
+
+class PublicMediaStorage(S3Boto3Storage):
+    file_overwrite = False
+    custom_domain = False
+
+
 class User(AbstractUser):
     username = models.CharField(unique=True,null=True,max_length=100)
     email = models.EmailField(unique=True,null=True)
     orgbox = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-    image = models.ImageField(upload_to='profile-images/', null=True, blank=True)
+    image = models.ImageField(storage=PublicMediaStorage(),upload_to='profile-images/', null=True, blank=True)
     date_joined = models.DateTimeField(auto_now_add=True)
     sem_1 = models.DateTimeField(blank=True, null=True)
     sem_2 = models.DateTimeField(blank=True, null=True)
@@ -38,7 +44,7 @@ class Banner(models.Model):
         return self.primary_text
     
 class AboutPic(models.Model):
-    image = models.ImageField(upload_to='about-pic-upload/')
+    image = models.ImageField(storage=PublicMediaStorage(),upload_to='about-pic-upload/')
     image_title = models.CharField(max_length=50,blank=True)
     description = models.TextField()
     
@@ -47,7 +53,7 @@ class AboutPic(models.Model):
     
 class HighlightsEvent(models.Model):
     url = models.URLField(max_length=255, blank=True)
-    image = models.ImageField(upload_to='highlights-event/')
+    image = models.ImageField(storage=PublicMediaStorage(),upload_to='highlights-event/')
     title = models.CharField(max_length=200, blank=True)
     time = models.TimeField(blank=True, null=True)
     date_to = models.DateField(blank=True, null=True, verbose_name="Start ng date")
@@ -63,12 +69,12 @@ class HighlightsEvent(models.Model):
     
 class SoftwareTools(models.Model):
     url = models.URLField(max_length=255, blank=True)
-    image = models.ImageField(upload_to='software-tools/')
+    image = models.ImageField(storage=PublicMediaStorage(),upload_to='software-tools/')
     
 class SoftwareToolsResource(models.Model):
     url = models.URLField(max_length=255, blank=True, null=True)
     title = models.CharField(max_length = 255, blank=True, null=True)
-    image = models.ImageField(upload_to='software-resources/')
+    image = models.ImageField(storage=PublicMediaStorage(),upload_to='software-resources/')
     desc = models.CharField(max_length=255, blank=True)
     
     def __str__(self):
@@ -77,7 +83,7 @@ class SoftwareToolsResource(models.Model):
 class Payment(models.Model):
     acct_name = models.CharField(max_length=255, blank=True)
     email = models.EmailField(max_length=255, blank=True, null=True)
-    image = models.ImageField(upload_to='payment-qr/')
+    image = models.ImageField(storage=PublicMediaStorage(),upload_to='payment-qr/')
     
     def __str__(self):
         return self.email
@@ -125,7 +131,7 @@ class OfficerYear(models.Model):
 class AboutUsContext(models.Model):
     title = models.CharField(max_length=255, blank=True)
     description = models.TextField(blank=True, null=True)
-    image = models.ImageField(upload_to='abous_us_context/', blank=True, null=True)
+    image = models.ImageField(storage=PublicMediaStorage(),upload_to='abous_us_context/', blank=True, null=True)
     
 class VisionMissionGoal(models.Model):
     vision = models.CharField(max_length=255, blank=True, null=True)
@@ -134,33 +140,33 @@ class VisionMissionGoal(models.Model):
 
 class ExecutiveBanner(models.Model):
     year = models.ForeignKey(OfficerYear, models.SET_NULL, blank=True, null=True)
-    image = models.ImageField(upload_to='executive_banner/', blank=True)
+    image = models.ImageField(storage=PublicMediaStorage(),upload_to='executive_banner/', blank=True)
 
 class ExecutiveOfficer(models.Model):
     year = models.ForeignKey(OfficerYear, models.SET_NULL, blank=True, null=True)
     president = models.CharField(max_length=100, blank=True)
-    president_img = models.ImageField(upload_to='president', blank=True)
+    president_img = models.ImageField(storage=PublicMediaStorage(),upload_to='president', blank=True)
     vp_internal = models.CharField(max_length=100, blank=True)
-    vp_internal_img = models.ImageField(upload_to='vp_internal', blank=True)
+    vp_internal_img = models.ImageField(storage=PublicMediaStorage(),upload_to='vp_internal', blank=True)
     vp_external = models.CharField(max_length=100, blank=True)
-    vp_external_img = models.ImageField(upload_to='vp_external', blank=True)
+    vp_external_img = models.ImageField(storage=PublicMediaStorage(),upload_to='vp_external', blank=True)
     secretary = models.CharField(max_length=100, blank=True)
-    secretary_img = models.ImageField(upload_to='secretary', blank=True)
+    secretary_img = models.ImageField(storage=PublicMediaStorage(),upload_to='secretary', blank=True)
     assistant_secretary = models.CharField(max_length=100, blank=True)
-    assistant_secretary_img = models.ImageField(upload_to='assistant_secretary', blank=True)
+    assistant_secretary_img = models.ImageField(storage=PublicMediaStorage(),upload_to='assistant_secretary', blank=True)
     treasurer = models.CharField(max_length=100, blank=True)
-    treasurer_img = models.ImageField(upload_to='treasurer', blank=True)
+    treasurer_img = models.ImageField(storage=PublicMediaStorage(),upload_to='treasurer', blank=True)
     assistant_treasurer = models.CharField(max_length=100, blank=True)
-    assistant_treasurer_img = models.ImageField(upload_to='assistant_treasurer', blank=True)
+    assistant_treasurer_img = models.ImageField(storage=PublicMediaStorage(),upload_to='assistant_treasurer', blank=True)
     auditor = models.CharField(max_length=100, blank=True)
-    auditor_img = models.ImageField(upload_to='auditor', blank=True)
+    auditor_img = models.ImageField(storage=PublicMediaStorage(),upload_to='auditor', blank=True)
     pro = models.CharField(max_length=100, blank=True)
-    pro_img = models.ImageField(upload_to='pro', blank=True)
+    pro_img = models.ImageField(storage=PublicMediaStorage(),upload_to='pro', blank=True)
     
     
 class MultimediaAssistant(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
-    image = models.ImageField(upload_to='multimedia_assistant/', blank=True, null=True)
+    image = models.ImageField(storage=PublicMediaStorage(),upload_to='multimedia_assistant/', blank=True, null=True)
     
     def __str__(self):
         return self.name
@@ -168,7 +174,7 @@ class MultimediaAssistant(models.Model):
 class MultimediaTeam(models.Model):
     year = models.ForeignKey(OfficerYear, models.SET_NULL, blank=True, null=True)
     multimedia_head = models.CharField(max_length=100, blank=True, null=True)
-    multimedia_head_img = models.ImageField(upload_to='multimedia_head/', blank=True, null=True)
+    multimedia_head_img = models.ImageField(storage=PublicMediaStorage(),upload_to='multimedia_head/', blank=True, null=True)
     assistants = models.ManyToManyField(MultimediaAssistant)
 
     def __str__(self):
@@ -176,7 +182,7 @@ class MultimediaTeam(models.Model):
     
 class ProgrammingAssistant(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
-    image = models.ImageField(upload_to='programming_assistant/', blank=True, null=True)
+    image = models.ImageField(storage=PublicMediaStorage(),upload_to='programming_assistant/', blank=True, null=True)
     
     def __str__(self):
         return self.name
@@ -184,7 +190,7 @@ class ProgrammingAssistant(models.Model):
 class ProgrammingTeam(models.Model):
     year = models.ForeignKey(OfficerYear, models.SET_NULL, blank=True, null=True)
     programming_head = models.CharField(max_length=100, blank=True, null=True)
-    programming_head_img = models.ImageField(upload_to='programming_head/', blank=True, null=True)
+    programming_head_img = models.ImageField(storage=PublicMediaStorage(),upload_to='programming_head/', blank=True, null=True)
     assistants = models.ManyToManyField(ProgrammingAssistant)
 
     def __str__(self):
@@ -192,7 +198,7 @@ class ProgrammingTeam(models.Model):
     
 class WritersAssistant(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
-    image = models.ImageField(upload_to='writers_assistant/', blank=True, null=True)
+    image = models.ImageField(storage=PublicMediaStorage(),upload_to='writers_assistant/', blank=True, null=True)
     
     def __str__(self):
         return self.name
@@ -200,7 +206,7 @@ class WritersAssistant(models.Model):
 class WritersTeam(models.Model):
     year = models.ForeignKey(OfficerYear, models.SET_NULL, blank=True, null=True)
     writers_head = models.CharField(max_length=100, blank=True, null=True)
-    writers_head_img = models.ImageField(upload_to='writers_head/', blank=True, null=True)
+    writers_head_img = models.ImageField(storage=PublicMediaStorage(),upload_to='writers_head/', blank=True, null=True)
     assistants = models.ManyToManyField(WritersAssistant)
 
     def __str__(self):
@@ -208,7 +214,7 @@ class WritersTeam(models.Model):
 
 class EsportsAssistant(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
-    image = models.ImageField(upload_to='esports_assistant/', blank=True, null=True)
+    image = models.ImageField(storage=PublicMediaStorage(),upload_to='esports_assistant/', blank=True, null=True)
     
     def __str__(self):
         return self.name
@@ -216,7 +222,7 @@ class EsportsAssistant(models.Model):
 class EsportsTeam(models.Model):
     year = models.ForeignKey(OfficerYear, models.SET_NULL, blank=True, null=True)
     esports_head = models.CharField(max_length=100, blank=True, null=True)
-    esports_head_img = models.ImageField(upload_to='esports_head/', blank=True, null=True)
+    esports_head_img = models.ImageField(storage=PublicMediaStorage(),upload_to='esports_head/', blank=True, null=True)
     assistants = models.ManyToManyField(EsportsAssistant)
 
     def __str__(self):
@@ -224,7 +230,7 @@ class EsportsTeam(models.Model):
 
 class DocumentationAssistant(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
-    image = models.ImageField(upload_to='documentation_assistant/', blank=True, null=True)
+    image = models.ImageField(storage=PublicMediaStorage(),upload_to='documentation_assistant/', blank=True, null=True)
     
     def __str__(self):
         return self.name
@@ -232,7 +238,7 @@ class DocumentationAssistant(models.Model):
 class DocumentationTeam(models.Model):
     year = models.ForeignKey(OfficerYear, models.SET_NULL, blank=True, null=True)
     documentation_head = models.CharField(max_length=100, blank=True, null=True)
-    documentation_head_img = models.ImageField(upload_to='documentation_head/', blank=True, null=True)
+    documentation_head_img = models.ImageField(storage=PublicMediaStorage(),upload_to='documentation_head/', blank=True, null=True)
     assistants = models.ManyToManyField(DocumentationAssistant)
 
     def __str__(self):
@@ -241,7 +247,7 @@ class DocumentationTeam(models.Model):
     
 class SocialMediaAssistant(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
-    image = models.ImageField(upload_to='social_media_assistant/', blank=True, null=True)
+    image = models.ImageField(storage=PublicMediaStorage(),upload_to='social_media_assistant/', blank=True, null=True)
     
     def __str__(self):
         return self.name
@@ -249,7 +255,7 @@ class SocialMediaAssistant(models.Model):
 class SocialMediaTeam(models.Model):
     year = models.ForeignKey(OfficerYear, models.SET_NULL, blank=True, null=True)
     social_media_head = models.CharField(max_length=100, blank=True, null=True)
-    social_media_head_img = models.ImageField(upload_to='social_media_head/', blank=True, null=True)
+    social_media_head_img = models.ImageField(storage=PublicMediaStorage(),upload_to='social_media_head/', blank=True, null=True)
     assistants = models.ManyToManyField(SocialMediaAssistant)
 
     def __str__(self):
@@ -259,7 +265,7 @@ class SocialMediaTeam(models.Model):
     
 class MarketingTeamAssistant(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
-    image = models.ImageField(upload_to='marketing_team_assistant/', blank=True, null=True)
+    image = models.ImageField(storage=PublicMediaStorage(),upload_to='marketing_team_assistant/', blank=True, null=True)
     
     def __str__(self):
         return self.name
@@ -267,7 +273,7 @@ class MarketingTeamAssistant(models.Model):
 class MarketingTeam(models.Model):
     year = models.ForeignKey(OfficerYear, models.SET_NULL, blank=True, null=True)
     marketing_team_head = models.CharField(max_length=100, blank=True, null=True)
-    marketing_team_img = models.ImageField(upload_to='marketing_team/', blank=True, null=True)
+    marketing_team_img = models.ImageField(storage=PublicMediaStorage(),upload_to='marketing_team/', blank=True, null=True)
     assistants = models.ManyToManyField(MarketingTeamAssistant)
 
     def __str__(self):
@@ -277,7 +283,7 @@ class MarketingTeam(models.Model):
 class Adviser(models.Model):
     year = models.ForeignKey(OfficerYear, models.SET_NULL, blank=True, null=True)
     name = models.CharField(max_length=100, blank=True, null=True)
-    image = models.ImageField(upload_to='adviser/', blank=True, null=True)
+    image = models.ImageField(storage=PublicMediaStorage(),upload_to='adviser/', blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -286,7 +292,7 @@ class BoardMember(models.Model):
     year = models.ForeignKey(OfficerYear, models.SET_NULL, blank=True, null=True)
     position = models.CharField(max_length=100, blank=True, null=True)
     name = models.CharField(max_length=100, blank=True, null=True)
-    image = models.ImageField(upload_to='board_members/', blank=True, null=True)
+    image = models.ImageField(storage=PublicMediaStorage(),upload_to='board_members/', blank=True, null=True)
 
     def __str__(self):
         return f"{self.position} - {self.name}"
