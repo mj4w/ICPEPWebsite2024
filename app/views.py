@@ -988,14 +988,15 @@ def membership(request):
     sub = 0
     
     if request.user.is_authenticated:
-        user_register = request.user.sem_1
-        if user_register and user_register > timezone.now():
+        user_register_1 = request.user.sem_1
+        user_register_2 = request.user.sem_2
+        if user_register_1 > timezone.now() or user_register_2 > timezone.now():
             # subscription_status = "Your registration is active."
             sub = 1
         else:
             # subscription_status = "Your registration has expired. Renew now!"
             sub = 2
-
+    print(request.user.sem_2)
     current_month = datetime.now().month
     if current_month in [1, 2, 3, 4, 5, 6, 7, 8]:
         january = "This is the second semester. Register now!"
