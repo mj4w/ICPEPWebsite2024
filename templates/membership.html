@@ -17,53 +17,56 @@
         {% if september %}
         <div class="events-card">
             <div class="event-left">
+                {% if request.user.is_authenticated%}
                 <div class="date">{{ request.user.sem_1|date:"Y" }}</div>
                 <div class="month">{{ request.user.sem_1|date:"M" }}</div>
-           
+                {% else %}
+                <div class="date">{{ date_now|date:"Y" }}</div>
+                <div class="month">{{ date_now|date:"M" }}</div>
+                {% endif %}
             </div>
             <div class="event-right">
-                {% if sub == 1%}
+                {% if sub == 1 or sub == 3 %}
                     <h3 class="event-title"><span>1st Sem</span>: Your registration is active.</h3>
                 {% elif sub == 2 %}
                     <h3 class="event-title"><span>1st Sem</span>: Your registration has expired. Renew now!</h3>
                     <a href="{% url 'gpayment' %}"><p class="event-desc">Click here!</p></a>
                 {% else %}
                     <h3 class="event-title">{{ september }}</h3>
+                    <h3 class="event-title"><span>1st Sem</span>: Your registration has expired. Renew now!</h3>
                     <a href="{% url 'gpayment' %}"><p class="event-desc">Click here!</p></a>
                 {% endif %}
-           
-                
             </div>
         </div>
         {% endif %}
+
         {% if january %}
         <div class="events-card">
             <div class="event-left">
-                {% if request.user.is_authenticated %}
+                {% if request.user.is_authenticated%}
                 <div class="date">{{ request.user.sem_2|date:"Y" }}</div>
                 <div class="month">{{ request.user.sem_2|date:"M" }}</div>
                 {% else %}
                 <div class="date">{{ date_now|date:"Y" }}</div>
                 <div class="month">{{ date_now|date:"M" }}</div>
                 {% endif %}
-           
             </div>
             <div class="event-right">
-                {% if sub == 1%}
+                {% if sub == 1 or sub == 4 %}
                     <h3 class="event-title"><span>2nd Sem</span>: Your registration is active.</h3>
                 {% elif sub == 2 %}
                     <h3 class="event-title"><span>2nd Sem</span>: Your registration has expired. Renew now!</h3>
                     <a href="{% url 'gpayment' %}"><p class="event-desc">Click here!</p></a>
                 {% else %}
-                    <h3 class="event-title">{{ january }}</h3>
+                    <!-- <h3 class="event-title">{{ january }}</h3> -->
+                    <h3 class="event-title"><span>2nd Sem</span>: Your registration has expired. Renew now!</h3>
                     <a href="{% url 'gpayment' %}"><p class="event-desc">Click here!</p></a>
                 {% endif %}
-        
-        
             </div>
         </div>
         {% endif %}
     </div>
 </section>
+
 
 {% endblock content %}

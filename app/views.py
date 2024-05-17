@@ -979,7 +979,6 @@ def about_us(request):
     
     return render(request, 'about_us.html', context)
 
-
 def membership(request):
     september = ""
     january = ""
@@ -988,22 +987,37 @@ def membership(request):
     sub = 0
     
     if request.user.is_authenticated:
+        current_time = timezone.now()
         user_register_1 = request.user.sem_1
         user_register_2 = request.user.sem_2
-        if user_register_1 > timezone.now() or user_register_2 > timezone.now():
-            # subscription_status = "Your registration is active."
-            sub = 1
+
+        if (user_register_1 and user_register_1 > current_time) and \
+           (user_register_2 and user_register_2 > current_time):
+            sub = 1 
+            subscription_status = "Both semesters are active."
+        elif user_register_1 and user_register_1 > current_time:
+            sub = 3  
+            subscription_status = "First semester is active."
+        elif user_register_2 and user_register_2 > current_time:
+            sub = 4  
+            subscription_status = "Second semester is active."
         else:
-            # subscription_status = "Your registration has expired. Renew now!"
-            sub = 2
-    print(request.user.sem_2)
+            sub = 2 
+            subscription_status = "No active semesters."
+ 
     current_month = datetime.now().month
     if current_month in [1, 2, 3, 4, 5, 6, 7, 8]:
         january = "This is the second semester. Register now!"
     elif current_month in [9, 10, 11, 12]:
         september = "This is the first semester. Register now!"
-
-    return render(request, 'membership.html', {'september': september, 'january': january, 'subscription_status': subscription_status, 'date_now': date_now,'sub':sub})
+    print(current_month)
+    return render(request, 'membership.html', {
+        'september': september,
+        'january': january,
+        'subscription_status': subscription_status,
+        'date_now': date_now,
+        'sub': sub
+    })
 
 def sem_1_add(request, user_id):
     user = get_object_or_404(User, id=user_id)
