@@ -16,6 +16,7 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
 from django.conf import settings
+from django.core.exceptions import ObjectDoesNotExist
 from django.core.files.storage import FileSystemStorage
 from django.urls import reverse
 from django.core.files.storage import default_storage
@@ -902,7 +903,10 @@ def about_us(request):
     if not selected_year:
         selected_year = f"{current_year}-{current_year + 1}"
 
-    latest_year = OfficerYear.objects.latest('year')
+    try:
+        latest_year = OfficerYear.objects.latest('year')
+    except ObjectDoesNotExist:
+        latest_year = None  
 
     latest_executives = ExecutiveOfficer.objects.filter(year__year=selected_year).first()
 
