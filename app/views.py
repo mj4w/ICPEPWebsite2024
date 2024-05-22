@@ -13,7 +13,7 @@ from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_POST, require_http_methods
 from django.core.mail import send_mail
-from django.template.loader import render_to_string
+from django.template.loader import render_to_string 
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
@@ -22,9 +22,23 @@ from django.urls import reverse
 from django.core.files.storage import default_storage
 import os
 from .decorators import restrict_non_superuser,restrict_non_staff
+import pyrebase
+from django.conf import settings
+from .tasks import send_highlight_email_task
+
+# import { initializeApp } from "firebase/app";
+# import { getAnalytics } from "firebase/analytics";
+# firebaseConfig = settings.FIREBASE_CONFIG
+
+# firebase = pyrebase.initialize_app(firebaseConfig)
+# auth = firebase.auth()
+# database = firebase.database()
 
 
-def home(request):
+
+
+
+def home(request):   
     current_date = datetime.now().date()
     
     banner = Banner.objects.first()
@@ -340,39 +354,15 @@ def admin_highlights(request):
     highlights = HighlightsEvent.objects.all()
     return render(request, 'admin/view_highlights.html', {'highlights': highlights})
 
+
 @require_http_methods(["POST"])
 def send_highlight_email(request, event_id):
     if request.method == 'POST':
-        try:
-            event = HighlightsEvent.objects.get(pk=event_id)
-
-            # Get other relevant event details
-            highlights_url = f"{settings.HIGHLIGHTS}{event_id}/"
-            event_title = event.title
-            event_url = event.url
-            event_hosted = event.details
-            event_description = event.desc
-
-            users = User.objects.filter(is_active=True)
-
-            for user in users:
-                subject = 'New Event: {}'.format(event_title)
-                message = render_to_string('email_template/event_template.html', {
-                    'name': user.last_name if user.last_name else user.username,
-                    'event_title': event_title,
-                    'event_url': event_url,
-                    'event_id': highlights_url,
-                    'event_hosted': event_hosted,
-                    'event_description': event_description,
-                })
-                recipient_list = [user.email]
-                email = EmailMessage(subject, message, to=recipient_list)
-                email.content_subtype = 'html'
-                email.send()
-
-            return JsonResponse({'success': True, 'message': 'Emails sent successfully'})
-        except Exception as e:
-            return JsonResponse({'success': False, 'message': str(e)})
+        # Call Celery task asynchronously
+        send_highlight_email_task.delay(event_id)
+        return JsonResponse({'success': True, 'message': 'Emails sending task queued successfully'})
+    
+    
 @login_required  
 @restrict_non_superuser  
 def view_highlight(request, highlight_id):
