@@ -3,7 +3,7 @@ from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.conf import settings
 from .models import HighlightsEvent
-from django.contrib.auth.models import User
+from .models import User
 
 @shared_task
 def send_highlight_email_task(event_id):
