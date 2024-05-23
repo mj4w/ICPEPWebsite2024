@@ -89,12 +89,12 @@ WSGI_APPLICATION = 'ICPEP.wsgi.application'
 # }
 DATABASES = {
     'default': {
-        'ENGINE': os.getenv('ENGINE'),
-        'NAME': os.getenv('NAME'),
-        'USER': os.getenv('USER'),
-        'PASSWORD': os.getenv('PASSWORD'),
-        'HOST':os.getenv('HOST'),
-        'PORT':os.getenv('PORT'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'icpep_data',
+        'USER': 'admin',
+        'PASSWORD': '083002',
+        'HOST':'localhost',
+        'PORT':'3306',
     }
 }
 
@@ -159,8 +159,8 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
 
 # CONFIG
-# LOGIN_URL = 'https://icpep.online/login'
-# HIGHLIGHTS = 'https://icpep.online/highlights/'
+LOGIN_URL = 'https://icpep.online/login'
+HIGHLIGHTS = 'https://icpep.online/highlights/'
 
 
 # AWS S3 Buckets

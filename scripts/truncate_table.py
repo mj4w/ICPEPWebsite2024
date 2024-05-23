@@ -7,6 +7,7 @@ from mysql.connector import Error
 load_dotenv()
 
 def delete_table_data(database_name, table_names, user, password, host='localhost'):
+    connection = None
     try:
         # Connect to the MySQL database
         connection = mysql.connector.connect(
@@ -35,7 +36,7 @@ def delete_table_data(database_name, table_names, user, password, host='localhos
     except Error as e:
         print(f"Error: {e}")
     finally:
-        if connection.is_connected():
+        if connection and connection.is_connected():
             cursor.close()
             connection.close()
             print("MySQL connection is closed.")
@@ -74,38 +75,3 @@ if __name__ == "__main__":
     ]
     
     delete_table_data(db_name, table_names, db_user, db_password)
-
-
-# | Tables_in_icpep_data             |
-# +----------------------------------+
-# | app_aboutpic                     |
-# | app_aboutuscontext               |
-# | app_adviser                      |
-# | app_banner                       |
-# | app_boardmember                  |
-# | app_documentationassistant       |
-# | app_documentationteam            |
-# | app_documentationteam_assistants |
-# | app_esportsassistant             |
-# | app_esportsteam                  |
-# | app_esportsteam_assistants       |
-# | app_executivebanner              |
-# | app_executiveofficer             |
-# | app_highlightsevent              |
-# | app_marketingteam                |
-# | app_marketingteam_assistants     |
-# | app_marketingteamassistant       |
-# | app_multimediaassistant          |
-# | app_multimediateam               |
-# | app_multimediateam_assistants    |
-# | app_officeryear                  |
-# | app_payment                      |
-# | app_programmingassistant         |
-# | app_programmingteam              |
-# | app_programmingteam_assistants   |
-# | app_socialmediaassistant         |
-# | app_socialmediateam              |
-# | app_socialmediateam_assistants   |
-# | app_softwaretools                |
-# | app_softwaretoolsresource        |
-# | app_user                         |
